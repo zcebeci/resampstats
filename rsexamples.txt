@@ -1,0 +1,65 @@
+# Örnek 3.1a: Bıldırcın yumurtası ağırlıkları verisi benzetimi 
+set.seed(19) # Örneğin tekrarında aynı değerleri elde etmek için
+x <- rnorm(n=50, mean=12.50, sd=sqrt(1.5321))
+x <- round(x,2) # Kesir kısmını 2 rakama yuvarla
+x
+
+# Örnek 3.1b: x örnekleminde açıklayıcı istatistikler 1 
+# Bağımlılık – Örnek 3.1a
+# 
+summary(x)
+
+# Örnek 3.1c: Açıklayıcı istatistikleri hesaplama ve görüntüleme
+# Bağımlılık – Örnek: 3.1a; Fonksiyon: 3.1, 3.2
+#
+xdescstat <- calc.desc(x)
+print(xdescstat)
+
+# Bağımlılık – Örnek: 3.1a; Paket: psych
+#
+if(!require(psych, quietly=TRUE)) {
+   install.packages("psych",
+     require(psych, quietly=TRUE)
+ }
+describe(x)
+
+# Örnek 3.1e: Açıklayıcı grafikler
+# Bağımlılık – Fonksiyon: 3.3
+#
+univar.plot(x)
+
+# Örnek 3.2: Ortalama için nokta ve güven aralığı kestirimi
+# Bağımlılık – Örnek: 3.1a
+#
+alfa <- 0.05
+n <- length(x)   # Örneklem büyüklüğü
+xort <- mean(x)  # Örneklem ortalaması (nokta kestirimi)
+xsd <- sd(x)     # Örneklem standart sapması (nokta kestirimi)
+xsh <- xsd/sqrt(n) # Ortalamanın standart hatası
+# Ortalamayı göster
+xort 
+# t dağılışı ile güven aralığı hesapla
+t.hatapayi[1]
+xort-t.hatapayi  
+# Z dağılışı ile güven aralığı hesapla
+z.hatapayi <- qnorm(c(1-alfa/2, alfa/2))*xsh
+z.hatapayi[1] 
+xort-z.hatapayi     
+
+# Örnek 3.3a: Shapiro-Wilk normallik testi
+# Bağımlılık – Örnek: 2.1a
+#
+shapiro.test(x)
+
+# Örnek 3.3b: Durbin-Watson bağımsızlık testi
+# Bağımlılık – Örnek: 3.1a
+#
+dwtest(x ~ 1)
+
+
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+# resampstats
+Resampling with R

@@ -1,3 +1,518 @@
+# Örnek 2.1: R'nin güncellenmesi
+if(!require(installr)) {
+   install.packages("installr"); require(installr)} 
+if(check.for.updates.R()){
+  install.R() ; 
+  copy.packages.between.libraries()}
+
+# Örnek 2.2: R'de nesne tanýmlama
+x <- 10 
+
+# Örnek 2.3a: R'de aritmetik iþlem örneði 1
+x^2 
+
+# Örnek 2.3b: R'de aritmetik iþlem örneði 2
+sqrt(x) 
+
+# Örnek 2.4: R'de açýklama yapma
+#R'yi öðrenmek kolaydýr.
+sqrt(x) # x'in karekökünü hesapla
+
+# Örnek 2.5: R'de komut geçmiþini listeleme
+history()
+
+# Örnek 2.6: R'de çalýþma klasörünü öðrenme
+getwd()
+
+# Örnek 2.7: R'de çalýþma klasörünü tanýmlama
+setwd("C:/Ranaliz")
+getwd()
+
+# Örnek 2.8: R'de atomik veri örnekleri 1
+x <- 20.475
+y <- 38
+yas <- 38L
+yogunluk <- 3e-07
+
+# Örnek 2.9: R'de atomik veri örnekleri 2
+il <- "Adana"
+ad <- 'Zeytin'
+plaka <- "01LLL99"
+mkod <- "15"
+
+# Örnek 2.10: R'de ikili mantýksal (binary logical) veri
+basari <- TRUE ; donus <- FALSE
+
+
+# Örnek 2.11: R'de kompleks sayýlar
+z <- complex(real=1.2, imaginary=-1)
+z
+Re(z)
+Im(z)
+
+# Örnek 2.12: R'de özel deðerler
+5/0
+-5/0
+0/0
+x <- NA
+x
+y <- NULL
+y
+pi
+
+# Örnek 2.13: R'de vektör tanýmlama
+sicaklik <- c(3, 5, 8, 5, 2, 4) 
+iller <- c("Adana", "Mersin", "Osmaniye") 
+gostergeler <- c(TRUE, FALSE, FALSE, TRUE) 
+
+# Örnek 2.14: R'de vektör içeriðini görüntüleme
+print(sicaklik) 
+(sicaklik)
+sicaklik
+
+# Örnek 2.15: R'de karýþýk verileri vektörü
+karisik <- c("Adana", FALSE,  1978)
+karisik
+
+
+# Örnek 2.16: Vektördeki elemanlarýn sayýlmasý
+length(sicaklik)
+length(iller)
+
+# Örnek 2.17: Vektör elemanlarýna eriþim 1
+sicaklik[3] # Ýndis köþeli parantezler arasýnda verilir.
+
+# Örnek 2.18: Vektör elemanlarýna eriþim 2
+sicaklik[4:6]
+
+# Örnek 2.19: Vektöre eleman ekleme
+sicaklik <- c(sicaklik, 7) #Yeni eleman vektörün sonuna eklenir
+sicaklik
+
+# Örnek 2.20: Ýki vektörü birleþtirme
+sicaklik1 <- c(3, 4, 6)
+sicaklik <- c(sicaklik, sicaklik1)
+sicaklik
+
+# Örnek 2.21: Vektörden eleman silme 1
+sicaklik <- sicaklik[-6]
+sicaklik
+
+# Örnek 2.22: Vektörden eleman silme 2
+sicaklik <- sicaklik[-(3:5)]
+sicaklik
+sicaklik <- sicaklik[-c(3,6)]
+sicaklik
+
+# Örnek 2.23: Vektörlerle aritmetik iþlemler
+sicaklik^2
+sum(sicaklik^2)
+
+# Örnek 2.24: Matris tanýmlama 1
+A <- matrix(nrow=3, ncol=2)
+A
+
+# Örnek 2.25: Matris tanýmlama 2
+A <- matrix(nrow=3, ncol=2, 0)
+B <- matrix(nrow=3, ncol=2, c(3,5,8), byrow=FALSE)
+C <- diag(3)
+A
+B
+C
+
+# Örnek 2.26: Matris elemanlarýna deðer atama 1
+A[1,1] <- 6
+
+# Örnek 2.27: Matris elemanlarýna deðer atama 2
+A[,2] <- c(4, 7, 5)
+
+# Örnek 2.28: Matris elemanlarýna deðer atama 3
+A[3,] <- c(8, 1)
+
+# Örnek 2.29: Matrisi görüntüleme
+A
+
+# Örnek 2.30: Matrisi görüntüleme
+F <- t(A)
+F
+
+# Örnek 2.31: Matrisi görüntüleme
+A*B  #Elemansalçarpým
+F%*%A	# Matris çarpýmý (A'A gibi)
+MASS::ginv(A)
+
+# Örnek 2.32: Dizi tanýmlama ve görüntüleme
+arrA <- array(c(3,2,6,5,6,2,3,4,2,5,4,6), dim=c(3,2,2)) 
+arrA
+
+# Örnek 2.33: Dizi elemanlarýna deðer atama 1
+arrA[,,1] <- B
+arrA
+
+# Örnek 2.34: Dizi elemanlarýna deðer atama 2
+arrA[3,2,1] <- 77
+arrA
+
+# Örnek 2.35: Veri çerçevesi tanýmlama 
+u2015 <- c(210, 90, 320)
+u2016 <- c(200, 100, 400)
+u2017 <- c(190, 95, 440)
+u2018 <- c(190, 90, 460)
+u2019 <- c(150, 102, 500)
+utum <- rbind(u2015,u2016, u2017,u2018, u2019)
+uretim <- data.frame(utum) 
+uretim
+
+# Örnek 2.36: Veri çerçevesi satýr ve sütunlara ad verme 
+rownames(uretim) <- c(2015:2019)
+colnames(uretim) <-c("portakal", "limon", "zeytin")
+
+# Örnek 2.37: Veri çerçevesini görüntüleme
+uretim
+
+# Örnek 2.38: Veri çerçevesinde sütun verileriyle iþlem 1
+uretim$portakal
+mean(uretim$portakal)
+
+# Örnek 2.39: Veri çerçevesi sütunlarýna eriþim 1
+uretim["portakal"]
+
+# Örnek 2.40: Veri çerçevesi sütunlarýna eriþim 2
+uretim[,1]
+
+# Örnek 2.41: Veri çerçevesi satýrlarýna eriþim 
+uretim[2,]
+
+# Örnek 2.42: Veri çerçevesi elemanlarýna eriþim
+uretim[3,2]
+
+# Örnek 2.43: Veri çerçevesi elemanlarýna eriþim 1
+uretim[3:4, ]
+uretim[ ,2:3]
+uretim[2:3, 3]
+
+# Örnek 2.44: Veri çerçevesi elemanlarýna eriþim 2
+uretim[ ,c(1,3)]
+
+# Örnek 2.45: Veri çerçevesi elemanlarýna eriþim 3
+uretim[ -3,-2]
+
+# Örnek 2.46: Veri çerçevesi elemanlarýna eriþim 4
+uretim[-c(1:2), c(1,3)]
+
+# Örnek 2.47: Veri çerçevesine sütun ekleme
+elma <- c(321, 360, 380, 400, 410)
+uretim <- cbind(uretim, elma)
+uretim
+
+# Örnek 2.48: Veri çerçevesine satýr ekleme
+u2014 <- c(200, 120, 310, 305)
+uretim <- rbind(u2014, uretim)
+uretim
+
+# Örnek 2.49: Veri çerçevesine satýr ekleme
+rownames(uretim)[1] <- "2014"
+
+# Örnek 2.50: Liste tanýmlama
+il <- "Adana"
+onay <- c(TRUE, FALSE)
+adanatarim <- list(il=il, uretim=uretim, onay=onay)
+adanatarim
+
+# Örnek 2.51: Liste elemanlarýnýn görüntülenmesi
+adanatarim[[2]]
+adanatarim$uretim
+
+# Örnek 2.52: Liste elemanlarýna eriþim
+adanatarim[[2]][,1]
+adanatarim$uretim[,1]
+adanatarim$uretim$portakal
+
+# Örnek 2.53: Veri çerçevesi ve faktörlerin tanýmlanmasý
+irk <- c("ivesi", "ivesi", "ivesi", "sakiz", "sakiz", "sakiz")
+sutverimi <- c(230, 180, 175, 400, 420, 390)
+sutver <- data.frame(irk, sutverimi)
+sutver
+
+# Örnek 2.54: Veri çerçevesinin yapýsýný inceleme
+str(sutver)
+
+# Örnek 2.55: Faktör deðerlerinin sayýsal olarak girilmesi
+irk <- c(1,1,1,2,2,2)
+sutverimi <- c(230, 180, 175, 400, 420, 390)
+sutver2 <- data.frame(irk, sutverimi)
+sutver2
+str(sutver2)
+
+# Örnek 2.56: Sayýsal deðerlerin faktöre dönüþtürülmesi
+sutver2$irk <- as.factor(sutver2$irk)
+sutver2
+str(sutver2)
+
+# Örnek 2.57: Frekans tablosu
+table(sutver$irk)
+
+# Örnek 2.58: Oransal frekans tablosu
+irktablo <- table(sutver$irk)
+irkptablo <- prop.table(irktablo)
+irkptablo 
+
+# Örnek 2.59: Tablo elemanlarýna eriþim
+irkptablo[2]
+
+# Örnek 2.60: Temel fonksiyonlarýn çalýþtýrýlmasý 1
+a <- 7.389056 
+log(x=a, base=2.718282)
+
+# Örnek 2.61: Temel fonksiyonlarýn çalýþtýrýlmasý 2
+a <- 7.389056
+log(x=a)
+
+# Örnek 2.62: Temel fonksiyonlarýn çalýþtýrýlmasý 3
+a <- 7.389056
+log(a, 2.718282)
+
+# Örnek 2.63: Temel fonksiyonlarýn çalýþtýrýlmasý 4
+a <- 7.389056
+log(2.718282, a)
+
+# Örnek 2.64: Bir paket içindeki fonksiyonlarý listelenmesi
+lsf.str("package:stats")
+
+# Örnek 2.65: Kullanýcý tanýmlý fonksiyon örneði
+kkustop <- function(x, y, p=1){
+    toplam <- x^p + y^p
+    kkok <- toplam^(1/2)
+    return(kkok)
+}
+
+# Örnek 2.66: Kullanýcý tanýmlý fonksiyonlarý çalýþtýrma
+kkustop(x=4, y=3, p=3)
+kkustop(x=4, y=3, p=2)
+kkustop(x=4, y=3, p=1)
+kkustop(x=4, y=3)
+kkustop(4,3)
+
+# Örnek 2.67a: if ile kontrol 1
+x <- 6
+if(x%%2==0) cat(x, " çift \n") # %% bölmenin kalanýný hesaplar
+
+# Örnek 2.67b: if ile kontrol 2
+x <- 3
+if(x%%2==0) cat(x, " çift \n") else cat(x, " tek \n")
+
+# Örnek 2.68: if ile kontrol 3
+x <- 8
+ifelse(x%%2==0, "çift", "tek")
+
+# Örnek 2.69: if ile kontrol 4
+x <- 7
+if(x%%2==0){ 
+   cat(x, " çift \n")
+} else{
+  cat(x, " tek \n")
+}
+
+# Örnek 2.70: Kullanýcý tanýmlý fonksiyonu çalýþtýrma
+x <- c(5,6,6,4,4,4,2,2,3,1)
+ortalama(x, yontem=2) #ortalama fonksiyonu çaðrýsý
+
+# Örnek 2.71: Çalýþma alanýna yüklenmiþ paketleri listeleme
+> search()
+
+# Örnek 2.72a: R paketlerinin kurulmasý 1
+install.packages("boot")
+
+# Örnek 2.72b: R paketlerinin kurulmasý 2
+install.packages("boot",repo= "https://cloud.r-project.org/")
+
+# Örnek 2.73: R paketlerinin kurulmasý 3
+paketler <- c("boot", "bootstrap")
+kurulu   <- paketler %in% rownames(installed.packages())
+if(any(!kurulu)) 
+   install.packages(paketler[!kurulu],
+   repo="https://cloud.r-project.org/")
+
+# Örnek 2.74: BioConductor R paketlerinin kurulmasý 1
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version="3.9")
+
+# Örnek 2.75: BioConductor R paketlerinin kurulmasý 2
+BiocManager::install(c("affy", "limma"))
+
+# Örnek 2.76: devtools'un kurulmasý
+install.packages("devtools")
+
+# Örnek 2.77: GitHub'tan R paketi kurulmasý
+devtools::install_github("cran/ppclust")
+
+# Örnek 2.78: Paket kullaným rehberlerine eriþim 
+help(corrplot, package="corrplot")
+
+# Örnek 2.79: Paket güncellik kontrolü 
+old.packages(repo="https://cloud.r-project.org/")
+
+# Örnek 2.80: Paket güncelleme 
+update.packages("boot", repo="https://cloud.r-project.org/")
+update.packages(repo="https://cloud.r-project.org/")
+
+# Örnek 2.81: Kurulu paketin kaldýrýlmasý 
+remove.packages("bootstrap")
+
+# Örnek 2.82: Paketi çalýþma alanýna yükleme 1
+library(mgcv)
+
+# Örnek 2.83: Paketi çalýþma alanýna yükleme 2
+require(mgcv)
+
+# Örnek 2.84: Paketi çalýþma alanýna yükleme 3
+require(mgcv,quietly=TRUE)
+
+# Örnek 2.85: Çok sayýda paketi çalýþma alanýna yükleme 
+paketler <- c("readxl", vioplot","ggplot2","boot","mgcv" )
+lapply(paketler, require, character.only=TRUE , quietly=TRUE)
+
+# Örnek 2.86: Paket kurulu deðilse kurma, kurulu ise yükleme 
+if(!require(boot, quietly=TRUE)){
+  install.packages("boot", repo="https://cloud.r-project.org/");
+  library(boot, quietly=TRUE)} }
+
+# Örnek 2.87: Kurulu paketleri listeleme 
+print(.packages())
+
+# Örnek 2.88: Çalýþma alanýndaki paketleri kaldýrma 
+detach(package:bootstrap)
+
+# Örnek 2.89: Paketteki fonksiyonlarý listeleme 
+library(splines)
+ls("package:splines")
+
+# Örnek 2.90: datasets paketindeki veri kümeleri 
+ls("package:datasets")
+
+# Örnek 2.91: Veri kümesini çalýþma alanýna yükleme 
+data(iris)
+
+# Örnek 2.92: Veri kümesi yapýsýnýn görüntülenmesi
+str(iris)
+
+# Örnek 2.93: Veri kümesinde verilerin incelenmesi
+head(iris)
+tail(iris)
+
+# Örnek 2.94: Veri kümesindeki verilere eriþim 1
+mean(iris$Sepal.Length)
+mean(iris[,1])
+
+# Örnek 2.95: Veri kümesindeki verilere eriþim 2
+attach(iris)
+mean(Sepal.Length)
+
+# Örnek 2.96: Veri kümesinin kaldýrýlmasý
+detach(iris)
+mean(Sepal.Length)
+
+# Örnek 2.97a: csv türü veri dosyasý okuma 
+sporcular1 <- read.csv("sporcular.csv")
+head(sporcular1, 3)
+
+# Örnek 2.97b: read.table ile dosya okuma
+sporcular2 <- read.table("sporcular.txt",sep="\t",header=TRUE)
+head(sporcular2, 3)
+
+# Örnek 2.98: readxl paketinin kurulmasý ve yüklenmesi
+if(!require(readxl, quietly=TRUE)){
+  install.packages("readxl",
+    repo="https://cloud.r-project.org/");
+  require(readxl, quietly=TRUE)
+}
+
+# Örnek 2.99: read_excel ile Excel dosyasý okuma
+sporcular3 <- read_excel("sporcular.xlsx", sheet=1)
+head(sporcular3, 3)
+
+# Örnek 2.100: Uzaktan dosya okuma
+uzdosya  <- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv" 
+winequalred <- read.csv(uzdosya,  sep = ";", header= TRUE)
+print(winequalred[1:3, c(1:4,12)])
+
+# Örnek 2.101: Diðer dosya türlerini okuma 
+if(!require(foreign, quietly=TRUE)){
+  install.packages("foreign",
+    repo="https://cloud.r-project.org/");
+  require(foreign, quietly=TRUE)
+}
+sporcular4 <- read.spss("sporcular.sav", to.data.frame=TRUE)
+head(sporcular4, 3)
+
+# Örnek 2.102: csv türü dosyaya yazma 
+write.csv(sporcular1, "sporcular4.csv")
+write.table(sporcular1, "sporcular4.txt", sep="\t",
+  row.names=FALSE, col.names = NA)
+
+# Örnek 2.103: Excel dosyasýna yazma 
+if(!require(openxlsx, quietly=TRUE)){
+  install.packages("openxlsx",
+    repo="https://cloud.r-project.org/");
+  require(openxlsx, quietly=TRUE)}
+write.xlsx(sporcular1, "sporcular.xlsx")
+
+# Örnek 2.104: Stata dosyasýna yazma 
+if(!require(foreign, quietly=TRUE)){
+  install.packages("foreign",
+    repo="https://cloud.r-project.org/");
+  require(foreign, quietly=TRUE)}
+write.dta(sporcular1, "sporcular.dta")
+
+# Örnek 2.105: SAV dosyasýna yazma 
+if(!require(haven, quietly=TRUE)){
+  install.packages("haven",
+    repo="https://cloud.r-project.org/");
+  require(haven, quietly=TRUE)}
+write_sav(sporcular1, "sporcular.sav")
+
+# Örnek 2.106: RDS dosyasýna yazma 
+saveRDS(sporcular1, "sporcular1.rds")
+save(sporcular1, sporcular2, file="sporcular.RData")
+
+# Örnek 2.107: RDS dosyasýndan okuma  
+sporcular1 <- readRDS("sporcular1.rds")
+load("sporcular.RData")
+
+# Örnek 2.108: Çalýþma alanýný kaydetme  
+save.image(file="calisma1.RData")
+
+# Örnek 2.109: Çalýþma alaný dosyasýný geri yükleme  
+load("calisma1.RData")
+
+# Örnek 2.110: Çalýþma alanýný varsayýlan dosyaya kaydetme
+save.image() # .Rdata dosyasýna otomatik kayýt
+
+# Örnek 2.111: plot ile grafik çizimi örneði
+plot(sporcular1$boy, sporcular1$agirlik,
+   col="blue", pch=19, cex=1.2,
+   xlab="Boy", ylab="Aðýrlýk",
+   main="Serpilme Grafiði",
+   sub="Voleybol Turnuvasý 1990")
+abline(lm(sporcular1$agirlik~sporcular1$boy), 
+   col="gray", lwd=2, lty=2)
+
+# Örnek 2.112: Grafik alanýndaki görüntüyü kaydetme
+dev.copy(postscript,"boykilo.ps")
+dev.off()
+
+# Örnek 2.113: Grafik alanýndaki görüntüyü kaydetme
+postscript(file="boykilo.ps")
+plot(sporcular1$agirlik, sporcular1$boy,
+   col="blue", pch=19, cex=1.2,
+   xlab="Aðýrlýk", ylab="Boy",
+   main="Serpilme Grafiði",
+   sub="Voleybol Turnuvasý 1990")
+dev.off()
+
+### BÖLÜM 3####################################################################
+
 # Örnek 3.1a: Býldýrcýn yumurtasý aðýrlýklarý verisi benzetimi 
 set.seed(19) # Örneðin tekrarýnda ayný deðerleri elde etmek için
 x <- rnorm(n=50, mean=12.50, sd=sqrt(1.5321))
@@ -6,12 +521,10 @@ x
 
 # Örnek 3.1b: x örnekleminde açýklayýcý istatistikler 1 
 # Baðýmlýlýk – Örnek 3.1a
-# 
 summary(x)
 
 # Örnek 3.1c: Açýklayýcý istatistikleri hesaplama ve görüntüleme
 # Baðýmlýlýk – Örnek: 3.1a; Fonksiyon: 3.1, 3.2
-#
 xdescstat <- calc.desc(x)
 print(xdescstat)
 
@@ -28,9 +541,12 @@ describe(x)
 #
 univar.plot(x)
 
-# Örnek 3.2: Ortalama için nokta ve güven aralýðý kestirimi
+# Örnek 3.2: t kritik deðerlerinin hesaplanmasý
+n=25; alfa=0.05
+qt(1-alfa, df=n-1)
+
+# Örnek 3.3: Ortalama için nokta ve güven aralýðý kestirimi
 # Baðýmlýlýk – Örnek: 3.1a
-#
 alfa <- 0.05
 n <- length(x)   # Örneklem büyüklüðü
 xort <- mean(x)  # Örneklem ortalamasý (nokta kestirimi)
@@ -46,20 +562,4356 @@ z.hatapayi <- qnorm(c(1-alfa/2, alfa/2))*xsh
 z.hatapayi[1] 
 xort-z.hatapayi     
 
-# Örnek 3.3a: Shapiro-Wilk normallik testi
-# Baðýmlýlýk – Örnek: 2.1a
-#
+# Örnek 3.4a: Shapiro-Wilk normallik testi
+# Baðýmlýlýk – Örnek: 3.1a
 shapiro.test(x)
 
-# Örnek 3.3b: Durbin-Watson baðýmsýzlýk testi
+# Örnek 3.4b: Durbin-Watson baðýmsýzlýk testi
 # Baðýmlýlýk – Örnek: 3.1a
-#
+if(!require(lmtest)){
+  install.packages("lmtest"); library(lmtest)}
 dwtest(x ~ 1)
 
+# Örnek 3.5: Bootstrap ile ortalama için nokta ve güven aralýðý kestirimi
+# Baðýmlýlýk – Örnek: 3.1a
+#
+seet.seed(40)
+if(!require(mosaic, quietly=TRUE)){
+   install.packages("mosaic",
+     repo="https://cloud.r-project.org/")
+   require(mosaic, quietly=TRUE)}
+R <- 3000 # Yeniden örneklem sayýsý
+tetasapka <- mean(x) #Orijinal örneklem ortalamasý
+tetasapka
+tetastar <- do(R)*mean(sample(x, size=length(x), replace=TRUE))
+head(tetastar)
+tetastarsapka <- mean(tetastar[,1]) #Yeniden örneklem ortalamasý
+tetastarsapka
+bias <- tetasapka – tetastarsapka # Yanlýlýk
+bias
+yuzdelik <- c(alpha/2, 1-alpha/2)
+alfa <- 0.05
+guvenara <- c(quantile(tetastar[,1], prob=yuzdelik, names=F))
+guvenara  # Güven aralýðý
 
 
+### BÖLÜM 4 ###################################################################
+
+# Örnek 4.1a: Býldýrcýn yumurtasý aðýrlýklarý
+ x <-  c(11.04, 12.98, 12.08, 11.83, 13.71, 12.21, 13.50, 11.58, 12.18,
+   12.27, 13.14, 13.59, 13.23, 12.26, 13.31, 12.18, 11.80, 14.23, 13.12,
+   11.64, 14.25, 11.22, 12.50, 13.84, 11.27, 13.16, 12.35, 15.11, 10.64,
+   12.81, 14.35, 12.02, 13.21, 12.76, 13.66, 10.25, 16.03,  9.59, 11.77,
+   11.31, 12.73, 14.85, 11.73, 11.19, 12.08, 12.38, 13.21, 13.52, 14.11,
+   12.72)
+
+# Örnek 4.1b: calc.mean ile ortalama hesaplama
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1
+#
+calc.mean(x)
+idx <- 1:length(x)
+calc.mean(x, indices=idx)
+idx <- 1:10
+calc.mean(x, indices=idx)
+
+# Örnek 4.1c. calc.mean ile ortalama hesaplama
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1
+#
+xdf <- as.data.frame(x) #Vektörel veriyi veri çerçevesi yap
+head(xdf)
+calc.mean(xdf)
+
+# Örnek 4.2a. bs.nonpar1 ve bs.nonpar2 ile bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1, 4.2a, 4.2b
+#
+bsmean1 <- bs.nonpar1(dset=x, statistic=calc.mean, R=3000)
+bsmean2 <- bs.nonpar2(dset=x, statistic=calc.mean, R=3000)
+
+# Örnek 4.2b: Bootstrap nesnesinin öznitelikleri 
+# Baðýmlýlýk: Örnek 4.2a
+#
+names(bsmean1)
+
+# Örnek 4.2c. Bootstrap kestirimlerine eriþim
+# Baðýmlýlýk – Örnek: 4.2a
+#
+bsmean1$t0
+head(bsmean1$t)
+
+# Örnek 4.2d. Bootstrap kestirimlerine eriþim
+# Baðýmlýlýk – Örnek: 4.2a
+# 
+bsmean2$t0
+head(bsmean2$t)
+
+# Örnek 4.3a: dbs.nonpar1 ile çifte bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1, 4.3a
+#
+dbsmean1 <- dbs.nonpar1(dset=x, statistic=calc.mean,
+    double=TRUE, R=3000, R2=200)
+
+# Örnek 4.3b: Çifte bootstrap nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 4.3a
+#
+names(dbsmean1)
+
+# Örnek 4.3c: Çifte bootstrap sonuçlarýnýn görüntülenmesi
+# Baðýmlýlýk – Örnek: 4.3a 
+#
+dbsmean1$t0
+head(dbsmean1$t)
+head(dbsmean1$tvals)
+
+# Örnek 4.4a. dbs.nonpar1'in R2 argümansýz çalýþtýrýlmasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1, 4.3a 
+#
+dbsmean2 <- dbs.nonpar1(x, statistic=calc.mean, 
+   double=TRUE, R=3000)
+dbsmean2$R2
+
+# Örnek 4.4b. dbs.nonpar1 ile standart bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1, 4.3a 
+#
+bsmean3 <- dbs.nonpar1(x, statistic=calc.mean, 
+   double=FALSE, R=2000)
+bsmean3$tvals
+
+# Örnek 4.5a: Ortanca ve budanmýþ ortalama için standart bootstrap
+# Baðýmlýlýk – Örnek: 4.1a, Fonksiyon: 4.3a, 4.4, 4.5
+#
+bsmed1 <- dbs.nonpar1(dset=x, statistic=calc.median, R=3000)
+bsmed1$t0
+head(bsmed1$t)
+bstrm1 <- dbs.nonpar1(dset=x, statistic=calc.trmean, R=3000)
+bstrm1$t0
+head(bstrm1$t)
+
+# Örnek 4.5b: Ortanca ve budanmýþ ortalama için çifte bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.3a, 4.4, 4.5
+#
+bsmed2 <- dbs.nonpar1(dset=x, statistic=calc.median,
+    double=TRUE, R=3000)
+bsmed2$t0
+head(bsmed2$t)
+bstrm2 <- dbs.nonpar1(dset=x, statistic=calc.trmean,
+    double=TRUE, R=3000)
+bstrm2$t0
+head(bstrm2$t)
+
+# Örnek 4.6a: Çok sayýda istatistik için bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.3a, 4.6
+#
+bsmult1 <- dbs.nonpar1(dset=x, statistic=calc.stats,
+    double=FALSE, R=2000)
+print(bsmult1$t0, digits=2)
+print(bsmult1$t[1:5,], digits=2)
+
+# Örnek 4.6b: Çok sayýda istatistik için çifte bootstrap 
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.3a, 4.6
+#
+bsmult2 <- dbs.nonpar1(dset=x, statistic=calc.stats,
+    double=TRUE, R=2000)
+print(bsmult2$t0, digits=2)
+print(head(bsmult2$t), digits=2)
+print(bsmult2$tvals[1:5,], digits=2)
+
+# Örnek 4.6c: Çok sayýda istatistik için bootstrap sonuçlarý 
+# Baðýmlýlýk – Örnek: 4.6a, 4.6b
+#
+print(bsmult1$t[1:5, 1], digits=2)
+print(bsmult2$t[1:5, 3], digits=2)
+
+# Örnek 4.6d: Çok sayýda istatistik için bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 4.6a, 4.6b
+index <- 3
+print(bsmult1$t[1:5,index], digits=2)
+print(bsmult2$t[1:5,index], digits=2)
+
+# Örnek 4.7a. bsmean1 için bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 4.6a, Fonksiyon: 4.7
+#
+bssonuc1 <- bs.sonuc(bsmean1)
+bssonuc1$est
+bssonuc1$bsest
+bssonuc1$bias
+bssonuc1$se
+head(bssonuc1$sbst)
+head(bssonuc1$tvals)
+bssonuc1$R
+
+# Örnek 4.7b: bsmult2 için bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 4.6b, Fonksiyon: 4.7
+#
+bssonuc2 <- bs.sonuc(bsmult2, index=2)
+bssonuc2$est
+bssonuc2$bsest
+bssonuc2$bias
+bssonuc2$se
+head(bssonuc2$sbst)
+head(bssonuc2$tvals)
+bssonuc2$R
+
+# Örnek 4.8: ga.norm ile normale yaklaþmalý GA hesaplama
+# Baðýmlýlýk – Örnek: 4.6b; Fonksiyon: 4.8
+#
+ga.norm(bsmult2, index=1, conf.level=0.95)
+ga.norm(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.9: ga.basit ile basit GA hesaplama
+# Baðýmlýlýk – Örnek: 3.6b, Fonksiyon: 3.9
+#
+ga.temel(bsmult2, index=1, conf.level=0.95)
+ga.temel (bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.10: ga.yuzde ile yüzdelik GA hesaplama
+# Baðýmlýlýk – Örnek: 4.6b, Fonksiyon: 4.10
+#
+ga.yuzde(bsmult2, index=1, conf.level=0.95)
+ga.yuzde(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.11: ga.yh ile yüzdelik GA hesaplama
+# Baðýmlýlýk – Örnek 4.6b; Fonksiyon: 4.11
+#
+ga.yd(bsmult2, index=1, conf.level=0.95)
+ga.yd(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.12: ga.ydh ile GA hesaplama
+# Baðýmlýlýk – Örnek: 4.6b, Fonksiyon: 4.12
+#
+ga.ydh(bsmult2, index=1, conf.level=0.95)
+ga.ydh(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.13a: ga.stud ile bootstrap-t GA hesaplama
+# Baðýmlýlýk – Örnek: 4.6b, Fonksiyon: 4.13
+#
+ga.stud(bsmult2, index=1, conf.level=0.95)
+ga.stud(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.13b: ga.stud ile bootstrap-t GA hesaplama 2
+# Baðýmlýlýk – Örnek: 4.6a, Fonksiyon: 4.13
+#
+ga.stud(bsmult1, index=1, conf.level=0.95)
+
+# Örnek 4.13c: ga.stud ile bootstrap-t GA hesaplama 3
+# Baðýmlýlýk – Örnek: 4.6a, Fonksiyon: 4.13
+#
+ga.stud(bsmult1, index=1, sigteta=1.5, conf.level=0.95)
+
+# Örnek 4.14: ga.bs ile bootstrap-t GA hesaplama 3
+# Baðýmlýlýk – Örnek: 4.6b; Fonksiyon: 4.14
+#
+ga.bs(bsmult2, index=1, conf.level=0.95)
+ga.bs(bsmult2, index=2, conf.level=0.95)
+
+# Örnek 4.15: bsmult2'de ortalama için bootstrap kestirimleri dað.
+# Baðýmlýlýk – Örnek: 4.6b, Fonksiyon: 4.15
+#
+bs.dist(bsmult2, index=1, gayontem="yuzde")
+
+# Örnek 4.16: bsmult2 için bootstrap diyagnostik grafikleri
+# Baðýmlýlýk – Fonksiyon: 4.16
+#
+bs.plot(bsmult2, index=1, gayontem="yuzde", conf.level=0.95)
+
+# Örnek 4.17a: boot paketi ile parametrik olmayan bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+ }
+# boot ile x verisinde ortalama için bootstrap
+bootmean1 <- boot(data=x, statistic=calc.mean, 
+   sim="ordinary", R=2000)
+bootmean1
+
+# Örnek 4.17b: boot nesnesinin yapýsý ve içeriði 
+# Baðýmlýlýk – Örnek: 4.17a
+str(bootmean1)
+
+# Örnek 4.17c: boot nesnesi özniteliklerine eriþme
+# Baðýmlýlýk – Örnek: 4.17a
+#
+bootmean1$t0
+head(bootmean1$t)
+
+# Örnek 4.18a: bootstrap kestirimleri daðýlýþ ve Q-Q grafiði
+# Baðýmlýlýk – Örnek: 4.17a; Paket: boot
+#
+plot(bootmean1)
+
+# Örnek 4.18b: bootstrap kestirimleri daðýlýþ grafiði
+# Baðýmlýlýk – Örnek: 4.17a; Fonksiyon: 4.15 
+#
+bs.dist(bootmean1, index=1, gayontem="ydh")
+
+# Örnek 4.18c: bootstrap kestirimleri diyagnostik grafikleri
+# Baðýmlýlýk – Örnek: 4.17a; Fonksiyon: 4.16 
+#
+bs.plot(bootmean1)
+
+# Örnek 4.19a: boot paketindeki boot.ci ile GA hesaplama
+# Baðýmlýlýk – Örnek: 4.17a; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+# boot.ci ile bootstrap güven aralýklarýný hesapla
+all.ga <- boot.ci(bootmean1, index=1, type="all", conf=0.95)
+all.ga  # Sonuçlarý göster
+
+# Örnek 4.19b: boot.ci ile yüzdelik güven aralýðý hesaplama
+# Baðýmlýlýk – Örnek: 4.17a; Paket: boot
+#
+yuzde.ga <- boot.ci(bootmean1, index=1, type="perc", conf=0.95)
+yuzde.ga
+
+# Örnek 4.20a: boot paketi ile çoklu istatistikler için bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.6, Paket: boot
+#
+# boot paketini kur, kurulu ise çalýþma alanýna yükle
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+# boot ile x verisinde çoklu istatistikler için bootstrap
+bootmult <- boot(data=x, statistic=calc.stats, 
+   sim="ordinary", R=2000)
+bootmult
+
+# Örnek 4.20b: boot paketindeki boot.ci ile GA hesaplama
+# Baðýmlýlýk – Örnek: 4.20a; Paket: boot
+#
+mean.ga.all <- boot.ci(bootmult, index=1, type="all")
+mean.ga.all 
+
+# Örnek 4.20c: boot.ci ile BCa GA hesaplama
+# Baðýmlýlýk – Örnek: 4.20a; Paket: boot
+#
+med.ga.ydh <- boot.ci(bootmult, index=2, type="bca")
+med.ga.ydh
 
 
+# Örnek 4.21a: boot ile çifte bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.22, 4.23; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+
+dbootmean1 <- boot(x, statistic=calc.dbmean, R=2000)
+dbootmean1
+
+# Örnek 4.21b: boot.ci güven aralýklarýnýn görüntülenmesi
+# Baðýmlýlýk – Örnek: 4.21a; Paket: boot
+#
+boot.ci(dbootmean1)
+
+# Örnek 4.22a: Güven aralýklarý matrisi
+# Baðýmlýlýk – Örnek: 4.21a; Fonksiyon: 4.18a
+# 
+ci.dbootmean1 <- boot.ci(dbootmean1)
+# Güven aralýðý matrisi
+cimat.dbootmean1 <- ci.matrix(ci.dbootmean1) 
+cimat.dbootmean1$t0  # Kestirim
+cimat.dbootmean1$cm
+
+# Örnek 4.22b: Güven aralýklarý grafiði
+# Baðýmlýlýk – Örnek: 4.22a; Fonksiyon: 4.18b
+# 
+ci.plot(cimat.dbootmean1)
+
+# Örnek 4.23a: Güven aralýklarý deðiþimi hesaplama
+# Baðýmlýlýk –Fonksiyon: 4.18c
+# 
+## Anakitleyi oluþtur
+mu <- 12.50    # Anakitle ortalamasý
+sigma <- 1.30  # Anakitle std. sapmasý
+N <- 100000    # Anakitle büyüklüðü
+anakitle <- rnorm(N, mean=mu, sd=sigma) #Anakitleyi oluþtur
+ssize <- c(5, 15, 30, 50, 75, 100, 150)
+cires1 <- cichange(dset=anakitle, ssize=ssize,
+   statistic=calc.mean, iade=TRUE, conf.level=0.95, R=3000)
+head(cires1)
+tail(cires1)
+
+# Örnek 4.23b: Güven aralýklarý deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 4.23a; Fonksiyon: 4.18d
+# 
+cichange.plot(cires1)
+
+# Örnek 4.23c: Farklý R tekrarlarýna göre GA deðiþimleri hesaplama
+# Baðýmlýlýk – Örnek: 4.23a; Fonksiyon: 4.18e
+# 
+ssize <- 30
+R <- c(100, 1000, 2000, 3000, 5000, 10000)
+cires2 <- cichangeR(anakitle, ssize, statistic=calc.mean, 
+   iade=TRUE, conf.level=0.95, R=R)
+head(cires2)
+tail(cires2)
+
+# Örnek 4.23d: Güven aralýklarý deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 4.23c; Fonksiyon: 4.18d
+# 
+cichange.plot(cires2)
+
+# Örnek 4.24: bootstrap paketi ile bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1; Paket: bootstrap
+#
+if(!require(bootstrap, quietly=TRUE)){
+   install.packages("bootstrap", 
+     repo="https://cloud.r-project.org/");
+   require(bootstrap, quietly=TRUE)
+}
+bsmean4 <- bootstrap(x, nboot=2000, theta=calc.mean)
+head(bsmean4$thetastar)  # Boostrap kestirimleri
+bsmult3 <- bootstrap(x, nboot=2000, theta=calc.stats)
+print(bsmult3$thetastar[1:10, 1:5])  # Boostrap kestirimleri
+
+# Örnek 4.26: surveyboot paketi ile bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1; Paket: surveyboot
+#
+if(!require(surveybootstrap, quietly=TRUE)){
+   install.packages("surveybootstrap",
+     repo="https://cloud.r-project.org/")
+   require(surveybootstrap, quietly = TRUE)
+}
+help("surveybootstrap")
+
+# Örnek 4.27: simpleboot paketi ile bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1; Paket: simpleboot
+#
+if(!require(simpleboot, quietly=TRUE)) {
+  install.packages("simpleboot",
+    repo="https://cloud.r-project.org/")
+   require(simpleboot, quietly=TRUE)
+}
+help("simpleboot")
+
+# Örnek 4.28: bootES paketi ile bootstrap
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1; Paket: simpleboot
+#
+if(!require(bootES, quietly=TRUE)){
+   install.packages("bootES",
+    repo="https://cloud.r-project.org/")
+   require(bootES, quietly = TRUE)}
+??bootES
+
+# Örnek 4.29a: x~N(µ,?^2) anakitlesinde farklý örneklem büyüklüðü # için bootstrap baþarýmlarý
+# Baðýmlýlýk – Fonksiyon 4.8, 4.19
+#
+## Anakitleyi oluþtur
+mu <- 12.50    # Anakitle ortalamasý
+sigma <- 1.30  # Anakitle std. sapmasý
+N <- 100000    # Anakitle büyüklüðü
+anakitle <- rnorm(N, mean=mu, sd=sigma) #Anakitleyi oluþtur
+## Bootstrap argümanlarýný belirle
+m <- 1000  # Örneklem sayýsý
+# Örneklem büyüklüðü vektörü
+n <- c(5, 10, 20, 30, 40, 50, 75, 100, 150, 200)  
+R <- 2000  # Bootstrap tekrarlarý sayýsý
+conf.level <- 0.95 # Güven düzeyi
+statistic <- calc.location  # Ýstatistik fonksiyonu adý
+teta <- statistic(anakitle) # Parametre deðerleri vektörü
+gayontem <- ga.norm  # Güven aralýðý yöntemi
+# Çifte bootstrap göstergesi (gayontem ga.stud ise TRUE olmalý)
+dbs <- FALSE  
+## Bootstrap iþlemi
+perfarr1 <- bs.perform1(x=anakitle, teta=teta,
+   statistic=statistic, gayontem=gayontem, m=m, n=n, 
+  dbs=dbs, R=R, conf.level=conf.level)
+
+# Örnek 4.29b: Baþarým sonuçlarýna eriþim
+# Baðýmlýlýk – Örnek: 4.29a
+#
+# Sonuçlarýn görüntülenmesi
+# Ortalama (index=1) için sonuçlar
+perfarr1[,,1] 
+perfarr1[,,2]
+perfarr1[2,,]
+
+# Örnek 4.30a: Kapsama oraný grafiðini çizme
+# Baðýmlýlýk – Örnek: 4.29a; Fonksiyon: 4.22a
+#
+ko.plot(perfarr1)
+
+# Örnek 4.30b: Karþýlaþtýrma oraný grafiðini çizme
+# Baðýmlýlýk – Örnek: 4.29a; Fonksiyon: 4.22a,b,c,d
+#
+par(mfrow=c(2,2))
+ko.plot(perfarr1)
+ako.plot(perfarr1)
+uko.plot(perfarr1)
+og.plot(perfarr1)
+
+# Örnek 4.30c: Baþarý durumu grafiðini çizme
+# Baðýmlýlýk – Örnek: 4.29a; Fonksiyon: 4.22e
+#
+par(mfrow=c(1,1))
+bd.plot(perfarr1)
+
+# Örnek 4.31a: x~N(µ,?^2) anakitlesinde farklý R tekrarlarýnda 
+# bootstrap baþarýmlarý
+# Baðýmlýlýk – Örnek: 4.29a; Fonksiyon 4.3a, 4.23
+#
+## Bootstrap argümanlarýný belirle
+m <- 1000  # Örneklem sayýsý
+n <- 30     # Örneklem büyüklüðü 
+# Bootstrap tekrarlarý vektörü
+R <- c(100, 200, 500, 1000, 2000, 3000, 5000)   
+conf.level <- 0.95 # Güven düzeyi
+statistic <- calc.location  # Ýstatistik fonksiyonu adý
+teta <- statistic(anakitle) # Parametre deðerleri vektörü
+gayontem <- ga.yuzde  # Güven aralýðý fonksiyonu
+dbs <- FALSE
+## Bootstrap uygula 
+> perfarr2 <- bs.perform2(x=anakitle, teta=teta,
++    statistic=statistic, gayontem=gayontem, m=m, n=n,
++    dbs=dbs,R=R, conf.level=conf.level)
+## Sonuçlarý göster
+perfarr2[,,1]
+perfarr2[,,2]
+perfarr2[,,3]
+
+# Örnek 4.31b: x~N(µ,?^2) anakitlesinde farklý R tekrarlarýnda 
+# bootstrap baþarým grafikleri
+# Baðýmlýlýk – Örnek: 4.31a; Fonksiyon 4.3a, 4.22a,b,c,d
+#
+# Grafikleri çiz
+ko.plot(perfarr2)
+par(mfrow=c(2,2))
+ko.plot(perfarr2)
+ako.plot(perfarr2)
+uko.plot(perfarr2)
+og.plot(perfarr2)
+
+# Örnek 4.32: Farklý güven aralýklarý için baþarým analizi
+# Baðýmlýlýk – Örnek: 4.27; Fonksiyon 4.3a, 4.23
+#
+R <- 500
+m <- 100
+n <- 100 
+dbs <- TRUE
+gayontem <- c(ga.norm, ga.temel, ga.yuzde, ga.ydh, ga.stud)
+names(gayontem) <- c("temel", "norm", "yüzde", "BCa", "stud")
+perfarr3 <- bs.perform3(x=anakitle, teta=teta,
+   statistic=statistic, gayontem=gayontem, m=m, n=n, 
+   dbs=dbs, R=R, conf.level=conf.level)
+## Sonuçlarý göster
+perfarr3[,,1]
+perfarr3[,,2]
+perfarr3[,,3]
+perfarr3[,,4]
+## Kapsama oraný grafiðini çiz
+ko.plot(perfarr3)
+
+# Örnek 4.33: rgh fonksiyonu ile g&h daðýlýþý benzetimleri
+# Baðýmlýlýk: Fonksiyon: 4.25
+#
+dsgh1 <- rgh(50000, A=50, B=2, g=0, h=0)
+dsgh2 <- rgh(50000, A=50, B=2, g=0.10, h=0)
+dsgh3 <- rgh(50000, A=50, B=2, g=0.25, h=0)
+dsgh4 <- rgh(50000, A=50, B=2, g=0.50, h=0)
+dsgh5 <- rgh(50000, A=50, B=2, g=0.75, h=0)
+dsgh6 <- rgh(50000, A=50, B=2, g=1.00, h=0)
+
+# Örnek 4.34: Çeþitli g&h daðýlýþlarýnýn histogramlarý
+# Baðýmlýlýk: Örnek: 4.33
+#
+par(mfrow=c(3,2))
+hist(dsgh1, breaks=30, col="gray90", xlab="x", ylab="Frekans", 
+   main="g&h~(g=0, h=0)")
+hist(dsgh2, breaks=30, col="gray90", xlab="x", ylab="Frekans", 
+   main="g&h~(g=0.1, h=0)")
+hist(dsgh3, breaks=30, col="gray90", xlab="x", ylab="Frekans", 
+  main="g&h~(g=0.25, h=0)")
+hist(dsgh4, breaks=30, col="gray90", xlab="x", ylab="Frekans", 
+   main="g&h~(g=0.5, h=0)")
+hist(dsgh5, breaks=30, col="gray90", xlab="x", ylab="Frekans",
+   main="g&h~(g=0.75, h=0)")
+hist(dsgh6, breaks=30, col="gray90", xlab="x", ylab="Frekans", 
+   main="g&h~(g=1, h=0)")
+
+# Örnek 4.35: Çeþitli g&h daðýlýþlarýnýn keman grafikleri
+# Baðýmlýlýk: Örnek: 4.33
+#
+if(!require(vioplot, quietly=TRUE)){
+   install.packages("vioplot")
+   require(vioplot, quietly=TRUE)}
+vioplot(dsgh1, dsgh2, dsgh3, dsgh4, dsgh5, dsgh6, col=c(2:7), 
+   names=c("g=0.0", "g=0.1", "g=0.25", "g=0.5", "g=0.75",
+   "g=1.0"))
+
+# Örnek 4.36: gk paketindeki rgh ile g&h daðýlýþý benzetimi
+# Baðýmlýlýk: Paket: gk
+#
+if(!require(gk, quietly=TRUE)) {
+   install.packages("gk", repo="https://cloud.r-project.org/")
+   require(gk, quietly=TRUE)
+}
+dsgh7 <- rgh(n=50, A=20, B=1.5, g=0.5, h=0.5)
+
+# Örnek 4.37: gk paketindeki g&h benzetimi ve daðýlýþ grafikleri
+# Baðýmlýlýk: Paket: gk
+#
+if(!require(gk, quietly=TRUE)) {
+   install.packages("gk", repo="https://cloud.r-project.org/")
+   require(gk, quietly=TRUE)
+}
+par(mfrow=c(2,2))
+n=50; A=20; B=1.5; g=0.5; h=0.5
+x <- rgh(n, A, B, g, h)
+hist(x, col="gray90", xlab="x", ylab="Frekans", 
+  main="g&h~(g=1, h=1)")
+curve(dgh(x, A, B, g, h), min(x)-2*B, max(x)+2*B, col=4)
+curve(pgh(x, A, B, g, h), min(x)-2*B, max(x)+2*B, col=4)
+curve(qgh(x, A, B, g, h), 0, 1, col=4) 
+
+# Örnek 4.38: OpVaR paketindeki rgh ile g&h daðýlýþý benzetimi
+# Baðýmlýlýk: Paket: OpVaR
+#
+if(!require(OpVaR, quietly=TRUE)) {
+   install.packages("OpVaR",
+    repo="https://cloud.r-project.org/")
+   require(OpVaR, quietly=TRUE)
+}
+dsgh8 <- rgh(n=50, A=50, B=2, g=1, h=1)
+
+# Örnek 4.39a: calc.huber ile HOSME kestirimi
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.26a
+#
+calc.huber(x, c=1.28, niter=20, conv=0.0001)[2]
+
+# Örnek 4.39b: calc.hosme ile HOSME kestirimi
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.26b
+#
+calc.hosme(x) #Varsayýlan c=1.28 ile hesaplama
+calc.hosme(x, c=1.5) # c=1.5 ile hesaplama
+
+# Örnek 4.40a: calc.hde ile HD kestirimi
+# Baðýmlýlýk – Örnek: 3.1a; Fonksiyon: 3.27a
+#
+calc.hde(x, q=0.25) # 1. çeyreklik HD kestirimi
+calc.hde(x, q=0.5)  # 2. çeyreklik (ortanca) HD kestirimi
+
+# Örnek 4.40b: Q1 ve Q2 kantil kestirimi
+# Baðýmlýlýk – Örnek: 4.1a
+#
+# 1. ve 2. çeyreklik (ortanca) kestirimi
+quantile(x, probs=c(0.25, 0.5))  
+
+# Örnek 4.40c: calc.hde2 ile HD kestirimi
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.27b
+#
+calc.hde(x, q=c(0.25, 0.50))
+
+# Örnek 4.41: extremeStat ile parametrik kantil kestirimi
+# Baðýmlýlýk – Örnek: 4.1a; Paket: extremeStat
+#
+if(!require(extremeStat)){
+   install.packages("extremeStat")
+   require(extremeStat)
+}
+xlquant <- distLquantile(x, probs=c(0.8, 0.9, 0.975, 
+   0.99, 0.999), list=TRUE, quiet=TRUE)
+head(xlquant$quant)
+
+# Örnek 4.42a: Konum kestiricilerinin x~G&H(g=0, h=0) daðýlýþýnda
+# kapsama oranlarý
+# Baðýmlýlýk – Örnek: 4.33; Fonksiyon: 4.1, 4.4, 4.5, 4.26b, 4.27a
+#
+xana <- dsgh1 # Ýncelenen anakitle verisi
+n <- c(10, 15, 30, 40, 50, 100, 150, 200)  # Örneklem büyüklüðü
+m <- 1000 # Örnekleme sayýsý
+R <- 3000 #Bootstrap sayýsý
+conf.level <- 0.95  # Güven düzeyi
+alpha <- 1-conf.level  # 1.tip hata düzeyi
+alt <- floor(alpha/2*R)  # Güven aralýðý alt snýrý indisi
+ust <- floor((1-alpha/2)*R) # Güven aralýðý üst snýrý indisi
+statistic <- c(calc.mean, calc.trmean, calc.median, 
+   calc.hde, calc.hosme)
+nstats <- length(statistic)
+snames <- c("Ort", "Bud.Ort", "Ortc", "HD", "HOSME")
+teta <- c(calc.mean(xana), calc.trmean(xana),
+   calc.median(xana), calc.hde(xana), calc.hosme(xana))
+#Kapsama oranlarý matrisi
+ko <- matrix(0, nrow=length(n), ncol=nstats) 
+rownames(ko) <- n
+colnames(ko) <- snames
+for(i in 1:length(n)){
+  nks <- rep(0, nstat)
+  for(j in 1:m){
+     # Anakitleden örnekleme
+     dset <- sample(xana, n[i], replace=TRUE)  
+     indices <- sample(1:n[i], n[i]*R, replace=TRUE) 
+     bootsamps <- array(dset[indices], dim=c(R, n[i]))
+     ga <- matrix(NA, nrow=nstats, ncol=2)
+     for(k in 1:nstat){
+        bootres <- sort(apply(bootsamps, 1, statistic[[k]])) 
+        ga[k,] <- c(bootres[alt], bootres[ust])
+       if((ga[k,1] < teta[k]) & (ga[k,2] > teta[k])) 
+           nks[k] <- nks[k]+1
+    }
+   }
+   for(k in 1:nstat){
+      ko[i,k] <- round(nks[k]/ns*100, 3)
+   }
+}
 
 
+# Örnek 4.42b: Konum kestiricilerinin kapsama oranlarý sonuçlarý
+# Baðýmlýlýk – Örnek: 4.42a
+#
+teta  # Ýstatistiklerin örneklem kestirimleri
+ko    # Kapsama oranlarý matrisi
 
+# Örnek 4.42c: Konum kestiricilerinin kapsama oranlarý grafiði
+# Baðýmlýlýk – Örnek: 4.42a
+#
+colpal <- c("black", "red", "blue", "magenta", "deepskyblue")
+plot(1:length(n), rep(0,length(n)), type="l", col="white",
+    ylim=c(80,101), xaxt="n", 
+    xlab="Örneklem Büyüklüðü", ylab="%KO")
+axis(1, lwd=1, at=1:nrow(ko),labels=n)
+for(k in 1:nstat){
+    lines(ko[,k], col=colpal[k], type="l")
+}
+legend("bottomright", col=colpal, legend=snames, 
+   lty=1, horiz=F)
+
+# Örnek 4.43a: Konum kestiricilerinin x~G&H(g=0.75, h=0)
+# daðýlýþýnda KO hesaplama
+# Baðýmlýlýk – Örnek: 3.33; Fonksiyon: 3.1, 3.4, 3.5, 3.26b, 3.27a
+#
+xana <- dsgh5 # Ýncelenen anakitle verisi
+n <- c(10, 15, 30, 40, 50, 100, 150, 200)  # Örneklem büyüklüðü
+m <- 1000 # Örnekleme sayýsý
+R <- 3000 #Bootstrap sayýsý
+conf.level <- 0.95  # Güven düzeyi
+alpha <- 1-conf.level  # 1.tip hata düzeyi
+alt <- floor(alpha/2*R)  # Güven aralýðý alt snýrý indisi
+ust <- floor((1-alpha/2)*R) # Güven aralýðý üst snýrý indisi
+statistic <- c(calc.mean, calc.trmean, calc.median, 
+   calc.hde, calc.hosme)
+nstats <- length(statistic)
+snames <- c("Ort", "Bud.Ort", "Ortc", "HD", "HOSME")
+teta <- c(calc.mean(xana), calc.trmean(xana),
+   calc.median(xana), calc.hde(xana), calc.hosme(xana))
+#Kapsama oranlarý matrisi
+ko <- matrix(0, nrow=length(n), ncol=nstats) 
+rownames(ko) <- n
+colnames(ko) <- snames
+for(i in 1:length(n)){
+   nks <- rep(0, nstat)
+   for(j in 1:m){
+   # Anakitleden örnekleme
+     dset <- sample(xana, n[i], replace=TRUE)  
+     indices <- sample(1:n[i], n[i]*R, replace=TRUE) 
+     bootsamps <- array(dset[indices], dim=c(R, n[i]))
+     ga <- matrix(NA, nrow=nstats, ncol=2)
+     for(k in 1:nstat){
+        bootres <- sort(apply(bootsamps, 1, statistic[[k]])) 
+        ga[k,] <- c(bootres[alt], bootres[ust])
+        if((ga[k,1] < teta[k]) & (ga[k,2] > teta[k])) 
+          nks[k] <- nks[k]+1
+     }
+   }
+   for(k in 1:nstat){
+      ko[i,k] <- round(nks[k]/ns*100, 3)
+   }
+}
+
+# Örnek 4.43b: Konum kestiricilerinin x~G&H(g=0.75, h=0)
+# daðýlýþýnda KO deðerleri
+# Baðýmlýlýk – Örnek: 4.43a
+#
+teta 
+ko
+
+# Örnek 4.43c: Konum kestiricilerinin x~G&H(g=0.75, h=0) için
+# KO grafiði
+# Baðýmlýlýk – Örnek: 4.43a
+#
+colpal <- c("black", "red", "blue", "magenta", "deepskyblue")
+plot(1:length(n), rep(0,length(n)), type="l", col="white",
+   ylim=c(80,101),
+  xaxt="n", xlab="Örneklem Büyüklüðü", ylab="%KO")
+ axis(1, lwd=1, at=1:nrow(ko),labels=n)
+ for(k in 1:nstat){
+    lines(ko[,k], col=colpal[k], type="l")
+ }
+ legend("bottomright", col=colpal, legend=snames, lty=1,
+    horiz=F)
+
+# Örnek 4.44: MLE hesaplama uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.29 
+#
+calc.mle(x, "normal")
+calc.mle(x, "lognormal")
+calc.mle(x, "weibull")
+calc.mle(x, "gamma")
+calc.mle(x, "exponential")
+
+# Örnek 4.45: MLE kestirimiyle normal daðýlýþ benzetimi
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.29, 4.30a 
+#
+mles <- calc.mle(x, "normal")
+xnorm <- gen.norm(x, mles)
+head(xnorm)
+
+# Örnek 4.46a: bs.par ile parametrik bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.1, 4.33, 4.30a, 4.31 
+#
+## Parametreleri kestir
+mles <- calc.mle(x, "normal")
+## bs.par ile bootstrap uygula
+bspmean1 <- bs.par(x, statistic=calc.mean, ran.gen=gen.norm,
+   mle=mles, R=5000)
+
+# Örnek 4.46c: Parametrik bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.7, 4.8, 4.9, 4.10, 4.11,
+#   4.12, 4.29, 4.30a 
+#
+bssonuc <- bs.sonuc(bspmean1)
+bssonuc$est
+bssonuc$bsest
+bssonuc$bias
+bssonuc$se
+bssonuc$mse
+ganorm <- ga.norm(bspmean1, index=1, conf.level=0.95)
+ganorm
+gayuzde <- ga.yuzde(bspmean1, index=1, conf.level=0.95)
+gayuzde
+gaydh <- ga.ydh(bspmean1, index=1, conf.level=0.95)
+gaydh
+
+# Örnek 4.46c: Parametrik bootstrap kestirimleri daðýlýþ grafiði
+# Baðýmlýlýk – Örnek: 4.46a; Fonksiyon: 4.15
+#
+bs.dist(bspmean1, index=1, gayontem="yuzde")
+
+# Örnek 4.46d: Parametrik bootstrap kestirimleri diyagnostik
+# grafikleri
+# Baðýmlýlýk – Örnek: 4.46a; Fonksiyon: 4.16
+#
+bs.plot(bspmean1, index=1)
+
+# Örnek 4.47: Weibull daðýlýþý için parametrik bootstrap
+# uygulamasý
+# Baðýmlýlýk – Fonksiyon: 4.1, 4.16, 4.29, 4.30c, 4.31
+#
+xweib <- rweibull(30, 0.5, 2)  #Weibull daðýlýþýndan x verisi
+mles <- calc.mle(xweib, "weibull")  # Weibull MLE kestirimleri
+# Weibull daðýlýþý için parametrik bootstrap
+bspweib <- bs.par(xweib, statistic=calc.mean,
+   ran.gen=gen.weibull, mle=mles, R=5000)
+# Bootstrap kestirimleri
+head(bspweib$t)  
+# Bootstrap kestirimleri grafiði
+bs.plot(bspweib, index=1)
+
+# Örnek 4.48: Çoklu parametrik bootstrap kestirimi
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.15, 4.21, 4.29,
+# 4.30a, 4.31
+#
+## Parametre kestirimi
+> mles <- calc.mle(x, "normal")  # MLE kestirimlerini yap
+
+## calc.location kullanarak çoklu parametrik bootstrap uygula
+bspmult <- bs.par(x, statistic=calc.location, ran.gen=gen.norm,
+   mle=mles, R=3000)
+
+# Bootstrap kestirimleri daðýlýþ grafikleri
+opar <- par(mfrow=c(2,2))
+bs.dist(bspmult, index=1, gayontem="yuzde")
+bs.dist(bspmult, index=2, gayontem="yuzde")
+bs.dist(bspmult, index=3, gayontem="yuzde")
+bs.dist(bspmult, index=4, gayontem="yuzde")
+par(opar)
+
+# Örnek 4.49a: boot fonksiyonu ile parametrik bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Paket: boot
+#
+## boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+## Parametrelerin kestirimi
+mles <- calc.mle(x, "normal")
+## boot ile x verisinde calc.mean ile bootstrap
+bspmean2 <- boot(data=x, statistic=calc.mean, sim="parametric", 
+   ran.gen=gen.norm, mle=mles, R=2000)
+# Örnek 4.49b: Parametrik bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 4.49a
+#
+bspmean2
+head(bspmean2$t)
+bs.dist(bspmean2, index=1, gayontem="yuzde")
+
+# Örnek 4.50a: dbs.sempar ile yarý parametrik bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 4.32
+#
+bsspmean1 <- dbs.sempar(dset=x, statistic=calc.mean,
+   double=TRUE, R=2000)
+
+# Örnek 4.50b: Yarý parametrik bootstrap kestirim grafikleri
+# Baðýmlýlýk: Örnek: 4.50a; Fonksiyon: 4.15, 4.16
+#
+bs.dist(bsspmean1, index=1, gayontem="stud")
+bs.plot(bsspmean1, index=1, gayontem="stud")
+
+### BÖLÜM 5 ###################################################################
+
+# Örnek 5.1a: jackknife fonksiyonu ile jackknife uygulamasý 
+# Baðýmlýlýk – Örnek: 5.1a; Fonksiyon: 4.1, 5.1
+#
+jkmean1 <- jackknife(dset=x, statistic=calc.mean)
+
+# Örnek 5.1b: jackknife nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 5.1a
+#
+names(jkmean1)
+
+# Örnek 5.1c: Jackknife sonuçlarýna eriþme
+# Baðýmlýlýk – Örnek: 5.1a
+#
+jkmean1$teta
+jkmean1$tetabar
+jkmean1$jack.bias
+jkmean1$jack.se
+head(jkmean1$jack.values)
+
+
+Örnek 5.1d: Jackknife kestirimleri örnekleme daðýlýþý
+# Baðýmlýlýk – Örnek: 5.1a, Fonksiyon: 5.2
+#
+jack.dist(jkmean1)
+
+# Örnek 5.1e: Ortalama için jackknife kestirimleri güven aralýðý
+# Baðýmlýlýk – Örnek: 5.1a, Fonksiyon: 5.3
+#
+jack.ga(jkmean1, index=1, conf.level=0.95)
+
+# Örnek 5.2a: Ortanca için Jackknife uygulamasý
+# Baðýmlýlýk – Örnek: 5.1a; Fonksiyon: 4.4, 5.2
+#
+# Ortanca için jackknife uygula
+jkmed1 <- jackknife(dset=x, statistic=calc.median) 
+# Sonuçlarý göster
+jkmed1$tetabar
+jkmed1$jack.bias
+jkmed1$jack.se
+
+# Örnek 5.2b: Ortanca için Jackknife kestirimleri daðýlýþý
+# Baðýmlýlýk – Örnek: 5.2a, Fonksiyon: 5.2
+#
+jack.dist(jkmed1)
+
+# Örnek 5.2c: Ortanca için güven aralýðý
+# Baðýmlýlýk – Örnek: 5.1a, Fonksiyon: 5.3
+#
+jack.ga(jkmed1, index=1, conf.level=0.95)
+
+# Örnek 5.3: DescTools'da MedianCI ile ortanca ve GA kestirimi
+# Baðýmlýlýk – Örnek: 5.1a; Paket: DescTools
+#
+## DescTools paketini yükle, kurulu deðilse kur
+if(!require(DescTools, quietly=TRUE)) {
+   install.packages("DescTools",
+    repo="https://cloud.r-project.org/")
+   require(DescTools, quietly=TRUE)
+}
+jkmed2 <- MedianCI(x, na.rm=FALSE, method="exact", 
+    R=10000, conf.level=0.95)
+jkmed2
+
+# Örnek 5.8a: bootstrap paketindeki jackknife ile çalýþma
+# Baðýmlýlýk – Örnek: 5.1a; Fonksiyon: 4.4; Paket: bootstrap
+#
+## bootstrap paketini yükle, kurulu deðilse kur
+if(!require(bootstrap, quietly=TRUE)) {
+   install.packages("bootstrap",
+    repo="https://cloud.r-project.org/")
+   require(bootstrap, quietly=TRUE)
+}
+## x verisinde calc.median ile jackknife kestirimi
+jkmed2 <- bootstrap::jackknife(x=x, theta=calc.median)
+
+# Örnek 5.9b: jackknife sonuçlarý ve grafiðinin çizilmesi
+# Baðýmlýlýk – Örnek: 5.8a
+#
+> names(jkmed2)
+jkmed2$jack.bias
+jkmed2$jack.se
+head(jkmed2$jack.values)
+jack.dist(jkmed2)
+
+# Örnek 5.11a: Çoklu istatistik için Jackknife uygulamasý
+# Baðýmlýlýk – Örnek: 4.1a; Fonksiyon: 5.1, 5.4
+#
+jkmult1 <- jackknife(dset=x, statistic=calc.stats2)
+
+# Örnek 5.11b: Güven aralýklarý
+# Baðýmlýlýk – Örnek: 5.11a; Fonksiyon: 5.3
+#
+jack.ga(jkmult1, index=1, conf.level=0.95)
+jack.ga(jkmult1, index=2, conf.level=0.95)
+jack.ga(jkmult1, index=6, conf.level=0.95)
+
+# Örnek 5.11c: Jackknife kestirimleri daðýlýþ grafikleri
+# Baðýmlýlýk – Örnek: 5.11a; Fonksiyon: 5.2
+#
+jack.dist(jkmult1, index=6)
+
+# Örnek 5.11d: Çok istatistik için Jackknife daðýlýþ grafikleri
+# Baðýmlýlýk – Örnek: 5.11a; Fonksiyon: 5.2
+#
+opar <- par(mfrow=c(3,2))
+for(i in 1:6) jack.dist(jkmult1, index=i)
+par(opar)
+
+
+#### BÖLÜM 6 ##############################################################
+
+# Örnek 6.1a: Farklý ortalama ve eþit varyanslý iki örneklem verisi
+set.seed(113)  # Ayný sonuçlarý almak için RNG çekirdek sayýsý
+# Kontrol grubu verileri
+kontrol <- round(rnorm(n=25, mean=25, sd=2),2)    
+# Uygulama grubu verileri
+uygulama <- round(rnorm(n=25, mean=30, sd=2),2)
+
+
+# Örnek 6.1b. Örneklem verilerine bakýþ 
+# Baðýmlýlýk – Örnek: 5.1a
+#
+head(uygulama, 5)
+head(kontrol, 5)
+
+# Örnek 6.2a. Geniþ-Uzun veri dönüþümü uygulamasý
+# Baðýmlýlýk – Örnek: 6.1a, Fonksiyon: 6.1a
+#
+dslong1 <- wide2long(x=uygulama, y=kontrol)
+tail(dslong1,5)
+
+# Örnek 6.2b. Uzun-Geniþ veri dönüþümü uygulamasý
+# Baðýmlýlýk – Örnek: 6.2a, Fonksiyon: 6.1b
+#
+dswide1 <- long2wide(dslong1)
+head(dswide1,5)
+tail(dswide1,5)
+
+# Örnek 6.2c. Geniþ-Uzun veri dönüþümü uygulamasý 2
+# Baðýmlýlýk – Örnek: 6.2b, Fonksiyon: 6.1a
+#
+dslong2 <- wide2long(dswide1)
+head(dslong2,5)
+tail(dslong2,5)
+
+# Örnek 6.2d: Farklý ortalama ve eþit varyanslý dengesiz iki
+# örneklem verisi
+set.seed(113)  #Ayný sonuçlarý almak için RNG çekirdek sayýsý
+kontrol <- round(rnorm(n=20, mean=25, sd=2),2) # Kontrol grubu
+uygulama <- round(rnorm(n=25, mean=30, sd=2),2) # Uygulama grubu
+head(kontrol, 5)
+head(uygulama, 5)
+dsdeneme1 <- wide2long(uygulama, kontrol)
+
+# Örnek 6.2e. Uzun-Vektör biçimi veri dönüþümü uygulamasý
+# Baðýmlýlýk – Örnek: 6.2a, Fonksiyon: 6.1c
+#
+dsvect <- long2vect(dslong1)
+uygulama <- dsvect[[1]]
+kontrol <- dsvect[[2]]
+head(kontrol,5)
+head(uygulama,5)
+
+# Örnek 6.3a. Ýki deðiþken için açýklayýcý grafikler 1
+# Baðýmlýlýk – Örnek: 6.1a, Fonksiyon: 6.2
+#
+bivar.plot(x=uygulama, y=kontrol)
+
+# Örnek 6.3b: Ýki deðiþken için açýklayýcý grafikler 2
+# Baðýmlýlýk – Örnek: 6.2a, Fonksiyon: 6.2
+#
+bivar.plot(x=dsdeneme1)
+
+# Örnek 6.4a: Eþit ortalama ve farklý varyanslý iki örneklem verisi
+# Baðýmlýlýk – Fonksiyon: 6.1a; Paket: gk
+#
+if(!require(gk, quietly=TRUE)) {
+   install.packages("gk", repo="https://cloud.r-project.org/")
+   require(gk, quietly=TRUE)
+}
+set.seed(55)  # #Ayný sonuçlarý almak için RNG çekirdek sayýsý
+kontrol  <- rgh(n=25, A=30, B=2, g=0, h=0)   # Kontrol grubu 
+uygulama <- rgh(n=25, A=30, B=5, g=0, h=0)   # Uygulama grubu 
+dsdeneme2 <- wide2long(uygulama, kontrol)
+
+# Örnek 6.4b: dsdeneme2 verisi için açýklayýcý grafikler
+# Baðýmlýlýk – Örnek: 6.3; Fonksiyon: 6.2
+#
+bivar.plot(dsdeneme2)
+
+# Örnek 6.5a: Eþit ortalama, eþit varyans ve farklý çarpýklýkta
+# iki örneklem verisi
+# Baðýmlýlýk – Fonksiyon: 6.1a; Paket: gk
+#
+if(!require(gk, quietly=TRUE)) {
+   install.packages("gk", repo="https://cloud.r-project.org/")
+   require(gk, quietly=TRUE)
+}
+set.seed(60)  # #Ayný sonuçlarý almak için RNG çekirdek sayýsý
+kontrol  <- rgh(n=25, A=30, B=2, g=0.0, h=0)  # Kontrol grubu
+uygulama <- rgh(n=25, A=30, B=2, g=0.75, h=0) # Uygulama grubu 
+dsdeneme3 <- wide2long(uygulama, kontrol)
+
+# Örnek 6.5b. dsdeneme3 verisi için açýklayýcý grafikler
+# Baðýmlýlýk – Örnek: 6.4; Fonksiyon: 6.2
+#
+bivar.plot(dsdeneme3)
+
+
+# Örnek 6.6a: Ýki yönlü hipotez için permütasyon testi
+# Baðýmlýlýk – Örnek: 6.2e, Fonksiyon 6.3, 6.4
+#
+ptestmean1 <- permute.dif(x=dsdeneme1, statistic=calc.meandif,
+    alternative="two.sided", R=5000)
+
+# Örnek 6.6b: Permütasyon testi fonksiyonu çýktýlarý
+# Baðýmlýlýk – Örnek: 6.6a
+#
+names(ptestmean1)
+
+# Örnek 6.6c: Ýki yönlü hipotez için önemlilik olasýlýðý
+# Baðýmlýlýk – Örnek: 6.6a
+#
+ptestmean1$p.value
+
+# Örnek 6.7: Tek yönlü hipotezler için permütasyon testi
+# Baðýmlýlýk – Örnek: 6.2e, Fonksiyon 6.3, 6.4
+#
+
+## Tek yönlü (sað kuyruk) için permütasyon testi
+ptestmean2 <- permute.dif(dsdeneme1, statistic=calc.meandif,
+   alternative="greater", R=5000)
+ptestmean2$p.value
+## Tek yönlü (sol kuyruk) için permütasyon testi
+ptestmean3 <- permute.dif(x=dsdeneme1, statistic=calc.meandif,
+   alternative="less", R=5000)
+ptestmean3$p.value
+
+# Örnek 6.8a: Welch t-testi ile hipotez testi 
+# Baðýmlýlýk – Örnek: 6.2e
+#
+# Ýki yönlü hipotez testi
+t.test(gozlem~grup, data=dsdeneme1, alternative="two.sided")
+## Tek yönlü (sað kuyruk) hipotez testi
+t.test(gozlem~grup, data=dsdeneme1, alternative="greater")
+## Tek yönlü (sol kuyruk) hipotez testi
+t.test(gozlem~grup, data=dsdeneme1, alternative="less")
+
+# Örnek 6.8b : Varyans analizi ile karþýlaþtýrma
+# Baðýmlýlýk – Örnek: 6.2e
+#
+summary(aov(gozlem~grup, data = dsdeneme1))  
+
+# Örnek 6.9a: Eþit ortalama ve farklý varyanslý iki örneklem için # permütasyon
+# Baðýmlýlýk – Örnek: 6.4a, Fonksiyon 6.3, 6.4
+#
+## Ýki yönlü hipotez testi
+ptestmean2 <- permute.dif(x=dsdeneme2, statistic=calc.meandif, 
+   alternative="two.sided", R=5000)
+ptestmean2$p.value
+## Tek yönlü (sað kuyruk) hipotez testi 
+ptestmean3 <- permute.dif(x=dsdeneme2, statistic=calc.meandif, 
+   alternative="greater", R=5000)
+ptestmean3$p.value
+## Tek yönlü (sol kuyruk) hipotez testi 
+ptestmean4 <- permute.dif(x=dsdeneme2, statistic=calc.meandif,
+    alternative="less", R=5000)
+ptestmean4$p.value
+
+
+# Örnek 6.9b: Eþit ortalama ve farklý varyanslý iki grubun t-testi
+# Baðýmlýlýk – Örnek: 6.4a
+#
+t.test(gozlem~grup, data=dsdeneme2, alternative="two.sided")$p.value
+t.test(gozlem~grup, data=dsdeneme2, alternative="greater")$p.value
+t.test(gozlem~grup, data=dsdeneme2, alternative="less")$p.value
+
+# Örnek 6.10a: Eþit ortalama ve farklý çarpýklýklý iki örneklem
+# ortalamasýnýn farklýlýðý için permütasyon testi
+# Baðýmlýlýk – Örnek: 6.5a, Fonksiyon 6.3, 6.4
+#
+## Ýki yönlü hipotez testi
+ptestmean5 <- permute.dif(x=dsdeneme3, statistic=calc.meandif, 
+   alternative="two.sided", R=5000)
+ptestmean5$p.value
+## Tek yönlü (sað kuyruk) hipotez testi 
+ptestmean6 <- permute.dif(x=dsdeneme3, statistic=calc.meandif, 
+   alternative="greater", R=5000)
+ptestmean6$p.value
+## Tek yönlü (sol kuyruk) hipotez testi 
+ptestmean7 <- permute.dif(x=dsdeneme3, statistic=calc.meandif,
+    alternative="less", R=5000)
+ptestmean7$p.value
+
+# Örnek 6.10b: Eþit ortalama ve farklý çarpýklýkta iki örneklem
+# ortalamasý farký için t-testi
+# Baðýmlýlýk – Örnek: 6.5a
+#
+t.test(gozlem~grup, data=dsdeneme3, alternative="two.sided")$p.value
+t.test(gozlem~grup, data=dsdeneme3, alternative="greater")$p.value
+t.test(gozlem~grup, data=dsdeneme3, alternative="less")$p.value
+
+# Örnek 6.11. calc.meddif ile örneklem ortancalarý farký
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.5
+#
+calc.meddif(dsdeneme1)
+
+# Örnek 6.12a. dsdeneme1 verisinde ortancalarýn farký için 
+# permütasyon testi 
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon 6.3, 6.5
+#
+## Ýki yönlü hipotez testi
+ptestmed1 <- permute.dif(x=dsdeneme1, statistic=calc.meddif,
+    alternative="two.sided", R=5000)
+ptestmed1$p.value
+## Tek yönlü (sað kuyruk) hipotez testi 
+ptestmed2 <- permute.dif(x=dsdeneme1, statistic=calc.meddif,
+    alternative="greater", R=5000)
+ptestmed2$p.value
+## Tek yönlü (sol kuyruk) hipotez testi 
+ptestmed3 <- permute.dif(x=dsdeneme1, statistic=calc.meddif,
+    alternative="less", R=5000)
+ptestmed3$p.value
+
+# Örnek 6.12b: dsdeneme1 verisi için WSRT-testi
+# Baðýmlýlýk – Örnek: 6.2e
+#
+wilcox.test(gozlem~grup, data=dsdeneme1,
+   alternative="two.sided")$p.value
+wilcox.test(gozlem~grup, data=dsdeneme1,
+   alternative="greater")$p.value
+wilcox.test(gozlem~grup, data=dsdeneme1,
+   alternative="less")$p.value
+
+# Örnek 6.13a. dsdeneme3 verisinde ortancalarýn farký için 
+# permütasyon testi 
+# Baðýmlýlýk – Örnek: 6.5a; Fonksiyon 6.3, 6.5
+#
+## Ýki yönlü hipotez testi
+ptestmed4 <- permute.dif(x=dsdeneme3, statistic=calc.meddif,
+    alternative="two.sided", R=5000)
+ptestmed4$p.value
+## Tek yönlü (sað kuyruk) hipotez testi 
+ptestmed5 <- permute.dif(x=dsdeneme3, statistic=calc.meddif,
+    alternative="greater", R=5000)
+ptestmed5$p.value
+## Tek yönlü (sol kuyruk) hipotez testi 
+ptestmed6 <- permute.dif(x=dsdeneme3, statistic=calc.meddif,
+    alternative="less", R=5000)
+ptestmed6$p.value
+
+# Örnek 6.13b: dsdeneme3 verisi için WSRT-testi
+# Baðýmlýlýk – Örnek: 6.5a
+#
+wilcox.test(gozlem~grup, data=dsdeneme3,
+   alternative="two.sided")$p.value
+wilcox.test(gozlem~grup, data=dsdeneme3,
+   alternative="greater")$p.value
+wilcox.test(gozlem~grup, data=dsdeneme3,
+   alternative="less")$p.value
+
+# Örnek 6.14a: Uzun veride HD kestirim farklarý için permütasyon # testi
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.3, 6.6
+#
+hdpertest <- permute.dif(x=dsdeneme1, statistic=calc.hddif,
+    alternative="two.sided", R=5000)
+hdpertest$p.value
+
+# Örnek 6.14a: dsdeneme1 verisinde çoklu istatistikler için 
+# permütasyon testi
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.3, 6.7
+#
+ptestmult1 <- permute.dif(x=dsdeneme1, statistic=calc.multdif,
+    alternative="two.sided", R=5000)
+ptestmult1$p.value[1]
+ptestmult1$p.value[2]
+ptestmult1$p.value[3]
+ptestmult1$p.value[4]
+
+# Örnek 6.14b. dsdeneme3'de çoklu istatistikler için 
+# permütasyon testi
+# Baðýmlýlýk – Örnek: 6.5a; Fonksiyon: 6.3, 6.7
+#
+ptestmult2 <- permute.dif(x=dsdeneme3, statistic=calc.multdif,
+    alternative="two.sided", R=5000)
+ptestmult2$p.value[1]  # Ortalamalarýn farký için p deðeri
+ptestmult2$p.value[2]  # Ortancalarýn farký için p deðeri
+ptestmult2$p.value[3]  # IQR farký için p deðeri
+ptestmult2$p.value[4]  # Varyanslarýn farký için p deðeri
+
+# Örnek 6.15a: Ortalamalar arasý fark için bootstrap
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.3; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmeandif1 <- boot(data=dsdeneme1, strata= dsdeneme1[,2], 
+   statistic=calc.meandif, R=5000, parallel="multicore", ncpus=6)
+bsmeandif1
+
+# Örnek 6.15b: Ortalamalar arasý fark için güven aralýklarý
+# Baðýmlýlýk – Örnek: 6.15a
+#
+boot.ci(bsmeandif1)
+
+# Örnek 6.15c : Parametrik t-testi ile güven aralýklarý
+# Baðýmlýlýk – Örnek: 6.2e
+#
+t.test(gozlem~grup, data = dsdeneme1)
+
+# Örnek 6.15d : Bootstrap kestirimleri grafikleri
+# Baðýmlýlýk – Örnek: 6.15a; Fonksiyon: 6.15, 6.16 
+#
+bs.dist(bsmeandif1, gayontem="yuzde")
+bs.plot(bsmeandif1")
+
+# Örnek 6.16a: Ortancalar arasý fark için bootstrap
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.5; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmeddif1 <- boot(data=dsdeneme1, statistic=calc.meddif, 
+    strata=dsdeneme1[,2], R=5000)
+bsmeddif1
+
+# Örnek 6.16b: Ortancalar arasý fark için güven aralýklarý
+# Baðýmlýlýk – Örnek: 6.16a
+#
+boot.ci(bsmeddif1, conf=0.95)
+
+# Örnek 6.17a: HD kantilleri arasý fark için bootstrap
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.6; Paket: boot
+#
+# boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bshddif1 <- boot(data=dsdeneme1, statistic=calc.hddif, 
+    strata=dsdeneme1[,2], R=5000)
+bshddif1
+
+# Örnek 6.17b: HD kantilleri arasý fark için güven aralýklarý
+# Baðýmlýlýk – Örnek: 6.17a
+#
+boot.ci(bshddif1, conf=0.95)
+
+# Örnek 6.18a: Çoklu istatistiklerin farký için bootstrap
+# Baðýmlýlýk – Örnek: 6.2e; Fonksiyon: 6.7; Paket: boot
+#
+## boot paketinin kurulmasý ve kurulu ise yüklenmesi
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmultdif1 <- boot(data=dsdeneme1, statistic=calc.multdif, 
+    strata=dsdeneme1[,2], R=5000)
+bsmultdif1
+
+# Örnek 6.18b: Varyanslar arasý fark için güven aralýklarý
+# Baðýmlýlýk – Örnek: 6.18a
+#
+# Ortalamalar arasý fark (index=1) için güven aralýklarý
+boot.ci(bsmultdif1, index=1, conf=0.95)
+
+# Örnek 6.19a: Eþleþtirilmiþ örneklem verisi benzetimi
+set.seed(1923)
+once <- round(rnorm(n=15, mean=20, sd=2),2)
+sonra <- round(x+5+runif(length(x), -2, 2),2)
+grup <- rep(c("Post", "Pre"), c(length(y), length(x)))
+dsdeneme4 <- data.frame(gozlem=c(sonra, once), grup)
+head(dsdeneme4)
+tail(dsdeneme4)
+
+# Örnek 6.19b. Eþleþtirilmiþ örneklem verisine ait grafikler
+# Baðýmlýlýk – Örnek: 6.19a; Fonksiyon: 6.2
+# 
+bivar.plot(dsdeneme4)
+
+# Örnek 6.20a. Eþleþtirilmiþ örneklemlerde ortalamalar arasý
+# fark için permütasyon testi
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.3, 6.8
+# 
+ptestmean4 <- permute.dif(x=dsdeneme4, statistic=calc.meandif2,
+    alternative="two.sided", R=50000)
+ptestmean4$p.value
+
+# Örnek 6.20b: Eþleþtirilmiþ örneklemlerde t-testi
+# Baðýmlýlýk – Veri:6.5
+# 
+t.test(gozlem~grup, data=dsdeneme4, alternative="two.sided",
+    paired=TRUE)
+
+# Örnek 6.20. Eþleþtirilmiþ örneklemlerde ortancalar arasý fark 
+# için permütasyon testi
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.3, 6.9
+# 
+pertest5 <- permute.dif(x=dsdeneme4, statistic=calc.meddif2,
+    alternative="two.sided", R=50000)
+pertest5$p.value
+
+# Örnek 6.21: Eþleþtirilmiþ örneklemlerde 
+# ortancalarýn farký için permütasyon
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.3, 6.10
+# 
+pertest6 <- permute.dif(x=dsdeneme4, statistic=calc.multdif2,
+    alternative="two.sided", R=50000)
+pertest6$p.value[1] # Ortalamalarýn farký için p-deðeri
+pertest6$p.value[2] # Ortancalarýn farký için p-deðeri
+pertest6$p.value[3] # IQR'larýn farký için p-deðeri
+pertest6$p.value[4] # Varyanslarýn farký için p-deðeri
+pertest6$p.value[5] # Varyasyon katsayýlarý farký için p-deðeri
+pertest6$p.value[6] # IQR varyasyonlarý farký için p-deðeri
+
+# Örnek 6.22a: Eþleþtirilmiþ örneklemlerde ortalamalarýn farký
+# için bootstrap
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.8; Paket: boot
+# 
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmeandif2 <- boot(data=dsdeneme4, statistic=calc.meandif2, 
+    strata= dsdeneme4[,2], R=5000)
+bsmeandif2
+
+# Örnek 6.22b: Eþleþtirilmiþ örneklemlerde ortalamalarýn farký
+# için güven aralýðý
+# Baðýmlýlýk – Örnek: 6.22a; Paket: boot
+#
+boot.ci(bsmeandif2, conf=0.95)
+
+# Örnek 6.23a: Eþleþtirilmiþ örneklemlerde ortancalarýn farký için
+# bootstrap
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.9; Paket: boot
+#
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmeddif2 <- boot(data=dsdeneme4, strata= dsdeneme4[,2], 
+    statistic=calc.meddif2, R=5000)
+bsmeddif2
+
+# Örnek 6.23b: Eþleþtirilmiþ örneklemlerde ortancalarýn farký için
+# güven aralýðý
+# Baðýmlýlýk – Örnek: 6.23a; Paket: boot
+#
+boot.ci(bsmeddif2, conf=0.95)
+
+# Örnek 6.24a: Eþleþtirilmiþ örneklemlerde çoklu istatistik
+# farklarý için bootstrap
+# Baðýmlýlýk – Veri:6.5; Fonksiyon: 6.10; Paket: boot
+#
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bsmultdif2 <- boot(data= dsdeneme4, strata= dsdeneme4[,2],
+    statistic=calc.multdif2, R=5000)
+bsmultdif2
+
+# Örnek 6.24b: Eþleþtirilmiþ örneklemlerde çok istatistik farklarý
+# için güven aralýðý
+# Baðýmlýlýk – Örnek: 6.24a; Paket: boot
+#
+boot.ci(bsmultdif2, index=3, conf=0.95)
+
+
+#### BÖLÜM 7 ###############################################################
+
+# Örnek 7.1: gen.funcdata ile veri benzetimi ve serpilme grafiði
+# Baðýmlýlýk – Fonksiyon: 7.1a
+#
+dsquad <- gen.funcdata(x=-20:20, fx=fQuad)
+head(dsquad)
+plot(y~x, data=dsquad, type="b", col=4, bg="gray", pch=21,
+   cex=1, main="x,y serpilme grafiði")
+
+# Örnek 7.2: cor.plot ile deðiþkenler arasý iliþkilerin
+# karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 7.1; Fonksiyon: 7.2
+#
+cor.plot(dsquad)
+
+# Örnek 7.3: Çeþitli iliþkisel verilerin benzetimi
+# Baðýmlýlýk – Fonksiyon: 7.1a
+#
+dslnr1 <- gen.funcdata(x)
+dslnr2 <- gen.funcdata(x, b=2, a=10, fx=fLinear)
+dslnr3 <- gen.funcdata(x, b=2, a=10, nmu=0, nsigma=3)
+dsquad <- gen.funcdata(x, fx=fQuad)
+dscubic <- gen.funcdata(x, fx=fCubic)
+dscos <- gen.funcdata(x, fx=fCos)
+dssin <- gen.funcdata(x, fx=fSin)
+dspoly <- gen.funcdata(x, fx=fPoly)
+dsexp <- gen.funcdata(x, fx=fExp)
+dsvolc <- gen.funcdata(x, fx=fVolcano)
+dssemcirc <- gen.funcdata(x, fx=fSemCirc)
+dsncvar <- gen.funcdata(x=rep(1:100, 2), fx=fNcVar, nsigma=0.1+0.5*x)
+
+# Örnek 7.4: cor.plot ile dslnr2 verisinin incelenmesi
+# Baðýmlýlýk – Örnek: 7.3; Fonksiyon: 7.2
+#
+cor.plot(dslnr2)
+
+# Örnek 7.5: Çembersel veri benzetimi ve görselleþtirilmesi
+# Baðýmlýlýk – Fonksiyon: 7.3
+#
+dscirc <- gen.circle(n=100, noise=0)
+cor.plot(dscirc)
+
+# Örnek 7.6: Sýnýf etiketli spiral veri üretimi 
+# Baðýmlýlýk – Fonksiyon: 7.4
+#
+k <- 4 # Sýnýf sayýsý
+n <- 250 # sýnýf baþýna gözlem sayýsý
+dscspiral <- gen.cspiral(n, k)	# Veri kümesini oluþtur
+plot(dscspiral[,1], dscspiral[,2], 
+   col= dscspiral[,3], pch=21, cex=1, xlab="x",ylab="y")
+
+# Örnek 7.7: Spiral veri üretimi
+# Baðýmlýlýk – Fonksiyon: 7.5
+#
+n <- 200
+aci <-c(pi*(3-sqrt(5)), 13*pi/180, 2, 11/3, 
+   tan(11/3), -tan(11/3), pi^2, pi/180, 3*pi/2)
+aciad <-c("pi*(3-sqrt(5))", "13*pi/180", "2", "11/3",
+   "tan(11/3)", "-tan(11/3)", "pi^2",  "pi/180", "3*pi/2")
+names(aci) <- aciad
+# Serpilme grafikleri
+opar <- par(mfrow=c(3,3), mar=c(1, 1, 1, 1))
+for(i in 1:length(aci)){
+   dss <- gen.spiral (n, aci=aci[i], ad=names(aci[i]))
+   plot(dss$df, col=4, bg="gray90", pch=21, cex=1.2, 
+      xaxt="n", xlab="", yaxt="n", ylab="",  
+      main=paste("Açý=", dss$ad))
+}
+par(opar)
+
+# Örnek 7.8: Altýn açý ile veri benzetimi
+# Baðýmlýlýk – Örnek: 7.7; Fonksiyon: 7.2, 7.5
+#
+dsgold <- gen.spiral (n=500, aci=aci[1], ad=aciad[1])
+plot(dsgold$df, col=4, bg="gray90", pch=21, cex=1.2, 
+    xaxt="n", xlab="", yaxt="n", ylab="",  
+    main=paste("Açý=", dsgold$ad))
+cor.plot(dsgold$df)
+
+# Örnek 7.9a: Korelasyonsuz veri benzetimi
+# Baðýmlýlýk –Fonksiyon: 7.6
+#
+dscor0 <- gen.cordata(n=100, r=0, mu=0, sd=1)
+dscor0 <- gen.cordata(n=100) #Varsayýlan deðerlerle kullanma
+
+# Örnek 7.9b: Korelasyonlu (r=0.6) veri benzetimi
+# Baðýmlýlýk –Fonksiyon: 7.6a
+#
+dscor60 <- gen.cordata(n=100, r=0.6, mu=10, sd=1.5, a=10, seed=28)
+
+# Örnek 7.10a: gen.mvcordata ile iki deðiþkenli korelasyonlu veri
+# benzetimi
+# Baðýmlýlýk – Fonksiyon: 7.2, 7.7
+#
+n <- 100
+mu <- c(0, 0)
+# Korelasyonsuz veri
+covmat <- matrix(c(1, 0, 0, 1), ncol=2) 
+dscor0 <- gen.mvcordata(n, mu, covmat, seed=11)
+# r=0.5 korelasyonlu veri
+covmat <- matrix(c(1, 0.5, 0.5, 1), ncol=2) 
+dscor1 <- gen.mvcordata(n, mu, covmat, seed=11)
+# r=0.7 korelasyonlu veri
+covmat <- matrix(c(1, 0.7, 0.7, 1), ncol=2) 
+dscor2 <- gen.mvcordata(n, mu, covmat, seed=11)
+# r=0.9 korelasyonlu veri
+covmat <- matrix(c(1, 0.9, 0.9, 1), ncol=2) 
+dscor3 <- gen.mvcordata(n, mu, covmat, seed=11)
+# r=-0.9 negatif korelasyonlu veri
+covmat <- matrix(c(1, -0.9, -0.9, 1), ncol=2) 
+dscor4 <- gen.mvcordata(n, mu, covmat, seed=11)
+
+# Örnek 7.10b: cor.plot ile deðiþkenler arasý iliþki grafikleri
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.2
+#
+cor.plot(dscor0)
+cor.plot(dscor4)
+
+# Örnek 7.10c: gen.mvcordata ile iki deðiþkenli korelasyonlu veri
+# benzetimi 2
+# Baðýmlýlýk – Fonksiyon: 7.2, 7.7
+#
+n <- 25
+mu <- c(5, 15)
+covmat <- matrix(c(1, 0.7, 0.7, 1), ncol=2) 
+dscor5 <- gen.mvcordata(n, mu, covmat, seed=11)
+cor.plot(dscor5)
+
+# Örnek 7.10d: gen.mvcordata ile dört deðiþkenli korelasyonlu 
+# veri üretimi 
+# Baðýmlýlýk – Fonksiyon: 7.7
+#
+n <- 100
+mu <- c(5, 15, 20, 10)
+covmat <- matrix(c( 
++ 1.0 , 0.5, 0.8, 0.0,
++ 0.5,  1.0, 0.6, 0.1,
++ 0.8,  0.6, 1.0, -0.4,
++ 0.0,  0.1, -0.4, 1.0
++ ), ncol = 4) 
+covmat
+dscor7 <- gen.mvcordata(n, mu, covmat, seed=11)
+dscor7 <-data.frame(dscor7,V5=1/dscor7$V1^2+rnorm(100,.5,.005))
+cormat <- round(cor(dscor7),2)
+cormat
+head(dscor7, 5)
+tail(dscor7, 5)
+
+# Örnek 7.10e: Çok deðiþkenli korelasyon grafikleri
+# Baðýmlýlýk – Fonksiyon: 7.2, 7.7
+#
+cor.plot(dscor7[,1], dscor7[,3])
+
+# Örnek 7.10f: GGally ile açýnsal grafikler
+# Baðýmlýlýk – Örnek: 7.10d;  Paket: GGally
+#
+if(!require(GGally, quietly=TRUE)) {
+   install.packages("GGally",
+     repo="https://cloud.r-project.org/")
+   require(GGally, quietly=TRUE)
+}
+ggpairs(dscor7, columns=1:5, lower=list(continuous="smooth"))
+
+# Örnek 7.10g: PerformanceAnalytics ile açýnsal grafikler
+# Baðýmlýlýk – Örnek: 7.10d;  Paket: PerformanceAnalytics
+#
+if(!require(PerformanceAnalytics, quietly=TRUE)) {
+   install.packages("PerformanceAnalytics",
+     repo="https://cloud.r-project.org/")
+   require(PerformanceAnalytics, quietly=TRUE)
+}
+chart.Correlation(dscor7[,1:45], histogram=TRUE,
+   method="spearman", pch=19)
+
+# Örnek 7.10h: corrplot ile korelasyon grafiði
+# Baðýmlýlýk – Örnek: 7.10d;  Paket: corrplot
+#
+if(!require(corrplot, quietly=TRUE)) {
+   install.packages("corrplot",
+     repo="https://cloud.r-project.org/")
+   require(corrplot, quietly=TRUE)
+}
+cormat <- cor(dscor7) 
+corrplot(cormat, method = "circle")
+
+# Örnek 7.11a: W þekilli veri benzetimi
+# Baðýmlýlýk – Fonksiyon: 7.8a
+#
+dsW <-  gen.hhgdata(100, type="W")
+cor.plot(dsW)
+
+# Örnek 7.11b: HHG paketinde veri benzetim örnekleri
+# Baðýmlýlýk – Fonksiyon: 7.8a
+#
+dsW <-  gen.hhgdata(100, type="W")
+dscircle <- gen.hhgdata(100, type="Circle")
+dsdiamond <- gen.hhgdata(100, type="Diamond")
+dsparabola <- gen.hhgdata(100, type="Parabola")
+ds2parabola <- gen.hhgdata(100, type="2Parabolas")
+cor.plot(ds2parabola)
+
+# Örnek 7.12: mlbench ile veri benzetimi uygulamasý
+# Baðýmlýlýk – Fonksiyon: 7.8b
+#
+dscor8 <- gen.benchdata(500)$m
+cor.plot(dscor8)
+
+# Örnek 7.13a: cor.pearson fonksiyonu korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.10a ; Fonksiyon: 7.9a
+cor.pearson(x=dscor0)
+cor.pearson(x=dscor4)
+cor.pearson(x=dscor4, indices=1:15)
+
+# Örnek 7.13b: calc.pearson fonksiyonu korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.9b
+calc.pearson(dset=dscor0)
+calc.pearson(dset=dscor4)
+calc.pearson(dset=dscor4, indices=1:15)
+
+# Örnek 7.14a: cor.spearman ile Spearman korelasyonu hesaplama
+# Baðýmlýlýk – Örnek: 7.10 ; Fonksiyon: 7.10a
+# 
+cor.spearman(x=dscor0)
+cor.spearman(x=dscor2)
+cor.spearman(x=dscor4)
+
+# Örnek 7.14b: calc.spearman ile Spearman korelasyonu hesaplama
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.10b
+calc.spearman(dset=dscor0)
+calc.spearman(dset=dscor2)
+calc.spearman(dset=dscor4)
+
+# Örnek 7.15a: cor.kendall ile Kendall-tau korelasyonu hesaplama
+# Baðýmlýlýk – Örnek: 7.10; Fonksiyon: 7.11a
+# 
+cor.kendall(x=dscor0)
+cor.kendall(x=dscor2)
+cor.kendall(x=dscor4)
+
+# Örnek 7.15b: calc.kendall ile Kendall-tau korelasyonu hesaplama
+# Baðýmlýlýk – Örnek: 7.10; Fonksiyon: 7.11b
+# 
+calc.kendall(dset=dscor0)
+calc.kendall(dset=dscor2)
+calc.kendall(dset=dscor4)
+
+# Örnek 7.16a: Aykýrý deðerli veri kümesi
+# Baðýmlýlýk – Fonksiyon: 7.2
+#
+x <- c(15, 17, 19, 17, 15, 15, 11, 13, 16, 17, 10, 19, 10, 28)
+y <- c(24, 28, 31, 28, 26, 24, 19, 22, 25, 24, 17, 30, 18, 30)
+dsxy1 <- data.frame(y=y,x=x)
+cor(x, y, method="pearson")
+x <- x[-14]; y <- y[-14]   #Aykýrý gözlemin atýlmasý
+cor(x,y)
+
+# Örnek 7.16b: Alt gruplu veri kümesi
+# Baðýmlýlýk – Fonksiyon: 7.2
+#
+x <- c(-3,-4,1,4,22,19,-2,2,13,-11,16,19,20)
+y <- c(-20,-24,0,4,24,36,-12,-12,56,-14,38,20,20)
+dsxy2 <- data.frame(y=y,x=x)
+cor.plot(dsxy2)
+cor(x, y, method="pearson")
+idx <- which(x<10)
+xak1 <- x[idx]; yak1 <- y[idx]    # 1. alt grup
+cor(xak1,yak1)
+xak2 <- x[-idx]; yak2 <- y[-idx]  # 2. alt grup
+cor(xak2,yak2)
+
+# Örnek 7.16c. Doðrusal olmayan iliþkili deðiþkenlerin korelasyonu
+# Baðýmlýlýk – Fonksiyon: 7.2; Paket: energy, minerva
+#
+x <- c(-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5)
+y <- c(25, 16, 9, 4, 1, 0, 1, 4, 9, 16, 25)
+dsxy3 <- data.frame(y=y, x=x)
+cor.plot(x,y)
+cor.test(x,y, method="pearson")
+cor.test(x,y, method="spearman", exact=FALSE)
+cor.test(x,y, method="kendall", exact=FALSE) 
+# Uzaklýk korelasyonu
+if(!require(energy)) {install.packages("energy");
+    require(energy)}
+round(energy::dcor(x,y),4)
+# Maksimum bilgi katsayýsý
+if(!require(minerva)) {install.packages("minerva");
+   require(minerva)}
+round(minerva::mine(x,y)$MIC, 4)
+
+# Örnek 7.17a: Uzaklýklar matrisinin hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.12, 7.13
+#
+Astar <- distMat(x) #Uzaklýk matrisi A
+Bstar <- distMat(y) #Uzaklýk matrisi B
+print(Astar[,1:5])
+print(Bstar[,1:5])
+
+# Örnek 7.17b: Kovaryanslarýn hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.12, 7.13
+#
+dCov(Astar, Bstar)
+dCov(Astar, Astar)
+dCov(Bstar, Bstar)
+
+# Örnek 7.17c: Uzaklýk korelasyonunun hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.14
+#
+cor.dCor(cbind(x,y))
+cor.dCor(cbind(x,y), dm="canberra")
+
+# Örnek 7.17d: Uzaklýklar matrisinin hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.15
+#
+calc.dCor(cbind(x,y))
+
+# Örnek 7.18a: Hoeffding D ölçüsünü hesaplama
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.16a
+#
+cor.hoefd(dsxy)
+
+# Örnek 7.18b: Hoeffding D ölçüsünü hesaplama
+# Baðýmlýlýk – Örnek: 7.16; Paket: Hmisc
+#
+if(!require(Hmisc, quietly=TRUE)) {
+     install.packages("Hmisc",
+       repo="https://cloud.r-project.org/")
+     require(Hmisc, quietly=TRUE)
+}
+reshd <- hoeffd(x, y)
+reshd$D
+
+# Örnek 7.18c: calc.hoefd ile Hoeffding D ölçüsünü hesaplama
+# Baðýmlýlýk – Örnek: 7.16; Fonksiyon: 7.16b
+#
+calc.hoefd(dsxy)
+
+# Örnek 7.19a. Entropi çözümleri 1
+# Baðýmlýlýk – Fonksiyon: 7.17
+#
+gozrenk <- c("kahve","kahve","kahve","kahve", "kahve", "kahve") 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+calc.entropy(fgozrenk)
+
+# Örnek 7.19b. Entropi çözümleri 2
+# Baðýmlýlýk – Fonksiyon: 7.17
+#
+gozrenk <- c("kahve","siyah","siyah","kahve", "siyah", "kahve") 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+calc.entropy(fgozrenk)
+
+# Örnek 7.19c. Entropi çözümleri 3
+# Baðýmlýlýk – Fonksiyon: 7.17
+gozrenk <- c("kahve","siyah","yeþil","kahve", "siyah", "kahve") 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+calc.entropy(fgozrenk)
+
+# Örnek 7.19d. Entropi çözümleri 4
+# Baðýmlýlýk – Fonksiyon: 7.17
+gozrenk <- c(2, 1, 3, 2, 1, 2) 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+calc.entropy(fgozrenk)
+
+# Örnek 7.20a: infotheo paketi ile entropi hesaplama
+# Baðýmlýlýk – Paket: infotheo
+if(!require(infotheo, quietly=TRUE)) {
+   install.packages("infotheo",
+     repo="https://cloud.r-project.org/")
+   require(infotheo, quietly=TRUE)
+}
+gozrenk <- c(2, 1, 3, 2, 1, 2) 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+entropy(fgozrenk, method="emp")
+
+# Örnek 7.20b: philentropy paketi ile entropi hesaplama
+# Baðýmlýlýk – Paket: philentropy
+if(!require(philentropy, quietly=TRUE)) {
+   install.packages("philentropy",
+     repo="https://cloud.r-project.org/")
+   require(philentropy, quietly=TRUE)
+}
+gozrenk <- c(2,1,3,2,1,2) 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+pgozrenk <- prop.table(fgozrenk)
+H(pgozrenk)
+
+# Örnek 7.20c: entropy paketi ile entropi hesaplama
+# Baðýmlýlýk – Paket: entropy
+#
+if(!require(entropy, quietly=TRUE)) {
+   install.packages("entropy",
+     repo="https://cloud.r-project.org/")
+   require(entropy, quietly=TRUE)
+}
+gozrenk <- c(2,1,3,2,1,2) 
+fgozrenk <- table(gozrenk)  # Frekanslarý bul
+entropy::freqs.empirical(fgozrenk)
+entropy.empirical(fgozrenk, unit="log2")
+
+# Örnek 7.20d: entropy paketi ile entropi hesaplama 2
+# Baðýmlýlýk – Örnek: 7.20c; Paket: entropy
+entropy(fgozrenk, unit="log2", method="ML")
+
+# Örnek 7.20e: entropy paketi ile entropi hesaplama 2
+# Baðýmlýlýk – Örnek: 7.20c; Paket: entropy
+#
+entropy(fgozrenk, unit="log2", method="shrink")
+
+# Örnek 7.21. Sürekli verinin kesikleþtirilmesi
+dagr <- c(2.7, 4.6, 2.9, 4.0, 2.7, 4.6, 3.4, 4.5)
+k <- 4  # Sýnýf/kategori sayýsý
+ddagr <- cut(dagr, breaks=k, labels=1:k)  # Kesikleþtirme
+ddagr
+
+# Örnek 7.22a: calc.entropy ile sürekli veride entropi hesaplama
+# Baðýmlýlýk – Örnek 7.21; Fonksiyon: 7.17
+#
+fddagr <- table(ddagr)  # Frekanslarý bul
+calc.entropy(fddagr)
+
+# Örnek 7.22b: entropy paketi ile 
+# sürekli verinin kesikleþtirilmesi
+# Baðýmlýlýk – Örnek 7.21; Paket: entropy
+#
+if(!require(entropy, quietly=TRUE)) {
+   install.packages("entropy",
+     repo="https://cloud.r-project.org/")
+   require(entropy, quietly=TRUE)
+}
+ddagr <- cut(dagr, breaks=k, labels=1:k)  # Kesikleþtirme
+fddagr <- table(ddagr)  # Frekanslarý hesaplama
+entropy(fddagr, unit="log2", method="ML")
+
+# Örnek 7.23a: Sürekli veride calc.entropy ile 
+# ortak entropi hesaplama 1
+# Baðýmlýlýk – Fonksiyon: 7.17
+#
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)  # Kesikleþtirme
+dskagr <- cut(skagr,k, labels=1:k)  # Kesikleþtirme
+fjoint <- table(discdagr, discskagr) # Ortak daðýlýþ frekanslarý
+calc.entropy(fjoint)
+
+# Örnek 7.23b: Sürekli veride philentropy ile 
+# ortak entropi hesaplama 2
+# Baðýmlýlýk – Paket: philentropy
+#
+if(!require(philentropy, quietly=TRUE)) {
+   install.packages("philentropy",
+     repo="https://cloud.r-project.org/")
+   require(philentropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4  
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+pjoint <- prop.table(table(ddagr, dskagr))
+JE(pjoint)
+
+# Örnek 7.23c Sürekli veride entropy'le ortak entropi hesaplama 3
+# Baðýmlýlýk – Paket: entropy 
+#
+if(!require(entropy, quietly=TRUE)) {
+   install.packages("entropy",
+     repo="https://cloud.r-project.org/")
+   require(entropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)  
+dskagr <- cut(skagr,k, labels=1:k)
+fjoint <- table(ddagr, dskagr)  
+entropy::entropy(fjoint, unit="log2", method="ML")
+
+# Örnek 7.24a: calc.condentropy ile koþullu entropi hesaplama 1
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+# Veriyi kesikleþtir
+k <- 4 # Sýnýf sayýsý
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+# Çapraz tablolarý oluþtur
+fjxx <- table(ddagr, ddagr)
+fjxy <- table(ddagr, dskagr)
+fjyx <- table(dskagr, ddagr)
+# Koþullu entropileri hesapla
+# X'ten X'e koþullu entropi 
+HCxx <- calc.condentropy(fjxx) 
+HCxx
+# Y'den X'e koþullu entropi 
+HCxy <- calc.condentropy(fjxy) 
+HCxy
+# X'ten Y'e koþullu entropi 
+HCyx <- calc.condentropy(fjyx) 
+HCyx
+# Y'den X'e koþullu entropi (nats)
+HCxy <- calc.condentropy(fjxy, base=exp(1)) > HCxy
+# X'ten Y'ye koþullu entropi (nats)
+HCyx <- calc.condentropy(fjyx, base=exp(1)) > HCyx
+
+
+# Örnek 7.24b: infotheo paketi ile koþullu entropi hesaplama
+if(!require(infotheo, quietly=TRUE)) {
+   install.packages("infotheo",
+     repo="https://cloud.r-project.org/")
+   require(infotheo, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+infotheo::condentropy(dskagr, ddagr, method = "emp")
+infotheo::condentropy(ddagr, dskagr, method = "emp")
+
+# Örnek 7.24c: philentropy paketi ile koþullu entropi hesaplama
+if(!require(philentropy, quietly=TRUE)) {
+   install.packages("philentropy",
+     repo="https://cloud.r-project.org/")
+   require(philentropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+dskagr <- cut(skagr,k, labels=1:k)
+pdagr <- prop.table(table(ddagr))
+pskagr <- prop.table(table(dskagr))
+pjoint <- prop.table(table(ddagr, dskagr))
+philentropy::CE(pjoint, pskagr, unit="log2")
+philentropy::CE(pjoint, pdagr, unit="log2")
+
+# Örnek 7.25a: calc.KLD ile Kullback-Leibler ýraksamasý hesaplama
+# Baðýmlýlýk – Fonksiyon: 7.19
+#
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+bagr <- c(15.1, 15.1, 15.1, 15.1, 15.1, 15.1, 15.1, 15.1)
+k <- 4
+ddagr <- cut(dagr, k, labels=1:k)  
+dskagr <- cut(skagr, k, labels=1:k)
+calc.DKL(table(ddagr, ddagr))
+calc.DKL(table(ddagr, dskagr))
+calc.DKL(table(dskagr, ddagr))
+calc.DKL(table(ddagr, dskagr),base=exp(1))
+calc.DKL(table(dskagr, ddagr),base=exp(1))
+
+# Örnek 7.25b: philentropy'de Kullback-Leibler ýraksamasý
+# Baðýmlýlýk – Paket: philentropy
+#
+if(!require(philentropy, quietly=TRUE)){
+   install.packages("philentropy", 
+     repo="https://cloud.r-project.org/");
+   require(philentropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+pjoint <- rbind(prop.table(table(ddagr)),
+    prop.table(table(dskagr)))
+kld <- KL(pjoint)
+kld
+
+# Örnek 7.26a: calc.crossentropy ile çapraz entropi hesaplama
+# Baðýmlýlýk – Fonksiyon: 7.20
+#
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+calc.crossentropy(table(ddagr, dskagr))
+calc.crossentropy(table(dskagr, ddagr))
+
+# Örnek 7.27: philentropy ile ýraksama hesaplamalarý
+# Baðýmlýlýk – Paket: philentropy
+#
+if(!require(philentropy, quietly=TRUE)) {
+   install.packages("philentropy",
+     repo="https://cloud.r-project.org/")
+   require(philentropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+pjoint <- rbind(prop.table(table(ddagr)),
+   prop.table(table(dskagr)))
+jsd <- JSD(pjoint)
+jsd
+gjsd <- gJSD(pjoint, weights = c(0.5, 0.5))
+gjsd
+gjsd <- gJSD(pjoint, weights = c(0.75, 0.25))
+gjsd
+
+# Örnek 7.28a: Kategorik veride calc.MI ile 
+# karþýlýklý bilgi hesaplama 
+set.seed(1923)
+x <- sample(letters[1:3], 100, 1)
+y <- sample(letters[4:5], 100, 1)
+mi1 <- calc.MI(table(x,y))  #veya mi1 <- calc.MI2(table(x,y))
+mi1
+library(entropy)  # entropy fonksiyonu ile hesaplama
+mi2 <- mi.empirical(table(x,y), unit="log2")
+mi2
+
+# Örnek 7.28b: Sürekli veride calc.MI ile 
+# karþýlýklý bilgi hesaplama
+# Baðýmlýlýk – Fonksiyon: 6.20a
+#
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+fjoint1 <- table(ddagr, dskagr)
+calc.MI(fjoint1, base=2)
+fjoint2 <- table(dskagr, ddagr)
+calc.MI(fjoint2, base=2)
+fjoint0 <- table(ddagr, ddagr)
+calc.MI(fjoint0, base=2)
+
+# Örnek 7.28c: : Sürekli veride philentropy ile 
+# karþýlýklý bilgi hesaplama 
+# Baðýmlýlýk – Paket: philentropy
+#
+if(!require(philentropy, quietly=TRUE)) {
+   install.packages("philentropy",
+     repo="https://cloud.r-project.org/")
+   require(philentropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+pdagr <- prop.table(table(ddagr))
+pskagr <- prop.table(table(dskagr))
+portak <- prop.table(table(ddagr, dskagr))
+philentropy::MI(pdagr, pskagr, portak)
+
+# Örnek 7.28d: Sürekli veride infotheo ile 
+# karþýlýklý bilgi hesaplama
+# Baðýmlýlýk – Paket: infotheo
+#
+if(!require(infotheo, quietly=TRUE)) {
+   install.packages("infotheo",
+     repo="https://cloud.r-project.org/")
+   require(infotheo, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+ddagr <- cut(dagr,k, labels=1:k)
+dskagr <- cut(skagr,k, labels=1:k)
+mi <- mutinformation(ddagr, dskagr,method= "emp")
+mi
+
+# Örnek 7.28e: Sürekli veride entropy ile 
+# karþýlýklý bilgi hesaplama
+# Baðýmlýlýk – Paket: entropy
+#
+if(!require(entropy, quietly=TRUE)) {
+   install.packages("entropy",
+     repo="https://cloud.r-project.org/")
+   require(entropy, quietly=TRUE)
+}
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+k <- 4
+djoint <- discretize2d(dagr, skagr, numBins1=k, numBins2=k)
+mi <- mi.empirical(djoint, unit="log2")
+mi
+mi <- mi.empirical(djoint, unit="log2")
+mi
+
+# Örnek 7.28f: MI birim dönüþtürmesi
+# Baðýmlýlýk – Örnek: 6.28c, 6.28d
+#
+infoteho::natstobits(mi)
+
+# Örnek 7.29a: cor.MIC ile MIC hesaplama
+# Baðýmlýlýk – Örnek: 7.28d; Fonksiyon: 7.22
+cor.MIC(dagr, skagr)
+
+# Örnek 7.29b: minerva ile MIC hesaplama
+# Baðýmlýlýk – Örnek: 7.27d; Paket: minerva
+#
+if(!require(minerva, quietly=TRUE)) {
+   install.packages("minerva", 
+     repo="https://cloud.r-project.org/")
+   require(minerva, quietly=TRUE)}
+minerva::mine(dagr, skagr, alpha=0.6)$MIC
+
+# Örnek 7.29c: minerva ile çeþitli ölçülerin hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.28d; Paket: minerva
+#
+mineres <- minerva::mine(dagr, skagr)
+mineres$MIC
+mineres$GMIC
+mineres$MEV
+mineres$MCN
+mineres$'MIC-R2'
+mineres$MAS
+mineres$MCN
+
+# Örnek 7.30a: calc.mic ile MIC hesaplama
+# Baðýmlýlýk – Fonksiyon: 6.22a
+#
+dagr <- c(2.7, 4.6, 3.5, 4.9, 2.6, 4.6, 3.4, 3.5)
+skagr <- c(25.9, 37.1, 36.9, 40.3, 24.4, 30.9, 36.3, 39.2)
+dsagr <- data.frame(y=skagr, x=dagr)
+MICdsagr1 <- calc.mic(dsagr, base=exp(1))
+MICdsagr1
+
+# Örnek 7.30b: calc.MIC ile MIC hesaplama
+# Baðýmlýlýk – Örnek: 7.30a; Fonksiyon: 7.22c
+#
+MICdsagr2 <- calc.MIC(dsagr)
+MICdsagr2
+
+# Örnek 7.31: MIC ve Pearson r dönüþümü
+# Baðýmlýlýk – Örnek: 7.30; Fonksiyon: 7.22b
+#
+mic2cor <- function(mic) (sqrt(1-exp(-mic)))
+mic2cor(MICdsagr2)
+calc.pearson(dsagr)
+
+# Örnek 7.32a: cor.rdc ile RDC hesaplama
+# Baðýmlýlýk – Örnek: 7.30a; Fonksiyon: 7.23a
+#
+cor.rdc(dsagr)
+
+# Örnek 7.32b: AlterCorr paketi ile korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.30a; Paket: AlterCorr
+#
+# AlterCorr paketinin yüklenmesi, kurulu deðilse kurulmasý
+if(!require("AlterCorr", quietly=TRUE)){
+   if(!require(remotes))
+      install.packages("remotes")
+    remotes::install_github("AnaBPazos/AlterCorr")
+    require(AlterCorr, quietly=TRUE) 
+}
+AlterCorr(dsagr$x, dsagr$y, type="pearson")
+AlterCorr(dsagr$x, dsagr$y, type="MIC", R=100)
+AlterCorr(dsagr$x, dsagr$y,  type="dCor",R=100)
+AlterCorr(dsagr$x, dsagr$y, type="RDC")
+AlterCorr::rdc(dsagr$x, dsagr$y, k=20, s=1/6, f=sin)
+
+# Örnek 7.32c: calc.rdc ile RDC hesaplama
+# Baðýmlýlýk – Örnek: 7.30a; Fonksiyon: 7.32b
+calc.rdc(dsagr)
+
+# Örnek 7.33a: nlcor ile doðrusal olmayan korelasyon analizi
+# Baðýmlýlýk – Örnek: 7.3; Paket: nlcor
+#
+# nlcor paketinin yüklenmesi, kurulu deðilse kurulmasý
+if(!require(nlcor, quietly=TRUE)){
+    if(!require(remotes))
+      install.packages("remotes")
+    remotes::install_github("ProcessMiner/nlcor")
+    require(nlcor, quietly=TRUE) 
+}
+# dsagr parabolik verisinde doðrusal olmayan korelasyon
+nlc <- nlcor::nlcor(dsquad$x, dsquad$y, refine=0.9, plt=TRUE)
+nlc$cor.estimate
+nlc$adjusted.p.value
+print(nlc$cor.plot)
+
+# Örnek 7.33b:calc.nlcor ile doðrusal olmayan korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.3; Fonksiyon: 7.24
+#
+nlcor <- calc.nlcor(dsquad)
+nlcor
+
+# Örnek 7.34a: acepack ile doðrusal olmayan korelasyon analizi
+# Baðýmlýlýk – Örnek: 7.3; Paket: acepack
+#
+# acepack paketinin yüklenmesi, kurulu deðilse kurulmasý
+if(!require(acepack, quietly=TRUE)) {
+   install.packages("acepack", 
+    repo="https://cloud.r-project.org/")
+   require(acepack, quietly=TRUE)
+}
+# dsquad parabolik verisinde doðrusal olmayan korelasyon
+argmax <- acepack::ace(dsquad$x, dsquad$y)
+acecor <- cor(argmax$tx, argmax$ty)[1]
+acecor
+
+# Örnek 7.34b:calc.acecor'la doðrusal olmayan korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.3; Fonksiyon: 7.25
+#
+acecor <- calc.acecor(dsquad)
+acecor
+
+# Örnek 7.35a: NNS ile doðrusal olmayan korelasyon analizi
+# Baðýmlýlýk – Örnek: 7.3; Paket: NNS
+#
+# NNS paketinin yüklenmesi, kurulu deðilse kurulmasý
+if(!require(NNS, quietly=TRUE)) {
+   install.packages("NNS", repo="https://cloud.r-project.org/")
+   require(NNS, quietly=TRUE)
+}
+# dsquad parabolik verisinde doðrusal olmayan korelasyon
+nnscor <- NNS::NNS.cor(dsquad$x, dsquad$y)
+nnscor
+
+# Örnek 7.35b:calc.nnscor'la doðrusal olmayan korelasyon hesaplama
+# Baðýmlýlýk – Örnek: 7.3; Fonksiyon: 7.26
+#
+nnscor <- calc.nnscor(dsquad)
+nnscor
+
+# Örnek 7.36: Çeþitli korelasyonlarýn hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.3, 7.11b; Fonksiyon: 7.27
+#
+dsets <- list(dscor0, dslnr1, dslnr3, dsquad, dscubic, dspoly,
+   dssin,dsexp, dsvolc, dssemcirc, dscircle, dsparabola,
+   ds2parabola, dsdiamond)
+names(dsets) <- c("dscor0", "dslnr1", "dslnr3", "dsquad",
+   "dscubic", "dspoly", "dssin", "dsexp", "dsvolc", "dssemcirc",
+   "dscircle", "dsparabola","ds2parabola", "dsdiamond")
+cortab1 <- cor.table(dsets, plot=FALSE)
+round(cortab1,2)
+
+# Örnek 7.37a: Normal daðýlýþlý 0.6 korelasyonlu veride 
+# Pearson ve MIC karþýlaþtýrmasý
+# Baðýmlýlýk – Fonksiyon: 7.28
+#
+anakitle <- gen.cordata(n=50000, r=0.6, mu=50, sd=5, 
+   a=10, seed=28)  #Normal veri
+cormat <- cor.compare(anakitle, n=30, 
+   cor1=calc.pearson, cor2=calc.MIC, R=100)
+head(cormat, 5)
+
+# Örnek 7.37b: Normal daðýlýþlý 0.6 korelasyonlu veride 
+# ggplot ile karþýlaþtýrma
+# Baðýmlýlýk – Örnek: 7.37a; Fonksiyon: 7.28; Paket: ggplot2
+#
+if(!require(ggplot2, quietly=TRUE)) {
+   install.packages("ggplot2",
+     repo="https://cloud.r-project.org/")
+   require(ggplot2, quietly=TRUE)
+}
+ggplot(cormat, aes(cor1, cor2)) + 
+   geom_point(color="red") +
+   geom_smooth(method="loess", se=TRUE)
+
+# Örnek 7.37c: W þekilli veride iki korelasyonun karþýlaþtýrýlmasý
+# Baðýmlýlýk – Fonksiyon: 7.28
+#
+anakitle <- gen.hhgdata(n=50000, type="W")  # W þekilli veri
+cormat <- cor.compare(anakitle, n=30, 
+    cor1=calc.pearson, cor2=calc.rdc, R=100)
+head(cormat, 5)
+
+# Örnek 7.38a: Korelasyon matrisleri ve grafikleri
+# Baðýmlýlýk – Örnek: , Fonksiyon: 7.29
+setwd("C:/rsbook")
+cordata <- read.table("nonlincor.dat", head=TRUE)
+cor (cordata, method="spearman")
+
+# Örnek 7.38b: Korelasyon matrisleri ve grafikleri
+# Baðýmlýlýk – Örnek: 7.38a, Fonksiyon: 7.29
+#
+cor.matrix(cordata, "dcor", plot=FALSE)
+
+# Örnek 7.38c: Korelasyon matrisleri ve grafikleri
+# Baðýmlýlýk – Örnek: 7.38a, Fonksiyon: 7.29
+#
+par(mfrow=c(2,2))
+cor.matrix(cordata, "pearson", plot="TRUE")
+cor.matrix(cordata, "hoefd", plot="TRUE")
+cor.matrix(cordata, "dcor", plot="TRUE")
+cor.matrix(cordata, "mic", plot="TRUE")
+
+# Örnek 7.39a: Pearson korelasyonu için dbs.nonpar1 ile bootstrap  
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 4.3a, 4.9a
+# 
+# dscor2 verisinde dbs.nonpar1 ile bootstrap
+bspearson1 <- dbs.nonpar1(dset=dscor2, statistic=calc.pearson, R=2000)
+
+# Örnek 7.39b: Pearson korelasyonu için boot ile bootstrap
+# Baðýmlýlýk – Örnek: 7.10a; Paket: boot
+# 
+# boot paketinin yüklenmesi ve kurulu deðilse kurulmasý
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+# dscor2 verisinde boot ile bootstrap
+bspearson2 <- boot(data=dscor2, statistic=calc.pearson, R=2000)
+
+# Örnek 7.39c: Uzaklýk korelasyonu için boot ile bootstrap
+# Baðýmlýlýk – Örnek: 7.10a; Paket: boot
+# 
+# dscor3 verisinde boot ile bootstrap
+bsdcor <- boot(data=dscor3, statistic=calc.dCor, R=3000)
+
+# Örnek 7.39d: MIC için boot ile bootstrap
+# Baðýmlýlýk – Örnek: 7.10a; Paket: boot
+# 
+# dscor1 verisinde boot ile bootstrap
+bsmic <- boot(data=dscor1, statistic=calc.MIC, R=2000)
+
+# Örnek 7.40a: dbs.nonpar1 ile elde edilen bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 7.37a; Fonksiyon: 4.7
+# 
+bsonucpearson1 <- bs.sonuc(bspearson1)
+bsonucpearson1$est
+bsonucpearson1$bias
+bsonucpearson1$se
+
+# Örnek 7.40b: boot ile elde edilen bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 7.37b; Fonksiyon: 4.7
+# 
+bsonucpearson2 <- bs.sonuc(bspearson2)
+bsonucpearson2$est
+bsonucpearson2$bias
+bsonucpearson2$se
+
+# Örnek 7.41: Korelasyon için bootstrap sonuçlarýnýn
+# görselleþtirilmesi
+# Baðýmlýlýk – Örnek: 7.37b; Fonksiyon: 4.10, 4.15, 4.16
+# 
+bs.dist(bspearson1, gayontem="yuzde")
+bs.plot(bspearson1)
+
+# Örnek 7.42a: Korelasyon için bootstrap güven aralýklarýnýn
+# hesaplanmasý
+# Baðýmlýlýk – Örnek: 7.37b; Fonksiyon: 4.18a
+# 
+bspearson2.ci <- boot.ci(bspearson2)
+cimat.bspearson2 <- ci.matrix(bspearson2.ci)
+cimat.bspearson2$t0 
+cimat.bspearson2$cm
+
+# Örnek 7.42b: Güven aralýklarý grafiði
+# Baðýmlýlýk – Örnek: 7.42a; Fonksiyon: 4.18b
+# 
+ci.plot(cimat.bspearson2)
+
+# Örnek 7.43a: Pearson korelasyonu GA deðiþimi hesaplama
+# Baðýmlýlýk – Fonksiyon: 4.18c, 7.6 
+# 
+anakitle <- gen.cordata(n=50000, r=0.6, mu=50, sd=5, a=10, seed=28)
+ssize <- c(5, 15, 30, 50, 75, 100, 150) # Örneklem büyüklükleri
+cires <- ci.change(anakitle, ssize, statistic=calc.pearson, 
+   iade=TRUE, conf.level=0.95, R=3000)
+head(cires)
+tail(cires)
+
+# Örnek 7.43b: Pearson korelasyonu GA deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 7.43a; Fonksiyon: 4.18d
+# 
+cichange.plot(cires)
+
+# Örnek 7.44a: Farklý R tekrarlarýnda GA deðiþimi
+# Baðýmlýlýk – Fonksiyon: 4.18e, 7.6, 7.9b 
+# 
+anakitle <- gen.cordata(n=50000, r=0.6, mu=50, sd=5, 
+    a=10, seed=28)
+ssize <- 30
+R <- c(100, 500, 1000, 2000, 3000, 5000)
+cires2 <- ci.changeR(anakitle, ssize, statistic=calc.pearson, 
+   iade=TRUE, conf.level=0.95, R=R)
+head(cires2)
+tail(cires2)
+
+# Örnek 7.44b: Farklý R tekrarlarýnda GA deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 7.44a; Fonksiyon: 4.18d 
+#
+cichange.plot(cires2)
+
+# Örnek 7.45a: Çok sayýda korelasyon için bootstrap hesaplama
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 4.18d; Paket: boot
+#
+# boot paketinin yüklenmesi ve kurulu deðilse kurulmasý
+if(!require(boot, quietly = TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly = TRUE)
+}
+bscormult <- boot(dscor3, statistic=calc.multcor, R=2000)
+
+# Örnek 7.45b: Korelasyon için bootstrap kestirimlerinin
+# görselleþtirilmesi
+# Baðýmlýlýk – Örnek: 7.45a; Fonksiyon: 4.15, 4.16
+#
+bs.dist(bscormult, index=7, gayontem="yuzde")
+bs.plot(bscormult, index=7)
+
+# Örnek 7.45c: Farklý R tekrarlarýnda GA deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 7.44a; Fonksiyon: 4.15 
+#
+opar <- par(mfrow=c(5,2))
+for(i in 1:10) bs.dist(bscormult, index=i)
+par(opar)
+
+# Örnek 7.46: Örneklem büyüklüðüne göre korelasyon yöntemlerinin baþarýmý
+# Baðýmlýlýk – Fonksiyon: 7.9b, 7.31 
+#
+n <- c(10, 30, 50, 100, 150)
+m <- 1000
+r <- c(0, .2, .4, .6, .8, 1)
+R <- 2000
+statistic <- calc.pearson
+corperf <- cor.perf(statistic, n, r, m, R, dplot=TRUE)
+corperf$cormeans
+corperf$corbiases
+corperf$corstdevs
+corperf$corpercis1
+corperf$corpercis2
+## Sonuçlarý daha sonra kullanmak için R dataset olarak kaydet
+saveRDS(corperf, file = "corperf3.rds")
+corperf3 <- readRDS(file = "corperf.rds") # RDS dosyasý oku
+
+# Örnek 7.47: Farklý örneklem büyüklüðünde Pearson korelasyonu
+# kapsama oranlarý performansý (r=0.5)
+# Baðýmlýlýk – Fonksiyon: 4.7, 4.19, 7.9b; Paket: boot, MASS
+#
+# Anakitleyi oluþtur
+N <- 50000    # Anakitle büyüklüðü
+mu <- c(10, 20)    # Deðiþkenler için anakitle ortalamalarý
+covmat <- matrix(c(1, 0.5, 0.5, 1), ncol=2) 
+anakitle  <- MASS::mvrnorm(N, mu=mu, Sigma=covmat,
+   empirical=TRUE)
+## Bootstrap argümanlarýný belirle
+m <- 2000 # Örneklem sayýsý
+> n <- c(5, 10, 30, 50, 75, 100) # Örneklem büyüklüðü vektörü
+R <- 2000  # Bootstrap tekrarlama sayýsý
+conf.level <- 0.95 # Güven düzeyi
+statistic <- calc.pearson  # Ýstatistik fonksiyonu adý
+teta <- statistic(anakitle) # Anakitle parametre deðerleri
+gayontem <- ga.yuzde  # Güven aralýðý yöntemi
+dbs <- FALSE  # Çifte bootstrap istenirse TRUE olmalý
+## Bootstrap uygula 
+corperf2 <- bs.perform1(x=anakitle, teta=teta,
+   statistic=statistic, gayontem=gayontem, m=m, n=n, 
+   dbs=dbs, R=R, conf.level=conf.level)
+## Sonuçlarý görüntüle
+corperf2[,,1]
+corperf2[2,,]
+## Kapsama oraný grafiðini çiz
+ko.plot(corperf2)
+
+# Örnek 7.48: Farklý örneklem büyüklüðünde çok sayýda korelasyon
+# yöntemi için kapsama oranlarý performansý (r=0.5)
+# Baðýmlýlýk – Fonksiyon: 4.7, 4.19, 7.9b, 7.31; Paket: MASS
+#
+## Anakitleyi oluþtur
+N <- 10000    # Anakitle büyüklüðü
+mu <- c(10, 20)    # Deðiþkenlerin anakitle ortalamalarý
+covmat <- matrix(c(1, 0.5, 0.5, 1), ncol=2) 
+anakitle  <- MASS::mvrnorm(N, mu=mu, Sigma=covmat,
+#   empirical=TRUE)
+## Bootstrap argümanlarýný belirle
+m <- 2000 # Örneklem sayýsý
+n <- c(10, 30, 50, 75, 100) # Örneklem büyüklüðü vektörü
+R <- 2000  # Bootstrap tekrarlama sayýsý
+conf.level <- 0.95 # Güven düzeyi
+statistic <- calc.multcor2  # Ýstatistik fonksiyonu adý
+teta <- statistic(anakitle) # Anakitle parametre deðerleri 
+gayontem <- ga.yuzde  # Güven aralýðý yöntemi
+dbs <- FALSE  # Çifte bootstrap (gayontem=ga.stud ise TRUE)
+## Bootstrap uygula 
+corperf3 <- bs.perform1(x=anakitle, teta=teta,
+   statistic=statistic, gayontem=gayontem, m=m, n=n, 
+   dbs=dbs, R=R,
+  conf.level=conf.level)
+## Sonuçlarý daha sonra kullanmak için R dataset olarak kaydet
+saveRDS(corperf3, file = "corperf3.rds")
+corperf3 <- readRDS(file = "corperf3.rds") # RDS dosyasý oku
+## Pearson korelasyonu
+corperf3[,,1]
+## Spearman korelasyonu
+corperf3[,,2]
+## Kendall korelasyonu
+corperf3[,,3]
+## Uzaklýk korelasyonu
+corperf3[,,4]
+## MIC korelasyonu
+corperf3[,,5]
+## RDC korelasyonu
+corperf3[,,6]
+## ACE korelasyonu
+corperf3[,,7]
+
+# Örnek 7.49a: dscor2 verisinde Spearman korelasyonu hesaplama 1
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.10b, 7.33
+#
+perspear <- permute.cor(dset=dscor2, statistic=calc.spearman,
+   alternative="two.sided", R=10000)
+perspear$t0
+perspear$p.value
+
+# Örnek 7.49b: Permütasyon sonuçlarý nesnesinin öznitelikleri
+# Baðýmlýlýk – Örnek: 7.49a
+#
+attributes(perspear)
+
+# Örnek 7.49c: dscor2 verisinde Spearman korelasyonu hesaplama 2
+# Baðýmlýlýk – Örnek: 7.10a
+#
+cor.test(dscor2$V1, dscor2$V2, method="spearman")
+
+# Örnek 7.49d: Permütasyon kestirimleri örnekleme daðýlýþý 
+# Baðýmlýlýk – Örnek: 7.47a; Fonksiyon: 7.44
+#
+permute.plot(perspear)
+
+# Örnek 7.50: Permütasyon kestirimleri örnekleme daðýlýþý 
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.10b, 7.47, 7.48
+#
+perspear2$t0
+perspear2$p.value
+perspear3 <- permute.cor3(dset=dscor2, statistic=calc.spearman, R=10000)
+perspear3$t0
+perspear3$p.value
+
+# Örnek 7.51: Korelasyon için alternatif permütasyon fonksiyonlarý
+# için hýz testi 
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.10b, 7.45, 7.47, 7.48
+#
+system.time(permute.cor(dscor2, calc.spearman, R=50000))
+system.time(permute.cor2(dscor2, calc.spearman, R=50000))
+system.time(permute.cor3(dscor2, calc.spearman, R=50000))
+
+# Örnek 7.52a: jack.cortest fonksiyonu ile Spearman korelasyonu
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.10b, 7.37
+#
+jackspear <- jack.cortest(dset=dscor2, statistic=calc.spearman,
+  alternative="two.sided")
+jackspear$t0
+head(jackspear$t) #Kestirimler
+jackspear$p.value
+permute.plot(jackspear)  # Grafiði çiz
+
+# Örnek 7.52b: jack.cortest fonksiyonu ile MIC katsayýsý 
+# Baðýmlýlýk – Örnek: 7.10a; Fonksiyon: 7.22b, 7.37
+#
+jackmic <- jack.cortest(dset=dscor2, statistic=calc.MIC)
+jackmic$t0
+jackmic$p.value
+permute.plot(jackmic)
+
+#### BÖLÜM 8 ############################################################
+
+# Örnek 8.1a: Basit doðrusal regresyon için veri benzetimi
+set.seed(1987)  # Örneðin tekrarlanmasý için RNG baþlatýcý
+n <- 200
+x <- rnorm(n, mean=5, sd=0.8)
+y <- 2.5*x+rnorm(n)+10
+dsreg1 <- data.frame(y=y, x=x)
+
+# Örnek 8.1b: dsreg1 verisinin yapýsý ve grafiði
+# Baðýmlýlýk – Örnek 8.1a; Fonksiyon: 7.2
+#
+head(dsreg1, 3)
+tail(dsreg1, 3)
+cor.plot(dsreg1)
+
+# Örnek 8.1c: dsreg1 verisinde basit doðrusal regresyon analizi
+# Baðýmlýlýk – Örnek 8.1a
+#
+lrmodel <- lm(y~x, data=dsreg1)
+summary(lrmodel)
+
+# Örnek 8.2a: Basit doðrusal regresyon katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.1a; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+linreg1 <- boot(data=dsreg1, statistic=calc.linreg,
+   formula=y~x,  R=3000)
+linreg1  # Sonuçlarý göster
+
+# Örnek 8.2b: Regresyon katsayýlarýnýn güven aralýðý
+# Baðýmlýlýk – Örnek: 8.2a; Paket: boot
+#
+boot.ci(linreg1, index=2, type="all", conf=0.95)
+
+# Örnek 8.2c:Regresyon katsayýlarý bootstrap kestirimleri daðýlýþý
+# Baðýmlýlýk – Örnek: 8.2a; Fonksiyon: 4.10, 4.15
+#
+opar <- par(mfrow=c(2,1))
+bs.dist(linreg1, index=1, gayontem="yuzde") # Kesme yüksekliði 
+bs.dist(linreg1, index=2, gayontem="yuzde") # Regresyon kats.
+par(opar)
+
+# Örnek 8.3: Doðrusal model (lm) fonksiyonu çýktýlarý
+# Baðýmlýlýk – Örnek: 8.1a
+#
+lregmodel <- lm(formula=y~x, data=dsreg1)
+attributes(summary(lregmodel))
+
+# Örnek 8.4a: R2 (R-kare) için bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 8.1a; Fonksiyon: 8.2; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+linregR2 <- boot(data=dsreg1, formula=y~x, statistic=calc.R2, R=3000)
+linregR2 # Sonuçlarý göster
+
+# Örnek 8.4b: R2 (R-kare) için güven aralýðý
+# Baðýmlýlýk – Örnek: 8.4a; Paket: boot
+#
+boot.ci(linregR2, type="perc", conf=0.95) # R2 yüzdelik GA
+
+# Örnek 8.4c: R2 (R-kare) için bootstrap kestirimleri daðýlýþý
+# Baðýmlýlýk – Örnek: 8.4a; Fonksiyon: 4.10, 4.15
+#
+opar <- par(mfrow=c(1,1))
+bs.dist(linregR2, gayontem="yuzde") 
+par(opar)
+
+# Örnek 8.4d: R2 (R-kare) için güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.4a; Fonksiyon: 4.18a; Paket: boot
+#
+ci.matrix(boot.ci(linregR2, conf=0.95))$cm
+
+# Örnek 8.5a: Çoklu doðrusal regresyon için veri benzetimi
+set.seed(123)
+n  <- 100
+x1 <- rnorm(n, 175, 7)
+x2 <- rnorm(n,  30, 8)
+x3 <- abs(rnorm(n, 60, 30))
+y  <- 0.5*x1-0.3*x2-0.4*x3+10+rnorm(n, 0, 3)
+dsreg2 <- data.frame(y, x1, x2, x3)
+
+# Örnek 8.5b: dsreg2 verisinin içeriði
+# Baðýmlýlýk – Örnek 8.5a; Fonksiyon: 7.2
+#
+head(dsreg2, 5)
+tail(dsreg2, 5)
+cor.plot(dsreg2$x2,dsreg2$y)
+
+# Örnek 8.5d: Deðiþkenler arasý iliþkileri ggpairs ile inceleme
+# Baðýmlýlýk – Örnek 8.5b; Fonksiyon: 7.2; Paket: GGally
+#
+if(!require(GGally, quietly=TRUE)) {
+   install.packages("GGally",
+    repo="https://cloud.r-project.org/")
+   require(GGally, quietly=TRUE)
+}
+# ggpairs regresyon eðrileri çizme fonksiyonu
+regline <- function(data, pts=list(), smt=list(),mapping){
+   ggplot(data=data, mapping=mapping) + 
+   do.call(geom_point, pts) +
+   do.call(geom_smooth, smt)}
+ggpairs(dsreg2, 
+    diag=list(discrete="barDiag", 
+      continuous=wrap("densityDiag", alpha=0.5)),
+    lower=list(continuous=wrap(regline,
+      pts=list(size=1.2, col="black", alpha=0.5), 
+      smt=list(method="lm", size=1.2, se=FALSE,
+      colour="orange", alpha=0.5)))
+)
+
+
+# Örnek 8.5e: dsreg2 verisi için korelasyon grafiði
+# Baðýmlýlýk – Örnek: 8.5a;  Paket: corrplot
+#
+if(!require(corrplot, quietly=TRUE)) {
+   install.packages("corrplot",
+     repo="https://cloud.r-project.org/")
+   require(corrplot, quietly=TRUE)
+}
+cormat <- cor(dsreg2) 
+corrplot.mixed(cormat, lower.col="black", number.cex=0.8, upper="pie")
+
+# Örnek 8.6a. dsreg2 verisinde çoklu regresyon analizi 
+# Baðýmlýlýk – Örnek: 8.5a
+#
+formula <- y ~ x1 + x2 + x3
+lrmodel2 <- lm(formula, data=dsreg2)
+summary(lrmodel2)
+
+# Örnek 8.6b: dsreg2 verisinde çoklu regresyon analizi 
+# Baðýmlýlýk – Örnek: 8.6a
+#
+coef(lrmodel2)
+sqrt(diag(vcov(lrmodel2)))
+confint(lrmodel2)
+
+# Örnek 8.7a: Çoklu doðrusal regresyon katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.6a; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+multreg1 <- boot(data=dsreg2, formula=formula,
+   statistic=calc.multreg, R=3000)
+multreg1 
+
+# Örnek 8.7b: Çoklu doðrusal regresyon katsayýlarý için 
+# (BCa) güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.7a; Paket: boot
+#
+boot.ci(multreg1, index=1, type="bca", conf=0.95)
+boot.ci(multreg1, index=2, type="bca", conf=0.95)
+boot.ci(multreg1, index=3, type="bca", conf=0.95)
+boot.ci(multreg1, index=4, type="bca", conf=0.95)
+
+# Örnek 8.8a: Basit doðrusal regresyonda çok istatistik için
+# bootstrap uygulamasý
+# Baðýmlýlýk – Örnek: 8.1a; Fonksiyon: 8.4; Paket: boot
+#
+mslinreg <- boot(data=dsreg1, formula=y~x,
+   statistic=calc.mslinreg, R=3000)
+mslinreg # Sonuçlarý göster
+
+# Örnek 8.8b: Regresyon katsayýsý için güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.8a; Paket: boot
+#
+boot.ci(mslinreg, index=2, type="all", conf=0.95) # b(y,x) 
+
+# Örnek 8.8c: Regresyon katsayýsý için örnekleme daðýlýþý
+# Baðýmlýlýk – Örnek: 8.8a; Fonksiyon: 4.15; Paket: boot
+#
+opar <- par(mfrow=c(1,1))
+bs.dist(mslinreg, index=2, gayontem="ydh") 
+par(opar)
+
+# Örnek 8.8d: RMSE için örnekleme daðýlýþý
+# Baðýmlýlýk – Örnek: 8.8a; Fonksiyon: 4.15; Paket: boot
+#
+opar <- par(mfrow=c(1,1))
+bs.dist(mslinreg, index=7, gayontem="ydh") 
+par(opar)
+
+# Örnek 8.8e: RMSE için örnekleme daðýlýþ
+# Baðýmlýlýk – Örnek: 8.8a; Fonksiyon: 4.16
+#
+opar <- par(mfrow=c(1,1))
+bs.plot(mslinreg, index=7) 
+par(opar)
+
+# Örnek 8.8f: RMSE için güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.8a; Paket: boot
+#
+boot.ci(mslinreg, index=7)
+
+# Örnek 8.8g: Tüm istatistiklerin daðýlýþ grafikleri
+# Baðýmlýlýk – Örnek: 8.8a; Fonksiyon: 4.15
+#
+opar <- par(mfrow=c(3,2))
+for (i in 2:7) bs.dist(mslinreg, index=i, gayontem="ydh") 
+par(opar)
+
+# Örnek 8.9a: Kalsiyum alýmý verisinin okunmasý
+# Baðýmlýlýk – Paket: readxl
+#
+if(!require(readxl, quietly=TRUE)){
+   install.packages("readxl",
+     repo="https://cloud.r-project.org/")
+   require(readxl, quietly=TRUE)
+}
+# Çalýþma klasörünü belirle (dosyanýn olduðu klasör)
+setwd ("C:/rsbook") 
+# Excel dosyasýný oku
+kalsalim <- read_xlsx("kalsiyum.xlsx", sheet=1, col_names=TRUE)
+kalsalim <- data.frame(kalsalim) # Veri çerçevesi
+# Veri yapýsýný incele
+str(kalsalim)
+
+# Örnek 8.9b: Kalsiyum verisinde kantil regresyonu
+# Baðýmlýlýk – Örnek: 8.9a; Paket: quantreg
+#
+if(!require(quantreg)) 
+    {install.packages("quantreg"); library(quantreg)}
+kalskantreg <- rq(kalsiyum~sure, data=kalsalim, tau=0.5)
+summary(kalskantreg)
+
+# Örnek 8.9c: Kalsiyum alýmý (kalskantreg) modeli regresyon
+# grafiði
+# Baðýmlýlýk – Örnek: 8.9b
+#
+plot(kalsiyum~sure, data=kalsalim, pch=19, col="blue", 
+    xlab="Süre", ylab="Kalsiyum alýmý", 
+    main="Kalsiyum Alýmý Kantil Regresyonu")
+abline(kalskantreg,col="red", lty=2, lwd=2)
+
+# Örnek 8.10a: Kantil regresyonu katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.9a, Fonksiyon: 8.5; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+formula <- kalsiyum ~ sure
+kantres1 <- boot(data=kalsalim, statistic=calc.kantreg,
+    formula=formula, R=2000)
+kantres1 
+
+# Örnek 8.10b: Model katsayýlarýnýn örnekleme daðýlýþlarý
+# Baðýmlýlýk – Örnek: 8.10a; Fonksiyon: 4.15
+#
+opar <- par(mfrow=c(2,1))
+for(i in 1:2) bs.dist(kantres1, index=i)
+par(opar)
+
+# Örnek 8.10c: Model katsayýlarýnýn güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.10a; Paket: boot
+#
+boot.ci(kantres1)
+boot.ci(kantres1, index=2)
+
+# Örnek 8.11a: Kalsiyum alýmý verisinde polinomiyal regresyonlar
+# Baðýmlýlýk – Örnek: 8.9a
+kalslinear <- lm(kalsiyum~poly(sure,d=1),data=kalsalim)
+kalsquad <- lm(kalsiyum~poly(sure,d=2),data=kalsalim)
+kalscubic <- lm(kalsiyum~poly(sure,d=3),data=kalsalim)
+kalsquart <- lm(kalsiyum~poly(sure,d=4),data=kalsalim)
+kalsquint <- lm(kalsiyum~poly(sure,d=5),data=kalsalim)
+
+# Örnek 8.11b: Polinomiyal regresyonlarýn karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.11a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, col="blue", pch=19,
+   xlab="Süre", ylab="Kalsiyum alýmý", 
+   main="Kalsiyum Alýmý Polinomiyal Regresyonlar")
+lines(kalsalim$sure, predict(kalslinear), lwd=2, lty=1, col=3)
+lines(kalsalim$sure, predict(kalsquad), lwd=2, lty=2, col=1)
+lines(kalsalim$sure, predict(kalscubic), lwd=2, lty=3, col=2)
+lines(kalsalim$sure, predict(kalsquart), lwd=2, lty=4, col=4)
+lines(kalsalim$sure, predict(kalsquint), lwd=2, lty=5, col=6)
+legend("bottomright", col=c(3,1,2,4,6),
+   legend=c("doðrusal","kuadratik","kübik","kuartik","kuintik"), 
+   lty=c(1,2,3,4,5), lwd=c(2,2,2,2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.11c: Polinomiyal modellerin baþarýmlarý
+# Baðýmlýlýk – Örnek: 8.11a
+R2 <- data.frame(lin=summary(
+ kalslinear)$adj.r.squared,
+   quad=summary(kalsquad)$adj.r.squared,
+   cubic=summary(kalscubic)$adj.r.squared,
+   quart=summary(kalsquart)$adj.r.squared,
+   quint=summary(kalsquint)$adj.r.squared)
+RSE <- data.frame(lin=summary(kalslinear)$sigma,
+   quad=summary(kalsquad)$sigma,
+   cubic=summary(kalscubic)$sigma,
+   quart=summary(kalsquart)$sigma,
+   quint=summary(kalsquint)$sigma)
+perf <- rbind(R2,RSE)
+rownames(perf) <- c("R2", "RSE")
+perf
+
+# Örnek 8.12a: Kalsiyum alýmý verisinde basamak regresyonlarý
+# Baðýmlýlýk – Örnek: 8.9a
+#
+kalsstep1 <- lm(kalsiyum~cut(sure, 2), data=kalsalim)
+kalsstep2 <- lm(kalsiyum~cut(sure, 5), data=kalsalim)
+kalsstep3 <- lm(kalsiyum~cut(sure, 10), data=kalsalim)
+
+# Örnek 8.12b: Katsayýlarýn görüntülenmesi
+# Baðýmlýlýk – Örnek: 8.12a
+coef(kalsstep1)
+
+# Örnek 8.12c: Basamak regresyonlarýn karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.12a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, col="blue", pch=19,
+   xlab="Süre", ylab="Kalsiyum alýmý", 
+   main="Kalsiyum Alýmý Adým Regresyonlar")
+lines(kalsalim$sure, predict(kalsstep1), lwd=2, lty=1, col=3)
+lines(kalsalim$sure, predict(kalsstep2), lwd=2, lty=2, col=1)
+lines(kalsalim$sure, predict(kalsstep3), lwd=2, lty=3, col=2)
+legend("bottomright", col=c(3,1,2),
+   legend=c("2 adým","5 adým","10 adým"), 
+    lty=c(1,2,3), lwd=c(2,2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.13a: Kalsiyum verisinde kernel regresyonu
+# Baðýmlýlýk – Örnek: 8.9a
+kalskernreg1 <- ksmooth(x=kalsalim$sure, y=kalsalim$kalsiyum, 
+    kernel="normal", bandwidth=1)
+kalskernreg2 <- ksmooth(x=kalsalim$sure, y=kalsalim$kalsiyum, 
+    kernel="normal", bandwidth=2)
+kalskernreg3 <- ksmooth(x=kalsalim$sure, y=kalsalim$kalsiyum, 
+    kernel="normal", bandwidth=4.5)
+
+# Örnek 8.13b: Çekirdek regresyon modelleri karþýlaþtýrma grafiði
+# Baðýmlýlýk – Örnek: 8.13a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, col="blue", pch=19,
+   xlab="Süre", ylab="Kalsiyum alýmý", 
+   main="Kalsiyum Alýmý Çekirdek Regresyonu")
+lines(kalskernreg1, lwd=3, lty=1, col=3)
+lines(kalskernreg2, lwd=3, lty=2, col=2)
+lines(kalskernreg3, lwd=3, lty=3, col=1)
+legend("bottomright", col=c(3,2,1),
+   legend=c("h=1","h=2","h=4.5"), lty=c(1,2,3),
+   lwd=c(3,3,3), bty="n", horiz=FALSE)
+
+# Örnek 8.13c: Bant geniþliðine göre çekirdek regresyonu
+# tahmin hatasý
+# Baðýmlýlýk – Örnek: 8.11a; Fonksiyon: 8.6
+#
+loocv(x=kalsalim$sure, kalsalim$kalsiyum, h=1)
+loocv(x=kalsalim$sure, kalsalim$kalsiyum, h=2)
+loocv(x=kalsalim$sure, kalsalim$kalsiyum, h=4.5)
+loocv(x=kalsalim$sure, kalsalim$kalsiyum, h=10) 
+
+# Örnek 8.13d: Optimum bant geniþliðinin bulunmasý
+# Baðýmlýlýk – Fonksiyon: 8.6
+h.vec <- seq(from=1,to=10, by=0.5)
+cv.hata <- rep(NA, length(h.vec))
+for(i in 1:length(h.vec)){
+   cv.hata[i] <- loocv(x=kalsalim$sure, kalsalim$kalsiyum,
+   h=h.vec[i])
+}
+h.vec
+cv.hata
+
+# Örnek 8.13e: Optimum bant geniþliðinin bulunmasý
+# Baðýmlýlýk – Örnek 8.13d
+#
+min.thm.hata <- min(cv.hata)  # minimum tahmin hatasý
+min.thm.hata 
+h <- h.vec[which(cv.hata==min(cv.hata))]  # optimum h deðeri
+h
+
+# Örnek 8.13e: LOOCV ile tahmin hatalarý deðiþimi grafiði
+# Baðýmlýlýk – Örnek: 8.13d
+#
+plot(x=h.vec, y=cv.hata, type="l", lwd=2, col="blue", pch=19, 
+   xlab="h deðeri", ylab="tahmin hatasý",
+   main="LOOCV ile tahmin hatalarý grafiði")
+
+# Örnek 8.14a: Kalsiyum verisinde loess regresyonu
+# Baðýmlýlýk – Örnek: 8.9a
+#
+kalslokreg1 <- loess(kalsiyum~sure, data=kalsalim,
+   span=0.5, degree=2, family="gaussian")  
+summary(kalslokreg1)
+kalslokreg2 <- loess(kalsiyum~sure, data=kalsalim,
+  span=2.5, degree=2, family="gaussian")  
+summary(kalslokreg2)
+
+# Örnek 8.14b: Kalsiyum verisinde loess regresyonu grafiði
+# Baðýmlýlýk – Örnek: 8.14a
+#
+plot(kalsiyum~sure, data=kalsalim, pch=19, col="blue", 
+    xlab="Süre", ylab="Kalsiyum alýmý", 
+    main="Kalsiyum Alýmý Loess Regresyonu")
+lines(kalsiyum$sure,predict(kalslokreg1),col="red",
+    lty=2, lwd=2)
+lines(kalsiyum$sure,predict(kalslokreg2), col="black", 
+    lty=1, lwd=2)
+legend("bottomright", col=c(2,1),
+    legend=c("span=0.5","span=2.5"), lty=c(2,1),
+    lwd=c(2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.14c: loess ile tahmin iþlemi
+# Baðýmlýlýk – Örnek: 8.14a
+#
+xsure <- data.frame(sure=c(0.5,1,5,10,15))
+kalstahmin <- predict (kalslokreg2, newdata=xsure, se=TRUE)
+kalstahmin
+
+# Örnek 8.15a: Lokal regresyon için bootstrap
+# Baðýmlýlýk – Örnek: 8.9a; Paket: spatialEco
+#
+if(!require(spatialEco)){
+   install.packages("spatialEco");
+   require(spatialEco)
+}
+bs.kalslokreg <- loess.boot(kalsalim$sure, kalsalim$kalsiyum,
+    span=2, nreps=500, confidence=0.95)
+summary(bs.kalslokreg)
+
+# Örnek 8.15b: Lokal regresyon için bootstrap sonuçlarý
+# Baðýmlýlýk – Örnek: 8.15a; Paket: spatialEco
+#
+attributes(bs.kalslokreg)
+
+# Örnek 8.16a: Kalsiyum alýmý verisinde polinom splaynlar
+# Baðýmlýlýk – Örnek: 8.9a; Paket: splines
+#
+library(splines)
+kalsbs1 <- lm(kalsiyum~bs(sure), data=kalsalim)
+kalsbs2 <- lm(kalsiyum~bs(sure, knots=c(3,9)), data=kalsalim)
+kalsbs3 <- lm(kalsiyum~bs(sure, knots=c(4,8,10)), data=kalsalim)
+
+# Örnek 8.16b: Polinom splaynlarýn karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.16a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, col="blue", pch=19,
+   xlab="Süre", ylab="Kalsiyum alýmý", 
+   main="Kalsiyum Alýmý B-splayn Regresyonlar")
+lines(kalsalim$sure, predict(kalsbs1), lwd=2, lty=1, col=3)
+lines(kalsalim$sure, predict(kalsbs2), lwd=2, lty=2, col=1)
+lines(kalsalim$sure, predict(kalsbs3), lwd=2, lty=3, col=2)
+legend("bottomright", col=c(3,1,2),
+   legend=c("default","knot(3,9)","knots(4,8,10)"), 
+    lty=c(1,2,3), lwd=c(2,2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.16c: Kalsiyum alýmý verisinde doðal splyanlar
+# Baðýmlýlýk – Örnek: 8.9a; Paket: splines
+#
+library(splines)
+kalsns1 <- lm(kalsiyum~ns(sure), data=kalsalim)
+kalsns2 <- lm(kalsiyum~ns(sure, knots=c(3,9)),
+  data=kalsalim)
+kalsns3 <- lm(kalsiyum~ns(sure, knots=c(4,8,10)),
+  data=kalsalim)
+
+# Örnek 8.17a: Kalsiyum verisinde yumuþatýcý splaynlar
+# Baðýmlýlýk – Örnek: 8.9a
+#
+kalsspline1 <- smooth.spline(kalsalim$sure, kalsalim$kalsiyum, spar=0.1)  
+kalsspline2 <- smooth.spline(kalsalim$sure, kalsalim$kalsiyum, spar=0.6)  
+kalsspline3 <- smooth.spline(kalsalim$sure, kalsalim$kalsiyum, spar=1)  
+kalsspline1
+kalsspline2
+kalsspline3
+
+# Örnek 8.17b: Kalsiyum verisinde eðri grafikleri
+# Baðýmlýlýk – Örnek: 8.14a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, pch=19, col="blue", 
+    xlab="Süre", ylab="Kalsiyum alýmý", 
+    main="Kalsiyum Alýmý Eðrisi")
+lines(kalsspline1, col=2, lwd=2)
+lines(kalsspline2, col=3, lwd=2, lty=2)
+lines(kalsspline3, col=6, lwd=2, lty=3)
+legend("bottomright", col=c(2,3,6),
+    legend=c("spar=0.1","spar=0.6", "spar=1.0"), lty=c(1,2,3),
+    lwd=c(2,2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.18a: Kalsiyum verisinde süper düzleþtirici
+# Baðýmlýlýk – Örnek: 8.9a
+#
+kalssuper1 <- supsmu(kalsalim$sure, kalsalim$kalsiyum)
+kalssuper2 <- supsmu(kalsalim$sure, kalsalim$kalsiyum,
+    bass=5)
+kalssuper3 <- supsmu(kalsalim$sure, kalsalim$kalsiyum,
+   bass=5, span=0.5)
+
+# Örnek 8.18b: Kalsiyum verisinde süper düzleþtirici grafikleri
+# Baðýmlýlýk – Örnek: 8.15a
+#
+plot(kalsalim$sure, kalsalim$kalsiyum, pch=19, col="blue", 
+    xlab="Süre", ylab="Kalsiyum alýmý", 
+    main="Kalsiyum Alýmý Eðrisi")
+lines(kalssuper1, col=2, lwd=2)
+lines(kalssuper2, col=3, lwd=2, lty=2)
+lines(kalssuper3, col=6, lwd=2, lty=3)
+legend("bottomright", col=c(2,3,6),
+    legend=c("Varsayýlan","bass=5", "bass=5,span=0.5"),
+    lty=c(1,2,3), lwd=c(2,2,2), bty="n", horiz=FALSE)
+
+# Örnek 8.19a: Lojistik reresyon analizi için admission verisi
+# Baðýmlýlýk – UCL ML veri kümeleri deposu
+#
+admission <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+str(admission)
+admission$rank <- as.factor(admission$rank)
+head(admission, 5)
+tail(admission, 5)
+
+# Örnek 8.19b: Lojistik regresyon analizi
+# Baðýmlýlýk – Örnek: 8.19a
+#
+formula <- formula(admit~gre+gpa+rank)
+logmodel <- glm(formula, data=admission, family="binomial")
+summary(logmodel)
+
+# Örnek 8.19c: Lojistik regresyon katsayýlar ve güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.19b
+#
+coef(logmodel)
+confint(logmodel)
+
+# Örnek 8.20a: Lojistik regresyon katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.19a, Fonksiyon: 8.7; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+formula <- formula(admit~gre+gpa+rank)
+logres1 <- boot(data=admission, statistic=calc.logreg,
+    formula=formula, R=3000)
+logres1 
+
+# Örnek 8.20b: Lojistik regresyon katsayýlarýnýn güven aralýðý
+# Baðýmlýlýk – Örnek: 8.20a, Paket: boot
+#
+boot.ci(logres1, index=2)   # baðýmsýz deðiþken gre
+boot.ci(logres1, index=3)   # baðýmsýz deðiþken gpa
+
+# Örnek 8.20c:Lojistik regresyon katsayýlarýnýn daðýlýþ grafikleri
+# Baðýmlýlýk – Örnek: 8.19a; Fonksiyon: 4.15
+#
+opar <- par(mfrow=c(3,2))
+for (i in 1:6) bs.dist(logres1, index=i, gayontem="ydh") 
+par(opar)
+
+# Örnek 8.21: Excel dosyasýndan veri okuma
+# Baðýmlýlýk – Paket: readxl
+#
+if(!require(readxl, quietly=TRUE)){
+   install.packages("readxl",
+     repo="https://cloud.r-project.org/")
+   require(readxl, quietly=TRUE)
+}
+# Çalýþma klasörünü belirle (dosyanýn olduðu klasör)
+setwd ("C:/rsbook") 
+# Excel dosyasýný oku
+bitkiboy <- read_xlsx("bitkiboy.xlsx", sheet=1,
+   col_names = TRUE)
+# Veri çerçevesinde dönüþtür
+bitkiboy <- data.frame(bitkiboy)
+
+# Örnek 8.22a: bitkiboy verisinin nls ile analizi
+# Baðýmlýlýk – Örnek: 8.21
+#
+bboymodel1 <- nls(boy ~ chapricgm(gun, A, b, c), data=bitkiboy,
+   start=list(A=100, b=0.15, c=3), algorithm="default")
+summary(bboymodel1)
+
+# Örnek 8.22b: bboymodel1 nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 8.22a
+#
+attributes(summary(bboymodel1))
+
+# Örnek 8.22c: bboymodel1 ile tahmin yapma
+# Baðýmlýlýk – Örnek: 8.22a
+#
+yeniveri <- data.frame(gun=c(2, 16, 18, 29))
+predict(bboymodel1, newdata=yeniveri)
+
+# Örnek 8.22d: bboymodel1 eðrisinin çizilmesi
+# Baðýmlýlýk – Örnek: 8.22a; Paket: nlshelper
+#
+if(!require(nlshelper, quietly=TRUE)){
+   install.packages("nlshelper",
+     repo="https://cloud.r-project.org/")
+   require(nlshelper, quietly=TRUE)
+}
+params <- summary(p)$parameters[,1]
+nlshelper::plot_nls(bboymodel1, band=TRUE, col=4, lwd=1, lty=1)
+curve(chapricgm(x, A=params["A"], b=params["b"],c=params["c"]),
+   from=0, to=50, col=2, lty=2, add=TRUE)
+legend("bottomright", col=c(2,4),
+   legend=c("Teorik","Uydurulan"), lty=c(2,1), bty="n",
+   horiz=TRUE)
+
+# Örnek: 8.22e: bboymodel1 modeline ait sonuçlarýn gösterilmesi
+# Baðýmlýlýk – Örnek: 8.22a; Paket: nlstools
+#
+if(!require(nlstools, quietly=TRUE)){
+   install.packages("nlstools",
+     repo="https://cloud.r-project.org/")
+   require(nlstools, quietly=TRUE)
+}
+nlstools::overview(bboymodel1)
+
+# Örnek: 8.22f: bboymodel1 modeline ait sonuçlarýn gösterilmesi
+# Baðýmlýlýk – Örnek: 8.22a; Paket: nlstools
+#
+coef(bboymodel1)
+confint(bboymodel1) # Güven Aralýklarý
+nlstools::confint2(bboymodel1)
+
+# Örnek 8.22g: bboymodel1 parametreleri korelasyon grafiði
+# Baðýmlýlýk – Örnek: 8.22a;  Paket: corrplot
+#
+if(!require(corrplot, quietly=TRUE)) {
+   install.packages("corrplot",
+     repo="https://cloud.r-project.org/")
+   require(corrplot, quietly=TRUE)
+}
+cormat <- summary(bboymodel1, correlation=TRUE)$correlation 
+corrplot.mixed(cormat, lower.col="black", number.cex=0.8, upper="ellipse")
+
+# Örnek 8.22h: bboymodel1 için uyum iyiliði ölçütleri
+# Baðýmlýlýk – Örnek: 8.22a
+#
+sum(resid(bboymodel1)^2) #SSE
+summary(bboymodel1)$sigma # RMSE
+
+# Örnek 8.22i: bboymodel1 için broom ile uyum iyiliði ölçüleri
+# Baðýmlýlýk – Örnek: 8.22a; Paket: broom
+#
+if(!require(broom, quietly=TRUE)){
+   install.packages("broom",
+     repo="https://cloud.r-project.org/")
+   require(broom, quietly=TRUE)
+}
+bboygof <- data.frame(broom::glance(bboymodel1))
+bboygof
+
+# Örnek 8.22j: bboymodel1 için broom ile uyum iyiliði ölçütleri
+# Baðýmlýlýk – Örnek: 8.22a; Paket: car
+#
+if(!require(car, quietly=TRUE)){
+   install.packages("car", repo="https://cloud.r-project.org/")
+   require(car, quietly=TRUE)
+}
+opar <- par (mfrow=c(2,2))
+kalinti <- residuals(bboymodel1)
+tahmin <- fitted(bboymodel1)
+qqnorm(kalinti, xlab="Teorik kantiller", 
+   ylab="Örneklem kantilleri", main="Kalýntý QQ Grafiði")
+qqline(kalinti, col=4)
+library(car)
+car::qqPlot(kalinti, col=2, pch=19, 
+   xlab="Norm. kantiller", ylab="Kalýntýlar", 
+   main="Kalýntý QQ Grafiði")
+plot(tahmin, kalinti, pch=19, col=2, 
+   xlab="tahmin", ylab="kalýntý", main="KalýntýxTahmin Grafiði")
+abline(h=0)
+plot(bitkiboy$gun,tahmin, pch=19, col=2, 
+   xlab="gün", ylab="tahmin", main="Tahmin.Bað.Deðþ. Grafiði")
+abline(0,1)
+par(opar)
+
+# Örnek 8.23a: bitkiboy verisi için logis ve Gomptertz
+# Baðýmlýlýk – Örnek: 8.21
+#
+bboymodel2 <- nls(boy~SSgompertz(gun, Asym, b2, b3),
+    data=bitkiboy)
+bboymodel3 <- nls(boy~SSlogis(gun, Asym, xmid, scal),
+    data=bitkiboy)
+summary(bboymodel2)
+summary(bboymodel3)
+
+# Örnek 8.23b: Büyüme modellerinin Anova ile karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.23a
+#
+anova(bboymodel1, bboymodel2, bboymodel3, test="F")
+
+# Örnek 8.23c: Büyüme modellerinin lrtest ile karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.23a; Paket: lmtest
+#
+if(!require(lmtest))
+    {install.packages("lmtest"); library(lmtest)}
+lrtest(bboymodel1, bboymodel2, bboymodel3)
+
+# Örnek 8.23d: Modellerin AIC ve BIC ile karþýlaþtýrýlmasý
+# Baðýmlýlýk – Örnek: 8.22a, 8.23a
+#
+AIC(bboymodel1, bboymodel2, bboymodel3)
+BIC(bboymodel1, bboymodel2, bboymodel3)
+
+# Örnek 8.23e: Büyüme modellerinin genel karþýlaþtýrmasý
+# Baðýmlýlýk – Örnek: 8.22a, 8.23a
+#
+bboygof1 <- data.frame(broom::glance(bboymodel1))
+bboygof2 <- data.frame(broom::glance(bboymodel2))
+bboygof3 <- data.frame(broom::glance(bboymodel3))
+gofmat <- rbind(bboygof1, bboygof2, bboygof3)
+gofmat
+
+# Örnek 8.24a: Doðrusal olmayan model katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.21, Fonksiyon: 8.8; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+formula <-  boy ~ SSgompertz(gun, Asym, b2, b3)
+nlsres1 <- boot(data=bitkiboy, statistic=calc.nlsreg,
+   formula=formula, R=2000)
+nlsres1 
+
+# Örnek 8.24b: Gompertz modeli katsayýlarý örnekleme daðýlýþlarý
+# Baðýmlýlýk – Örnek: 8.24a; Fonksiyon: 4.15
+#
+opar <- par(mfrow=c(3,1))
+for(i in 1:3) bs.dist(nlsres1, index=i)
+par(opar)
+
+# Örnek 8.24c: Gompertz bitki büyüme modeli katsayýlarýnýn GA
+# Baðýmlýlýk – Örnek: 8.24a
+#
+boot.ci(nlsres1, index=1, conf=0.95)
+boot.ci(nlsres1, index=2, conf=0.95)
+boot.ci(nlsres1, index=3, conf=0.95)
+
+# Örnek 8.25: gamdata.xlsx dosyasýný okuma
+# Baðýmlýlýk – Paket: readxl, GGally
+#
+if(!require(readxl, quietly=TRUE)){
+   install.packages("readxl",
+     repo="https://cloud.r-project.org/")
+  require(readxl, quietly=TRUE)
+}
+# Çalýþma klasörünü tanýmla (dosyanýn olduðu klasör)
+setwd ("C:/rsbook") 
+# Excel dosyasýný oku
+gamdata <- read_xlsx("gamdata.xlsx", sheet=1, col_names=TRUE)
+# Veri yapýsýný incele
+gamdata <- as.data.frame(gamdata)
+head(gamdata,3)
+if(!require(GGally, quietly=TRUE)) {
+   install.packages("GGally",
+    repo="https://cloud.r-project.org/")
+   require(GGally, quietly=TRUE)
+}
+regline <- function(data, pts=list(), smt=list(),mapping){
+   ggplot(data=data, mapping=mapping) + 
+   do.call(geom_point, pts) +
+   do.call(geom_smooth, smt) 
+}
+# ggpairs ile açýnsal grafikler
+ggpairs(gamdata,columns=1:4, aes(col=c),
+    diag=list(discrete="barDiag", 
+      continuous=wrap("densityDiag", alpha=0.5)),
+    lower=list(continuous=wrap(regline,
+      pts=list(size=1.2, col="black", alpha=0.5), 
+      smt=list(method="loess", size=1.2, se=FALSE,
+      colour="orange", alpha=0.5)))
+)
+
+# Örnek 8.26a: gamdata verisinde GAM analizi
+# Baðýmlýlýk – Örnek: 8.25; Paket: mgcv
+#
+if(!require(mgcv))
+   {install.packages("mgcv"); require(mgcv)}
+gammodel1 <- gam(y~s(x1, bs="cr")+s(x2, bs="cr")+s(x3, bs="tp"), 
+   data=gamdata, family=gaussian(link="identity"))
+summary(gammodel1)
+
+# Örnek 8.26b: GAM nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 8.26a
+#
+attributes(gammodel1)
+
+# Örnek 8.26c: GAM özet nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 8.26a
+#
+smrgammodel1 <- summary(gammodel1)
+attributes(smrgammodel1) 
+smrgammodel1$p.table
+smrgammodel1$s.table
+smrgammodel1$sp.criterion  # GCV.cp deðeri
+smrgammodel1$r.sq #Düz. R2 deðeri
+
+# Örnek 8.26d: Baðýmsýz deðiþkenlere göre GAM model grafiði
+# Baðýmlýlýk – Örnek: 8.26a
+#
+par(mfrow=c(1,3))
+plot(gammodel1, residuals=TRUE, shade=TRUE, pch=19, col=4)
+
+# Örnek 8.26e: GAM model diyagnostik grafikleri
+# Baðýmlýlýk – Örnek: 8.26a
+#
+gam.check(gammodel1)
+
+# Örnek 8.26f: GAM modeli ile tahmin
+# Baðýmlýlýk – Örnek: 8.26a
+#
+xyeni <- data.frame(
+  x1=c(-1.5, 0.45,1.60),
+  x2=c(0, 12.4, -6.0),
+  x3=c(-0.30, -0.45, 0.75))
+predict(gammodel1, newdata=xyeni)
+predict(gammodel1,newdata=xyeni, se=TRUE, type="terms")
+
+# Örnek 8.27a: gammodel1 modeli 3D grafiði
+# Baðýmlýlýk – Örnek: 8.26a; Paket: visreg
+#
+if(!require(visreg))
+   {install.packages("visreg"); require(visreg)}
+visreg2d(gammodel1, "y", "x1", by="x2",
+   plot.type="rgl", col="gray90")
+
+# Örnek 8.27b: GAM model sonuçlarýnýn görselleþtirilmesi
+# Baðýmlýlýk – Örnek: 8.26a
+#
+vis.gam(gammodel1, theta=25, ticktype="detailed")
+
+# Örnek 8.27c: GAM model sonuçlarýnýn görselleþtirilmesi
+# Baðýmlýlýk – Örnek: 8.26a
+#
+vis.gam(gammodel1, theta=-25, ticktype="detailed", se=2,
+    col=c(c("gray90","gray")))
+
+# Örnek 8.27d: GAM model sonuçlarýnýn görselleþtirilmesi
+# Baðýmlýlýk – Örnek: 8.27a
+#
+vis.gam(gammodel1, view=c("x1","x2"),
+   plot.type="contour", color="terrain")
+
+# Örnek 8.28a: gamdata verisinde GAM analizi 2
+# Baðýmlýlýk – Örnek: 8.25; Paket: mgcv
+#
+if(!require(mgcv))
+   {install.packages("mgcv"); require(mgcv)}
+gammodel2 <- gam(y~s(x1)+s(x2)+s(x3)+c, 
+   data=gamdata, family=gaussian())
+summary(gammodel2)
+
+# Örnek 8.28b: GAM model sonuçlarýnýn birlikte listelenmesi
+# Baðýmlýlýk – Örnek: 8.28a, 8.28a
+#
+modeller <- list(gammodel1, gammodel2)
+names(modeller) <- c("Model-1", "Model-2")
+sonuclar <- lapply(modeller, summary)
+p.tablosu <- lapply(sonuclar, `[[`, 'p.table')
+s.tablosu <- lapply(sonuclar, `[[`, 's.table')
+p.tablosu
+s.tablosu
+
+# Örnek 8.29b: gammodel1 ve gammodel2 modeli karþýlaþtýrma 2
+# Baðýmlýlýk – Örnek: 8.26a, 8.28a; Paket: lmtest
+#
+if(!require(lmtest))
+    {install.packages("lmtest"); library(lmtest)}
+lrtest(gammodel1, gammodel2)
+
+# Örnek 8.29c: gammodel1 ve gammodel2 modeli karþýlaþtýrma 3
+# Baðýmlýlýk – Örnek: 8.26a, 8.28a
+#
+AIC(gammodel1,gammodel2)
+
+# Örnek 8.30: GAM modeli katsayýlarý
+# Baðýmlýlýk – Örnek: 8.26a
+#
+coef(gammodel1)
+
+# Örnek 8.31a: GAM Model katsayýlarý için bootstrap
+# Baðýmlýlýk – Örnek: 8.26a, Fonksiyon: 8.10; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+formula <- y ~ s(x1) + s(x2) + s(x3)
+family <- gaussian()
+bs.gam1 <- boot(data=gamdata, statistic=calc.gamcoef, 
+    formula=formula, family=family, link=NULL, R=2000)
+bs.gam1 
+
+# Örnek 8.31c: GAM modeli katsayýlarýnýn güven aralýklarý
+# Baðýmlýlýk – Örnek: 8.31a; Paket: boot
+#
+boot.ci(bs.gam1, index=2)
+
+
+# Örnek 8.32: hingeplot ile eklem fonksiyonu grafiði
+x <- c(4,5,6,7,8,9,10,11,12)
+knot <- 5  # 5. gözlemi knot olarak seç
+hingeplot(x, knot)
+
+
+# Örnek 8.33a: MARS analizi
+# Baðýmlýlýk – Örnek: 8.25; Paket: earth
+#
+if(!require(earth))
+   {install.packages("earth", 
+     repo="https://cloud.r-project.org/");
+   require(earth, quietly=TRUE)
+}
+marsmodel1 <- earth(formula=y~x1+x2+x3, data=gamdata,
+   pmethod="backward", penalty=2, degree=1, nprune=20, nfold=10)
+marsmodel2 <- earth(formula=y~x1+x2+x3, data=gamdata,
+   pmethod="backward", penalty=3, degree=2, nprune=20, nfold=10)
+
+# Örnek 8.33b: MARS analizi çýktýlarý
+# Baðýmlýlýk – Örnek: 8.33a
+#
+summary(marsmodel1, digits=3, style="max")
+summary(marsmodel2, style="max")
+
+# Örnek 8.33c: MARS nesnesi öznitelikleri
+# Baðýmlýlýk – Örnek: 8.33a
+names(marsmodel1)
+marsmodel1$coefficients
+methods(class="earth")
+coef(marsmodel1) # coef metodu ile katsayýlar
+
+# Örnek 8.33d: MARS model diyagnostik grafikleri 
+# Baðýmlýlýk – Örnek: 8.33a
+plotmo( marsmodel1, all1=FALSE, all2=TRUE) 
+
+# Örnek 8.33e: MARS model diyagnostik grafikleri 
+# Baðýmlýlýk – Örnek: 8.33a
+plot(marsmodel1)
+
+# Örnek 8.33e: MARS model diyagnostik grafikleri 
+# Baðýmlýlýk – Örnek: 8.33a
+> yenigamdata <- read.table(textConnection("
+  y x1 x2 x3     
+ 3.159 4.295 -10.135 0.458 
+ -2.208 3.086  -2.433 -0.029"),head=TRUE)
+yenigamdata
+ytahmin <- predict(marsmodel2, newdata=yenigamdata)
+ytahmin
+
+# Örnek 8.34a: MARS için bagging 
+# Baðýmlýlýk – Paket: caret
+#
+if(!require(caret, quietly=TRUE)) {
+   install.packages("caret",repo="https://cloud.r-project.org/")
+   require(caret, quietly=TRUE)
+}
+marsbag <- bagEarth(formula=y~x1+x2+x3, data=gamdata, B=50,
+   summary=mean, keepX=TRUE, na.action=na.omit)
+
+# Örnek 8.34b: Bagging tekrarlarýnda katsayýlar
+# Baðýmlýlýk – Örnek: 8.34a
+#
+coef(marsbag$fit$Resample01)
+coef(marsbag$fit$Resample02)
+coef(marsbag$fit$Resample40)
+
+#### BÖLÜM 9 #################################################################
+
+
+# Örnek 9.1: Model karþýlaþtýrma ölçütleri
+# Baðýmlýlýk – Veri: swiss; Paket:Metrics, broom
+options(digits=3)
+# Model eðitimi ve tahminleme
+swiss.full <- lm(Fertility~., data=swiss)
+actFertility <- swiss$Fertility
+predFertility <- predict(swiss.full, newdata=swiss)
+# Metrics paketi ile ölçütlerin hesaplanmasý
+if(!require(Metrics, quietly=TRUE)) {
+   install.packages("Metrics",
+     repo="https://cloud.r-project.org/")
+   require(Metrics, quietly=TRUE)
+}
+mape(actFertility, predFertility)
+mae(actFertility, predFertility)
+rmse(actFertility, predFertility)
+rmsle(actFertility, predFertility)
+# stats paketi ile ölçütlerin hesaplanmasý
+AIC(swiss.full)
+BIC(swiss.full)
+# broom paketi ile ölçütlerin hesaplanmasý
+if(!require(broom, quietly=TRUE)){
+   install.packages("broom",
+     repo="https://cloud.r-project.org/")
+   require(broom, quietly=TRUE)
+}
+evalmetrics <- data.frame(broom::glance(swiss.full))
+t(evalmetrics)
+
+# Örnek 9.2a: swiss verisinde bölümleme uygulamasý
+# Baðýmlýlýk – Fonksiyon: 9.1a
+#
+sets <- split.swor(dset=swiss, tp=0.6)
+head(sets$train,3)
+head(sets$valid,3)
+head(sets$test,3)
+# Daðýlýþlarýn þeklini karþýlaþtýr
+par(mfrow=c(1,3))
+plot(density(swiss[,1]), col=2, main="Orijinal")
+plot(density(sets$train[,1]), col=4, main="Eðitim")
+plot(density(sets$test[,1]), col=6, main="Test")
+
+# Örnek 9.2b: iris verisinde tabakalý bölümleme uygulamasý
+# Baðýmlýlýk – Fonksiyon: 9.1b
+#
+dset <- iris  # Veri kümesi 
+strata <- 5   # Tabakalama deðiþkeninin sütun numarasý
+sets <- split.strata(dset, strata, alg=2, tp=0.8) # Bölümleme
+# Orijinal veri kümesinde kategori yüzdeleri
+prop.table(table(iris$Species))
+# Eðitim kümesinde kategori yüzdeleri
+prop.table(table(sets$train$Species))
+# Test kümesinde kategori yüzdeleri
+prop.table(table(sets$test$Species))
+
+# Örnek 9.3a: swiss verisinde çapraz doðrulama
+# Baðýmlýlýk – Fonksiyon: 9.2
+#
+data(swiss)
+formula <- Fertility~.
+split.cv(dset=swiss, formula=formula, tp=0.8)
+
+# Örnek 9.3b: swiss verisinde basit çapraz doðrulama
+# Baðýmlýlýk – Fonksiyon: 9.2
+#
+data(swiss)
+formula <- Fertility~.
+split.cv(swiss, formula, tp=0.8)
+split.cv(swiss, formula, tp=0.8)
+
+# Örnek 9.4: swiss verisinde MC çapraz doðrulamasý
+# Baðýmlýlýk – Fonksiyon: 9.3
+#
+data(swiss)
+formula <- Fertility~.
+montecarlo.cv(dset=swiss, formula=formula, tp=0.8, R=2000)
+
+# Örnek 9.5a: loo.cv fonksiyonu ile uygulama
+# Baðýmlýlýk – Fonksiyon: 9.4a
+#
+formula <- Fertility~.
+loo.cv(dset=swiss, formula=formula)
+
+# Örnek 9.5b: loo.cv2 foksiyonu ile LOOCV
+# Baðýmlýlýk – Fonksiyon: 9.4b
+#
+data(swiss)
+formula <- Fertility~.
+loo.cv2(data=swiss, formula=formula, method="lm")
+
+# Örnek 9.6a: gen.fold ve gen.folds2 ile k-Cv katlarý oluþturma
+# Baðýmlýlýk – Fonksiyon: 9.5a, 9.5b
+#
+indices <- sample(1:nrow(swiss), nrow(swiss))
+gen.folds(indices, k=3)
+gen.folds2(indices, k=3)
+
+# Örnek 9.6b: caret ile k-Cv katlarý oluþturma
+# Baðýmlýlýk – Paket: caret
+#
+if(!require(caret, quietly=TRUE)){
+    install.packages("caret",
+      repo="https://cloud.r-project.org/")
+    require(caret, quietly=TRUE)
+}
+folds <- createFolds(swiss$Fertility, k=3, list=TRUE,
+   returnTrain=FALSE)
+folds
+
+# Örnek 9.7a: kfold.cv fonksiyonu ile çapraz doðrulama 
+# Baðýmlýlýk – Fonksiyon: 9.6a
+#
+data(swiss)
+formula <- Fertility~.
+kfoldres <- kfold.cv(dset=swiss, formula=formula, k=5)
+kfoldres$foldsize
+kfoldres$foldindices[[1]]
+kfoldres$results
+
+# Örnek 9.7b: kfold.cv2 fonksiyonu ile uygulama 
+# Baðýmlýlýk – Fonksiyon: 9.6b
+#
+data(swiss)
+formula <- Fertility~.
+kfold.cv2(data=swiss, formula=formula, method="lm", k=5)
+
+# Örnek 9.8a: repkfold.cv fonksiyonu ile çapraz doðrulama 
+# Baðýmlýlýk – Fonksiyon: 9.7a
+#
+data(swiss)
+formula <- Fertility~.
+repkfoldres <- repkfold.cv(data=swiss, formula=formula, 
+   k=5, rep=5)
+repkfoldres$foldsize
+repkfoldres$foldindices[[1]][2]
+repkfoldres$foldindices[[2]][2]
+repkfoldres$foldindices[[3]][2]
+repkfoldres$results
+
+# Örnek 9.8b: repkfold.cv2 fonksiyonu ile uygulama 
+# Baðýmlýlýk – Fonksiyon: 9.7b
+#
+formula <- Fertility~.
+repkfold.cv2(data=swiss, formula=formula, 
+    k=5, rep=5, method="lm")
+
+# Örnek 9.8c: K-katlý çapraz doðrulamada RMSE ve R2'nin deðiþimi
+# Baðýmlýlýk – Fonksiyon: 9.7b
+#
+data(swiss)
+n <- nrow(swiss)
+formula <- Fertility~.
+RMSE <- R2 <- numeric(0)
+for(i in 2:n){
+    resdf <- repkfold.cv2(data=swiss, formula=formula,
+       method="lm", k=i, rep=5)
+    RMSE[i] <- resdf[,2]
+    R2[i] <- resdf[,1]
+}
+plot(RMSE, type="l", lwd=1, col=2, xaxt='n', xlab="k",
+   ylab="RMSE", main="Deðiþim Grafiði")
+axis(1, pretty(2:n), col=1)
+par(new = TRUE)
+plot(R2, type="l", lwd=1, lty=2, col=4, xaxt='n', yaxt='n',
+   xlab="", ylab="") 
+axis(4, ylim=(c(min(R2), max(R2))), col=1)
+mtext("R2", side=4, cex=0.8, line=0)
+legend("bottomright", col=c(2,4), legend=c("RMSE","R2"),
+   lty=c(1,2), bty="n", horiz=TRUE)
+
+# Örnek 9.9: boot.cv2 fonksiyonu ile uygulama 
+# Baðýmlýlýk – Fonksiyon: 9.8
+#
+formula <- Fertility~.
+boot.cv(dset=swiss, formula=formula, method="lm", R=3000,
+   seed=NULL)
+
+# Örnek 9.10:Bootstrap örnekleminde benzersizlik testi
+# Baðýmlýlýk – Fonksiyon: 9.9
+#
+x <- round(sample(100:500, size=100, replace=FALSE),0)
+test632(x, R=100000, plot=FALSE)
+
+# Örnek 9.11: boot.632 fonksiyonu ile uygulama 
+# Baðýmlýlýk – Fonksiyon: 9.10
+#
+formula <- Fertility~.
+boot.632(dset=swiss, formula=formula, R=2000)
+
+# Örnek 9.12a: Çapraz doðrulamayla model seçme
+# Baðýmlýlýk – Fonksiyon: 9.7b
+formulas <- c()
+formulas[1] <- "Fertility~Agriculture"
+formulas[2] <- "Fertility~Education"
+formulas[3] <- "Fertility~Catholic"
+formulas[4] <- "Fertility~Infant.Mortality"
+formulas[5] <- "Fertility~Agriculture+Education"
+formulas[6] <- "Fertility~Agriculture+Catholic"
+formulas[7] <- "Fertility~Education+Catholic"
+formulas[8] <- "Fertility~."
+resdf <- data.frame() # Baþarým ölçütleri veri çerçevesi
+for(i in 1:length(formulas)){
+    formula <- as.formula(formulas[i])
+    resdf <- rbind(resdf, repkfold.cv2(data=swiss,
+       formula=formula, method="lm", k=10, rep=5))
+}
+rownames(resdf) <- formulas
+print(resdf[order(resdf[,"RMSE"]),])
+
+# Örnek 9.12b: Monte Carlo çapraz doðrulamasýyla model seçme
+# Baðýmlýlýk – Fonksiyon: 9.3
+formulas <- c()
+formulas[1] <- "Fertility~Agriculture"
+formulas[2] <- "Fertility~Education"
+formulas[3] <- "Fertility~Catholic"
+formulas[4] <- "Fertility~Infant.Mortality"
+formulas[5] <- "Fertility~Agriculture+Education"
+formulas[6] <- "Fertility~Agriculture+Catholic"
+formulas[7] <- "Fertility~Education+Catholic"
+formulas[8] <- "Fertility~."
+resdf <- data.frame()
+for(i in 1:length(formulas)){
+    formula <- as.formula(formulas[i])
+    resdf <- rbind(resdf, montecarlo.cv(dset=swiss,
+       formula=formula, tp=0.8, R=1000))
+}
+rownames(resdf) <- formulas
+print(resdf[order(resdf[,"RMSE"]),])
+
+# Örnek 9.12c: R330 paketi ile model seçme 
+# Baðýmlýlýk – Veri: swiss, Paket: R330
+#
+if(!require(R330, quietly=TRUE)) {
+   install.packages("R330", repo="https://cloud.r-project.org/")
+   library(R330)}
+swiss.full <- lm(Fertility~. , data=swiss)
+allpossregs(swiss.full)
+
+# Örnek 9.12d: rminer paketi ile model deðerlendirme
+# Baðýmlýlýk – Veri: swiss, Paket: rminer
+if(!require(rminer, quietly=TRUE)){
+   install.packages("rminer",
+     repo="https://cloud.r-project.org/"); require(rminer)}
+data(swiss)
+H <- rminer::holdout(swiss$Fertility, ratio=0.8, mode="random") 
+trainset <- swiss[H$tr,] # Eðitim verisi
+valset <- swiss[H$ts,]   # Doðrulama verisi
+# Modeli eðitim verisiyle eðit
+trmodel <- rminer::fit(Fertility~., trainset, model="lm") 
+# Test verisinde tahminleri hesapla
+valpreds <- rminer::predict(trmodel, newdata=valset) 
+# Tüm ölçütleri hesapla ve göster
+olcutler <- rminer::mmetric(y=valset$Fertility, 
+   x=valpreds, "ALL")
+data.frame(olcutler)
+
+
+# Örnek 9.12e: rminer ile regresyon modellerini karþýlaþtýrma
+# Baðýmlýlýk – Veri: swiss, Fonksiyon: Paket: rminer
+#
+if(!require(rminer, quietly=TRUE)) {
+   install.packages("rminer", 
+     repo="https://cloud.r-project.org/")
+   require(rminer)}
+data(swiss)
+H <- rminer::holdout(swiss$Fertility, ratio=0.8, mode="random") 
+trainset <- swiss[H$tr,] # Eðitim verisi
+valset <- swiss[H$ts,]   # Doðrulama verisi
+trmodel1 <- rminer::fit(Fertility~., trainset, model="lm") 
+valpreds1 <- rminer::predict(trmodel1, newdata=valset) 
+olcutler1 <- mmetric(y=valset$Fertility, x=valpreds1, 
+   c("R2","RMSE","MAE","MAPE"))
+trmodel2 <- rminer::fit(Fertility~., trainset, model="rpart") 
+valpreds2 <- rminer::predict(trmodel2, newdata=valset) 
+olcutler2 <- mmetric(y=valset$Fertility, x=valpreds2, 
+   c("R2","RMSE","MAE","MAPE"))
+trmodel3 <- rminer::fit(Fertility~., trainset, model="mars") 
+valpreds3 <- rminer::predict(trmodel3, newdata=valset) 
+olcutler3 <- mmetric(y=valset$Fertility, x=valpreds3, 
+   c("R2","RMSE","MAE","MAPE"))
+data.frame(lm=olcutler1, rpart=olcutler2, mars=olcutler3)
+
+# Örnek 9.12f: rminer ile sýnýflama algoritmalarý karþýlaþtýrma
+# Baðýmlýlýk – Veri: iris, Fonksiyon: Paket: rminer
+if(!require(rminer, quietly=TRUE)) {
+   install.packages("rminer", 
+     repo="https://cloud.r-project.org/")
+   require(rminer)}
+data(iris)
+H <- rminer::holdout(iris$Species, ratio=.8, mode="stratified") 
+trainset <- iris[H$tr,] # Eðitim verisi
+valset <- iris[H$ts,]   # Doðrulama verisi
+trmodel1 <- rminer::fit(Species~., trainset, model="mlp") 
+valpreds1 <- rminer::predict(trmodel1, newdata=valset) 
+olcutler1 <- mmetric(y=valset$Species, x=valpreds1, 
+   c("ACC","AUC","CE","KAPPA"))
+trmodel2 <- rminer::fit(Species~., trainset, model="rpart") 
+valpreds2 <- rminer::predict(trmodel2, newdata=valset) 
+olcutler2 <- mmetric(y=valset$Species, x=valpreds2, 
+   c("ACC","AUC","CE","KAPPA"))
+trmodel3 <- rminer::fit(Species~., trainset, model="multinom") 
+valpreds3 <- rminer::predict(trmodel3, newdata=valset) 
+olcutler3 <- mmetric(y=valset$Species, x=valpreds3, 
+   c("ACC","AUC","CE","KAPPA"))
+data.frame(mlp=olcutler1, rpart=olcutler2, multinom=olcutler3)
+
+# Örnek 9.13a: Çoklu baðlanýmlýlýk kontrolü
+# Baðýmlýlýk – Veri: swiss, Paket: car
+if(!require(car, quietly=TRUE)) {
+   install.packages("car",repo="https://cloud.r-project.org/")
+   require(car)}
+swiss.full <- lm(Fertility~., data=swiss)
+car::vif(swiss.full)
+
+# Örnek 9.13b: Eðitim/Test verilerini oluþturma
+# Baðýmlýlýk – Veri: swiss, Paket: caret
+if(!require(caret, quietly=TRUE)) {
+   install.packages("caret", 
+     repo="https://cloud.r-project.org/")
+   require(caret)}
+set.seed(1923) #Tekrar üretilebilirlik RNG çekirdeði
+sswiss <- swiss[sample(1:nrow(swiss)),]  #Karýþtýrma
+tridx <- createDataPartition(sswiss$Fertility, p=0.8,
+   list=FALSE)
+x.train <- sswiss[tridx, -1]
+x.test <- sswiss[-tridx, -1]
+y.train <- sswiss[tridx, 1]
+y.test <- sswiss[-tridx, 1]
+
+# Örnek 9.13c: Eðitim ayarlarý ve eðitim iþlemi
+# Baðýmlýlýk – Örnek:9.13a, Paket: caretEnsemble, doParallel
+if(!require(doParallel, quietly=TRUE)) {
+   install.packages("doParallel", 
+     repo="https://cloud.r-project.org/")
+   require(doParallel)}
+if(!require(caret, quietly=TRUE)) {
+   install.packages("caret", 
+     repo="https://cloud.r-project.org/")
+   require(caret)}
+if(!require(caretEnsemble, quietly=TRUE)) {
+   install.packages("caretEnsemble", 
+     repo="https://cloud.r-project.org/")
+   require(caretEnsemble)}
+nc <- makeCluster(detectCores()-1) 
+registerDoParallel(nc) #nc adet çekirdeði paralel iþleme ayýr
+set.seed(1923)
+trkont <- trainControl(method="cv", number=10,
+    savePredictions="final", allowParallel=TRUE)
+yontemler <- caretEnsemble::caretList(
+    x=x.train, y=y.train,
+    trControl=trkont,
+    methodList=c("lm","bagEarth", "gamboost","knn", "svmRadial",
+      "rf"),
+    tuneList=NULL,
+    continue_on_fail=FALSE, 
+    preProcess=c("center","scale")
+)
+
+# Örnek 9.13d: Eðitim sonuçlarýnýn görüntülenmesi
+# Baðýmlýlýk – Örnek:9.13c
+options(digits=3) #Kesir kýsýmlarýnýn 3 rakamýný göster
+yontemler$rf
+dfRMSE <- data.frame(
+   lm = min(yontemler$lm$results$RMSE),
+   bagEartg = min(yontemler$bagEarth$results$RMSE),
+   gamboost = min(yontemler$gamboost$results$RMSE),
+   knn = min(yontemler$knn$results$RMSE),
+   svmRadial = min(yontemler$svmRadial$results$RMSE),
+   rf = min(yontemler$rf$results$RMSE)
+)
+print(dfRMSE)
+
+# Örnek 9.13e: Eðitim sonuçlarýnýn görüntülenmesi
+# Baðýmlýlýk – Örnek:9 .13c
+yeniorn <- caret::resamples(yontemler)
+summary(yeniorn) # çýktýsý uzun olduðu için gösterilmemiþtir. 
+dotplot(yeniorn, metric="RMSE")
+
+# Örnek 9.13e: Ensemble: Model birleþtirme 1
+# Baðýmlýlýk – Örnek:9.13d
+caret::modelCor(yeniorn)
+set.seed(1923)
+ensembmodel1 <- caretEnsemble::caretEnsemble(yontemler, 
+    metric="RMSE", 
+    trControl=trkont)
+summary(ensembmodel1)
+plot(ensembmodel1)
+
+# Örnek 9.13f: Ensemble: Model birleþtirme 2
+# Baðýmlýlýk – Örnek:9.13d
+#
+set.seed(1923)
+ensembmodel2 <- caretEnsemble::caretStack(yontemler, 
+    method="glmnet", 
+    metric="RMSE", 
+    trControl=trkont)
+print(ensembmodel2)
+
+# Örnek 9.13g: Tahmin iþlemi ve baþarý ölçütleri
+# Baðýmlýlýk – Örnek:9.13d
+lm.pred <- predict.train(yontemler$lm, newdata=x.test)
+bearth.pred<-predict.train(yontemler$bagEarth, newdata=x.test)
+gboost.pred<-predict.train(yontemler$gamboost, newdata=x.test)
+knn.pred <-predict.train(yontemler$knn, newdata=x.test)
+svm.pred <- predict.train(yontemler$svmRadial,newdata=x.test)
+rf.pred <- predict.train(yontemler$rf, newdata=x.test)
+ensemb1.pred <- predict(ensembmodel1, newdata=x.test)
+ensemb2.pred <- predict(ensembmodel2, newdata=x.test)
+# RMSE tahminleri
+testRMSE <- data.frame(
+   lm=RMSE(lm.pred, y.test),
+   bagEarth=RMSE(bearth.pred, y.test),
+   gamboost=RMSE(gboost.pred, y.test),
+   knn=RMSE(knn.pred, y.test),
+   svm=RMSE(svm.pred, y.test),
+   rf=RMSE(rf.pred, y.test),
+   ensembmodel1=RMSE(ensemb1.pred, y.test),
+   ensembmodel2=RMSE(ensemb2.pred, y.test))
+print(testRMSE)
+
+# Örnek 9.13h: Tahmin iþlemi ve baþarý ölçütleri
+# Baðýmlýlýk – Örnek:9.13f
+set.seed(1923)
+svmmodel <- train(x.train, y.train,
+   trControl = trkont,
+   method = "svmRadial",
+   metric = "RMSE",
+   preProcess = c("center","scale"),
+   importance = TRUE)
+plot(varImp(svmmodel))
+
+# Örnek 9.13i: Tahmin ve gerçek deðerleri arasýndaki korelasyon
+# Baðýmlýlýk – Örnek:9.12f
+cor.preds <- data.frame(
+   lm=cor(lm.pred, y.test),
+   bagEarth=cor(bearth.pred, y.test),
+   gamboost=cor(gboost.pred, y.test),
+   svm=cor(svm.pred, y.test),
+   rf=cor(rf.pred, y.test),
+   knn=cor(knn.pred, y.test),
+   ensemb1=cor(ensemb1.pred, y.test),
+   ensemb2=cor(ensemb2.pred, y.test))
+print(cor.preds)
+
+#### BÖLÜM 10 ############################################################
+
+# Örnek 10.1: R'de F daðýlýþýyla ilgili fonksiyonlar
+qf(0.95, df1=5, df2=25)  # Olasýlýk verildiðinde Fc deðeri
+1-pf(2.602987, df1=5, df2=25) # Fc verildiðinde alfa
+1-pf(3.2456, df1=5, df2=25) # F istatistiði verildiðinde alfa
+
+# Örnek 10.2a: PlantGrowth (Bitki büyüme) verisi
+data(PlantGrowth)
+str(PlantGrowth)
+levels(PlantGrowth$group)
+head(PlantGrowth, 5)
+tail(PlantGrowth, 5)
+
+# Örnek 10.2b: PlantGrowth verisinde grup daðýlýþlarý
+# Baðýmlýlýk – Örnek:10.2a; Paket: ggplot2
+if(!require(ggplot2))
+   {install.packages("ggplot2"); require(ggplot2)}
+ggplot(PlantGrowth, aes(PlantGrowth$weight)) + 
+   geom_density(aes(PlantGrowth$weight,  
+   fill = PlantGrowth$group), 
+   position = 'identity', alpha = 0.5) +
+   labs(x = 'Bitki Aðýrlýðý', y = 'Yoðunluk') + 
+   scale_fill_discrete(name = 'Gruplar') + 
+   scale_x_continuous(limits = c(2.5, 7.5))
+
+# Örnek 10.2c: PlantGrowth verisinde grup daðýlýþlarý
+# Baðýmlýlýk – Örnek:10.2a; Paket: vioplot
+if(!require(vioplot))
+   {install.packages("vioplot"); require(vioplot)}
+vioplot(weight~group, data=PlantGrowth,
+    col=c("tomato","skyblue", "green"))
+
+# Örnek 10.2d: PlantGrowth verisinde varyans analizi
+# Baðýmlýlýk – Örnek 10.2a
+#
+formula <- weight ~ group 
+pgmodel <- lm(formula=formula, data=PlantGrowth)
+pgvat <- anova(pgmodel)
+pgvat 
+
+# Örnek 10.2e: PlantGrowth verisi için doðrusal model
+# Baðýmlýlýk – Örnek 10.2d
+#
+summary(pgmodel)
+
+# Örnek 10.2f: pgmodel ile ilgili diyagnostik grafikleri
+# Baðýmlýlýk – Örnek: 10.2d
+#
+par(mfrow=c(2,2))
+plot(pgmodel)
+
+# Örnek 10.2g: Kalýntýlarýn incelenmesi için grafikler
+# Baðýmlýlýk – Örnek: 10.2d
+#
+kalinti <- residuals(pgmodel)
+opar <- par(mfrow=c(2,2))
+plot(kalinti, main="Kalýntý serpilme")
+abline(h=0, col=2, lty=2)
+hist(kalinti, main="Histogram")
+plot(density(kalinti), main="Kalýntý yoðunluk")
+abline(v=0, col=2, lty=2)
+boxplot(kalinti, main="Kutu-býyýk grafiði")
+par(opar)
+
+# Örnek 10.2h: Kalýntýlarýn normalliðinin testi
+# Baðýmlýlýk – Örnek: 10.2d
+#
+shapiro.test(residuals(pgmodel)) 
+
+# Örnek 10.2i: Varyans homojenliði testleri
+# Baðýmlýlýk – Örnek: 10.2d
+#
+bartlett.test(weight ~ group, data=PlantGrowth)
+fligner.test(weight ~ group, data=PlantGrowth)
+
+# Örnek 10.2j: Durbin-Watson testi
+# Baðýmlýlýk – Örnek: 10.2d; Paket: lmtest
+#
+if(!require(lmtest)){
+   install.packages("lmtest"); require(lmtest)}
+dwtest(weight ~ group, data=PlantGrowth)
+
+# Örnek 10.2k: Varsayýmlar için genel test
+# Baðýmlýlýk – Örnek: 10.2d; Paket: gvlma
+#
+if(!require(gvlma)){
+   install.packages("gvlma"); require(gvlma)}
+gvlma::gvlma(pgmodel)
+
+# Örnek 10.3a: Varyans analizi tablosu elemanlarýna eriþim
+# Baðýmlýlýk – Örnek: 10.2d
+#
+names(pgvat)
+pgvat["F value"]
+F <- pgvat["group", "F value"]
+F
+p.val <- pgvat["group", "Pr(>F)"]
+p.val
+
+# Örnek 10.3b: Boþ model sonuçlarýnýn elde edilmesi
+# Baðýmlýlýk – Örnek: 10.3a; Fonksiyon: 10.1
+#
+formula <- weight~group
+pgres <- calc.anova (dset=PlantGrowth, formula=formula)
+cv <- pgres$cv
+ytahmin <- pgres$ytahmin
+model.F <- pgres$model.F
+head(ytahmin, 5)
+head(cv, 5)
+model.F
+
+# Örnek 10.4a: ANOVA F için model tabanlý bootstrap iþlemi
+# Baðýmlýlýk – Örnek: 10.2a; Fonksiyon: 10.2; Paket: boot
+#
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+bsAnova1 <- boot::boot(data=PlantGrowth,
+    statistic=model.anovaF, cv=cv, ytahmin=ytahmin,
+    formula=formula, R=1000)
+bsAnova1
+
+# Örnek 10.4b: Bootstrap F kestirimleri CDF grafiði
+# Baðýmlýlýk – Örnek: 10.4a; Fonksiyon: 10.3
+#
+fcdf.plot(bsAnova1)
+
+# Örnek 10.4c: Bootstrap F için güven aralýklarý
+# Baðýmlýlýk – Örnek: 10.4a; Paket: boot
+#
+boot.ci(bsAnova1)
+
+# Örnek 10.4d: Bootstrap F kestirimleri için daðýlýþ grafiði
+# Baðýmlýlýk – Örnek: 10.4a; Fonksiyon: 4.10, 4.15 
+#
+bs.dist(bsAnova1, gayontem="yuzde")
+
+# Örnek 10.4e: Bootstrap F kestirimleri için diyagnostik grafikler
+# Baðýmlýlýk – Örnek: 10.4a; Fonksiyon: 4.16
+#
+bs.plot(bsAnova1)
+
+# Örnek 10.4f: Model tabanlý bootstrap ile p-deðeri
+# Baðýmlýlýk – Örnek: 10.3b, 10.4a; Fonksiyon: 10.4
+#
+anova.pval(bsAnova1, model.F=pgres$model.F)
+
+
+# Örnek 10.5a: Wild bootstrap ANOVA uygulamasý (Seçenek 1)
+# Baðýmlýlýk – Fonksiyon: 10.5; Paket: boot
+#
+formula <- weight~group
+pgres <- calc.anova(dset=PlantGrowth, formula=formula)
+cv <- pgres$cv
+ytahmin <- pgres$ytahmin
+model.F <- pgres$model.F
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+bsAnova2 <- boot(data=PlantGrowth, statistic=wild.anovaF,
+   uopt=1, formula=formula, cv=cv, ytahmin=ytahmin, R=1000)
+
+# Örnek 10.5b: ANOVA bootstrap F kestirimleri grafiði
+# Baðýmlýlýk – Örnek: 10.5a, Fonksiyon: 10.3
+#
+fcdf.plot(bsAnova2
+
+# Örnek 10.5c: Bootstrap F kestirimleri daðýlýþ grafiði 
+# Baðýmlýlýk – Örnek: 10.5a; Fonksiyon: 4.10, 4.15 
+#
+bs.dist(bsAnova2, gayontem="yuzde")
+
+# Örnek 10.5d: Wild bootstrap F için güven aralýklarý
+# Baðýmlýlýk – Örnek: 10.5a; Paket: boot
+#
+boot.ci(bsAnova2)
+
+# Örnek 10.5e: Wild bootstrap ile p-deðeri
+# Baðýmlýlýk – Örnek: 10.5a, Fonksiyon: 10.4
+#
+anova.pval(bsAnova2, model.F=pgres$model.F)
+
+# Örnek 10.6a: ANOVA Wild bootstrap uygulamasý (Seçenek 2)
+# Baðýmlýlýk – Fonksiyon: 10.5; Paket: boot
+#
+formula <- weight~group
+pgres <- calc.anova(dset=PlantGrowth, formula=formula)
+cv <- pgres$cv
+ytahmin <- pgres$ytahmin
+model.F <- pgres$model.F
+if(!require(boot, quietly=TRUE)) {
+   install.packages("boot", repo="https://cloud.r-project.org/")
+   require(boot, quietly=TRUE)
+}
+bsAnova3 <- boot(data=PlantGrowth, statistic=wild.anovaF,
+   uopt=2, formula=formula, cv=cv, ytahmin=ytahmin, R=1000)
+bsAnova3
+
+# Örnek 10.6b: Wild bootstrap F kestirimleri daðýlýþ grafiði 
+# Baðýmlýlýk – Örnek: 10.6a; Fonksiyon: 4.10, 4.15 
+#
+bs.dist(bsAnova3, gayontem="yuzde")
+
+# Örnek 10.6c: Wild bootstrap F için güven aralýklarý
+# Baðýmlýlýk – Örnek: 10.6a; Paket: boot
+#
+boot.ci(bsAnova3)
+
+# Örnek 10.6d: ANOVA wild bootstrap (seçenek 2) için p-deðeri
+# Baðýmlýlýk – Örnek: 10.5a, Fonksiyon: 10.4
+#
+anova.pval(bsAnova3, model.F)
+
+
+# Örnek 10.7a: lmPerm ile permütasyon testi
+# Baðýmlýlýk – Paket: lmPerm
+#
+if(!require(lmPerm, quietly=TRUE)){
+   install.packages("lmPerm", 
+     repo="https://cloud.r-project.org/")
+   require(lmPerm, quietly=TRUE)
+}
+formula <- weight~group
+pgmodel2 <- aovp(formula=formula, data=PlantGrowth)
+summary(pgmodel2)
+
+# Örnek 10.7b: mosaic'in do fonksiyonu ile permütasyon testi
+# Baðýmlýlýk – Veri: PlantGrowth; Paket: mosaic
+#
+if(!require(mosaic, quietly=TRUE)){
+   install.packages("mosaic",
+     repo="https://cloud.r-project.org/")
+   require(mosaic, quietly=TRUE)}
+R <- 10000
+t0 <- anova(lm(weight~group, data=PlantGrowth))[1,4]
+t0
+t1 <- do(R)*anova(lm(weight~shuffle(group),
+   data=PlantGrowth))[1,4]
+t1 <- t1$result
+perres <- list(t0=t0, t1=t1, R=R)
+head(perres$t1)
+hist(perres$t1, prob=TRUE, col="gray", ylab="yoðunluk",
+   xlab="F*", main="F* histogram ve PDF Grafiði")
+par(new=TRUE)
+plot(density(perres$t1), col="blue", lwd=2, 
+   xlab="", ylab="", xaxt="n", yaxt="n", main="")
+p.val <- length(subset(perres$t1, perres$t1 > perres$t0))/R
+p.val
+
+# Örnek 10.8a: Grup ortalamalarý için permütasyon testi
+# Baðýmlýlýk – Fonksiyon: 6.3, 6.4, 10.5
+#
+data(PlantGrowth)
+pgpertest1 <- pairwise.permute(PlantGrowth,
+   statistic=calc.meandif, alternative="two.sided", R=10000)
+pgpertest1$p.value
+
+# Örnek 10.8b: multcompView ile test sonuçlarý
+# Baðýmlýlýk – Örnek 10.8a; Paket: multcompView
+#
+library(multcompView)
+multcompLetters(pgpertest1$p.value, compare="<",
+   threshold=0.01, Letters=letters, reversed = FALSE)
+
+# Örnek 10.8c: rcompanion paketi ile permütasyon
+# Baðýmlýlýk – Paket: rcompanion
+#
+if(!require(rcompanion, quietly=TRUE)) {
+   install.packages("rcompanion",
+    repo="https://cloud.r-project.org/")
+  require(rcompanion, quietly=TRUE)
+}
+formula <- weight~group
+pgpertest2 <- pairwisePermutationTest(formula,
+   data=PlantGrowth, method="none")
+pgpertest2
+
+# Örnek 10.8d: rcompanion paketi ile permütasyon matrisi
+# Baðýmlýlýk – Paket: rcompanion
+#
+if(!require(rcompanion, quietly=TRUE)) {
+  install.packages("rcompanion",
+    repo="https://cloud.r-project.org/")
+  require(rcompanion, quietly=TRUE)
+}
+formula <- weight~group
+pgpertest3 <- pairwisePermutationMatrix(formula,
+    data=PlantGrowth, method="fdr")
+pgpertest3
+
+# Örnek 10.8e: multcompView paketi ile test sonuçlarý
+# Baðýmlýlýk – Örnek: 10.8d; Paket: multcompView
+#
+if(!require(multcompView, quietly=TRUE)) {
+  install.packages("multcompView",
+    repo="https://cloud.r-project.org/")
+  require(multcompView, quietly=TRUE)}
+multcompLetters(pgpertest3$Adjusted, compare="<",
+   threshold=0.05, Letters=letters, reversed=FALSE)
+
+# Örnek 10.8f: tukeyHSD testi ile test sonuçlarý
+# Baðýmlýlýk – Örnek: 10.8d
+TukeyHSD(aov(pgmodel, data=PlantGrowth))
